@@ -1,0 +1,33 @@
+``utilities`` Package
+=====================
+
+``geometry`` Module
+-------------------
+
+.. automodule:: geometry
+    :members:
+
+``surface_fitting`` Module
+--------------------------
+This module contains functions that are useful to fit 3D data points to a 2D second-order polynomial function of the form:
+
+.. math::
+    z = f(x,y) = c_0 + c_1 x + c_2 y + c_3 x^2 + c_4 xy + c_5y^2
+
+.. automodule:: surface_fitting
+    :members:
+
+``optics`` Module
+-----------------
+
+This module contains functions related to optics, such as Snell's law.
+
+.. automodule:: optics
+    :members:
+
+``visualize`` Module
+--------------------
+This module has helper functions to plot.
+
+.. automodule:: visualize
+    :members:

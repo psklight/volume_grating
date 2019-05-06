@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>holograms Module &mdash; holo_py 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="illumination Module" href="illumination.html" />
+    <link rel="prev" title="API" href="../API.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> holo_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../API.html">API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">holograms</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="illumination.html"><code class="docutils literal notranslate"><span class="pre">illumination</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sources.html"><code class="docutils literal notranslate"><span class="pre">sources</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="materials.html"><code class="docutils literal notranslate"><span class="pre">materials</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solvers.html"><code class="docutils literal notranslate"><span class="pre">solvers</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routines.html"><code class="docutils literal notranslate"><span class="pre">routines</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="engines.html"><code class="docutils literal notranslate"><span class="pre">engines</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html"><code class="docutils literal notranslate"><span class="pre">utilities</span></code> Package</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">holo_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../API.html">API</a> &raquo;</li>
+        
+      <li><code class="docutils literal notranslate"><span class="pre">holograms</span></code> Module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/holograms.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-holograms">
+<span id="holograms-module"></span><h1><code class="docutils literal notranslate"><span class="pre">holograms</span></code> Module<a class="headerlink" href="#module-holograms" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="holograms.Hologram">
+<em class="property">class </em><code class="descclassname">holograms.</code><code class="descname">Hologram</code><span class="sig-paren">(</span><em>thickness=1e-05</em>, <em>material=None</em>, <em>dn=0.045</em>, <em>recording=None</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.Hologram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#holograms.HologramBase" title="holograms.HologramBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">holograms.HologramBase</span></code></a></p>
+<dl class="method">
+<dt id="holograms.Hologram.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>thickness=1e-05</em>, <em>material=None</em>, <em>dn=0.045</em>, <em>recording=None</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.Hologram.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="holograms.Hologram.get_norm_vec_at_points">
+<code class="descname">get_norm_vec_at_points</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.Hologram.get_norm_vec_at_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of surface normal vector at points on a hologram. For this hologram it’s always flat. Hence, normal vectors
+are along z axis.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>points</strong> – a list of instances of class sympy.vector.Point</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="holograms.Hologram.get_points_from_xy_arrays">
+<code class="descname">get_points_from_xy_arrays</code><span class="sig-paren">(</span><em>arrays</em>, <em>O=GCS</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.Hologram.get_points_from_xy_arrays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an ndarray-type list of Point instances. For this class, all z values will be 0 size the hologram is flat.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>arrays</strong> – a (N, 2) ndarray containing (x, y) coordinates. N is the number of (x, y) pairs.</li>
+<li><strong>O</strong> – an instance of sympy.vector.CoordSys3D. Default to the library’s GCS (Global Coordinate System).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a (N,) ndarray where each item is an instance of sympy.vector.Point corresponding to (x, y, z).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="holograms.Hologram.is_ready">
+<code class="descname">is_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holograms.Hologram.is_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True or False whether the hologram instance is fully initialized and ready to calculate for its responses.
+Being ready means all of the attributes are not None.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="holograms.Hologram.n0">
+<code class="descname">n0</code><span class="sig-paren">(</span><em>wavelengths</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.Hologram.n0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return refractive index of the material that makes the hologram. This will call the method Material.n(…), which
+returns a (N,) ndarray.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>wavelengths</strong> – a numeric value, a numeric list, or a numeric (N,) ndarray.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an (N,) ndarray.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="holograms.HologramBase">
+<em class="property">class </em><code class="descclassname">holograms.</code><code class="descname">HologramBase</code><span class="sig-paren">(</span><em>thickness=1e-05</em>, <em>material=None</em>, <em>dn=0.045</em>, <em>recording=None</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>HologramBase is a base class of other hologram class definitions. It needs some basic physical parameters to
+initialize. However, without being fully initialized (e.g. recording=None), the hologram cannot be asked for its
+responses.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>thickness</strong> – a thickness in meter; must be numeric.</li>
+<li><strong>material</strong> – an instance of Material class or its subclasses. It must be able to be called for refractive index. Default to None.</li>
+<li><strong>dn</strong> – the index modulation of the hologram; must be numeric.</li>
+<li><strong>recording</strong> – an instance of illumination.Record class. Default to None.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="holograms.HologramBase.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>thickness=1e-05</em>, <em>material=None</em>, <em>dn=0.045</em>, <em>recording=None</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="holograms.HologramBase.get_norm_vec_at_points">
+<code class="descname">get_norm_vec_at_points</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase.get_norm_vec_at_points" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Abstract method</strong>. Subclasses must override this method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>points</strong> – a list of instances of class sympy.vector.Point</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="holograms.HologramBase.get_points_from_xy_arrays">
+<code class="descname">get_points_from_xy_arrays</code><span class="sig-paren">(</span><em>arrays</em>, <em>O=GCS</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase.get_points_from_xy_arrays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an ndarray-type list of Point instances. For this class, all z values will be 0 size the hologram is flat.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>arrays</strong> – a (N, 2) ndarray containing (x, y) coordinates. N is the number of (x, y) pairs.</li>
+<li><strong>O</strong> – an instance of sympy.vector.CoordSys3D. Default to the library’s GCS (Global Coordinate System).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a (N,) ndarray where each item is an instance of sympy.vector.Point corresponding to (x, y, z).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="holograms.HologramBase.is_ready">
+<code class="descname">is_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase.is_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True or False whether the hologram instance is fully initialized and ready to calculate for its responses.
+Being ready means all of the attributes are not None.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="holograms.HologramBase.n0">
+<code class="descname">n0</code><span class="sig-paren">(</span><em>wavelengths</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase.n0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return refractive index of the material that makes the hologram. This will call the method Material.n(…), which
+returns a (N,) ndarray.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>wavelengths</strong> – a numeric value, a numeric list, or a numeric (N,) ndarray.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an (N,) ndarray.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="illumination.html" class="btn btn-neutral float-right" title="illumination Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../API.html" class="btn btn-neutral" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Pisek Kultavewuti
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+``materials`` Module
+====================
+
+.. automodule:: materials
+    :members:
+    :inherited-members:
+    :show-inheritance:

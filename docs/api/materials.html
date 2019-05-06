@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>materials Module &mdash; holo_py 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="solvers Module" href="solvers.html" />
+    <link rel="prev" title="sources Module" href="sources.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> holo_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../API.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="holograms.html"><code class="docutils literal notranslate"><span class="pre">holograms</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="illumination.html"><code class="docutils literal notranslate"><span class="pre">illumination</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sources.html"><code class="docutils literal notranslate"><span class="pre">sources</span></code> Module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">materials</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solvers.html"><code class="docutils literal notranslate"><span class="pre">solvers</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routines.html"><code class="docutils literal notranslate"><span class="pre">routines</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="engines.html"><code class="docutils literal notranslate"><span class="pre">engines</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html"><code class="docutils literal notranslate"><span class="pre">utilities</span></code> Package</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">holo_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../API.html">API</a> &raquo;</li>
+        
+      <li><code class="docutils literal notranslate"><span class="pre">materials</span></code> Module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/materials.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-materials">
+<span id="materials-module"></span><h1><code class="docutils literal notranslate"><span class="pre">materials</span></code> Module<a class="headerlink" href="#module-materials" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="materials.Cauchy_2coeff">
+<em class="property">class </em><code class="descclassname">materials.</code><code class="descname">Cauchy_2coeff</code><span class="sig-paren">(</span><em>coeff</em><span class="sig-paren">)</span><a class="headerlink" href="#materials.Cauchy_2coeff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#materials.Material" title="materials.Material"><code class="xref py py-class docutils literal notranslate"><span class="pre">materials.Material</span></code></a></p>
+<p>Cauchy_2coeff models a material with two Cauchy coefficients, B and C.
+See <a class="reference external" href="https://en.wikipedia.org/wiki/Cauchy%27s_equation">https://en.wikipedia.org/wiki/Cauchy%27s_equation</a> for Cauchy model.
+Unit of C is micron**2.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>coeff</strong> – (2,) ndarry of numbers. B = coeff[0] and C = coeff[1].</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="materials.Cauchy_2coeff.n">
+<code class="descname">n</code><span class="sig-paren">(</span><em>wavelength</em><span class="sig-paren">)</span><a class="headerlink" href="#materials.Cauchy_2coeff.n" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a (real-part) of refractive indices at specified wavelengths.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>wavelength</strong> – a list or ndarray of wavelengths in meter.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">refractive index n</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="materials.Material">
+<em class="property">class </em><code class="descclassname">materials.</code><code class="descname">Material</code><a class="headerlink" href="#materials.Material" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Material is a base class to model optical material.</p>
+<dl class="method">
+<dt id="materials.Material.n">
+<code class="descname">n</code><span class="sig-paren">(</span><em>wavelengths</em><span class="sig-paren">)</span><a class="headerlink" href="#materials.Material.n" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Abstract method</strong>. Subclasses must re-define <code class="docutils literal notranslate"><span class="pre">n</span></code> method that returns a (real-part) of refractive indices at
+specified wavelengths.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>wavelengths</strong> – a list or ndarray of wavelengths in meter.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return n:</th><td class="field-body">an ndarray or real-part refractive indices.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="materials.NKconstant">
+<em class="property">class </em><code class="descclassname">materials.</code><code class="descname">NKconstant</code><span class="sig-paren">(</span><em>N</em>, <em>K=0</em><span class="sig-paren">)</span><a class="headerlink" href="#materials.NKconstant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#materials.Material" title="materials.Material"><code class="xref py py-class docutils literal notranslate"><span class="pre">materials.Material</span></code></a></p>
+<p>NKconstant models a material with a constant complex index of N + i*K.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>N</strong> – the refractive index value</li>
+<li><strong>K</strong> – the absorption/gain value</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="materials.NKconstant.get_complex_index">
+<code class="descname">get_complex_index</code><span class="sig-paren">(</span><em>wavelength</em><span class="sig-paren">)</span><a class="headerlink" href="#materials.NKconstant.get_complex_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the whole complex refractive index, i.e. n+i*k, which is constant</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>wavelength</strong> – a list or ndarray of wavelengths in meter. Since the model is constant, recommend a single value input.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="materials.NKconstant.k">
+<code class="descname">k</code><span class="sig-paren">(</span><em>wavelength</em><span class="sig-paren">)</span><a class="headerlink" href="#materials.NKconstant.k" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the imaginary part, k, of the complex refractive index (n+i*k)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>wavelength</strong> – a list or ndarray of wavelengths in meter. Since the model is constant, recommend a single value input.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">refractive index n (real part only at the moment)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="materials.NKconstant.n">
+<code class="descname">n</code><span class="sig-paren">(</span><em>wavelength</em><span class="sig-paren">)</span><a class="headerlink" href="#materials.NKconstant.n" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the real part, n, of the complex refractive index (n+i*k)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>wavelength</strong> – a list or ndarray of wavelengths in meter. Since the model is constant, recommend a single value input.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">refractive index n (real part only at the moment)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="materials.air">
+<code class="descclassname">materials.</code><code class="descname">air</code><em class="property"> = &lt;materials.NKconstant object&gt;</em><a class="headerlink" href="#materials.air" title="Permalink to this definition">¶</a></dt>
+<dd><p>NKconstant instance of air or vacuum.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="materials.cauchy_dict">
+<code class="descclassname">materials.</code><code class="descname">cauchy_dict</code><em class="property"> = {'bk7': [1.5046, 0.0042], 'lens': [1.5321, 0.00743], 'pc': [1.5551, 0.00972], 'pp_original': [1.4824, 0.00693], 'pp_processed': [1.49, 0.00696]}</em><a class="headerlink" href="#materials.cauchy_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dictionary of Cauchy coefficients for some materials.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="solvers.html" class="btn btn-neutral float-right" title="solvers Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sources.html" class="btn btn-neutral" title="sources Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Pisek Kultavewuti
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

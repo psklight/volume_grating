@@ -1,0 +1,7 @@
+``sources`` Module
+==================
+
+.. automodule:: sources
+    :members:
+    :inherited-members:
+    :show-inheritance:

@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>illumination Module &mdash; holo_py 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sources Module" href="sources.html" />
+    <link rel="prev" title="holograms Module" href="holograms.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> holo_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../API.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="holograms.html"><code class="docutils literal notranslate"><span class="pre">holograms</span></code> Module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">illumination</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sources.html"><code class="docutils literal notranslate"><span class="pre">sources</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="materials.html"><code class="docutils literal notranslate"><span class="pre">materials</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solvers.html"><code class="docutils literal notranslate"><span class="pre">solvers</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routines.html"><code class="docutils literal notranslate"><span class="pre">routines</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="engines.html"><code class="docutils literal notranslate"><span class="pre">engines</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html"><code class="docutils literal notranslate"><span class="pre">utilities</span></code> Package</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">holo_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../API.html">API</a> &raquo;</li>
+        
+      <li><code class="docutils literal notranslate"><span class="pre">illumination</span></code> Module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/illumination.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-illumination">
+<span id="illumination-module"></span><h1><code class="docutils literal notranslate"><span class="pre">illumination</span></code> Module<a class="headerlink" href="#module-illumination" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="illumination.Playback">
+<em class="property">class </em><code class="descclassname">illumination.</code><code class="descname">Playback</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#illumination.Playback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Playback class creates an illumination instance that emulates how a hologram will played back. Therefore, it needs
+only one light source.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>source</strong> – an instance of Source subclasses.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="illumination.Record">
+<em class="property">class </em><code class="descclassname">illumination.</code><code class="descname">Record</code><span class="sig-paren">(</span><em>source1</em>, <em>source2</em><span class="sig-paren">)</span><a class="headerlink" href="#illumination.Record" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Record class creates an illumination instance that emulates how a hologram will be made. Therefore, it needs two
+light sources as its argument.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>source1</strong> – an instance of Source subclasses.</li>
+<li><strong>source2</strong> – an instance of Source subclasses.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="illumination.TargetPlayback">
+<em class="property">class </em><code class="descclassname">illumination.</code><code class="descname">TargetPlayback</code><span class="sig-paren">(</span><em>source1</em>, <em>source2</em><span class="sig-paren">)</span><a class="headerlink" href="#illumination.TargetPlayback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#illumination.Record" title="illumination.Record"><code class="xref py py-class docutils literal notranslate"><span class="pre">illumination.Record</span></code></a></p>
+<p>TargetPlayback class creates an illumination instance that emulates how a hologram should playback in an attempt to
+design a recording process. Therefore, it needs two light sources. Due to the same requirement as the Record class,
+it is convenient to make TargetPlayback a subclass of Record.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>source1</strong> – an instance of Source subclasses.</li>
+<li><strong>source2</strong> – an instance of Source subclasses.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sources.html" class="btn btn-neutral float-right" title="sources Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="holograms.html" class="btn btn-neutral" title="holograms Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Pisek Kultavewuti
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

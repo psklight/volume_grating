@@ -1,0 +1,632 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>engines Module &mdash; holo_py 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="utilities Package" href="utilities.html" />
+    <link rel="prev" title="routines Module" href="routines.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> holo_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../API.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="holograms.html"><code class="docutils literal notranslate"><span class="pre">holograms</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="illumination.html"><code class="docutils literal notranslate"><span class="pre">illumination</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sources.html"><code class="docutils literal notranslate"><span class="pre">sources</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="materials.html"><code class="docutils literal notranslate"><span class="pre">materials</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solvers.html"><code class="docutils literal notranslate"><span class="pre">solvers</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routines.html"><code class="docutils literal notranslate"><span class="pre">routines</span></code> Module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">engines</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html"><code class="docutils literal notranslate"><span class="pre">utilities</span></code> Package</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">holo_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../API.html">API</a> &raquo;</li>
+        
+      <li><code class="docutils literal notranslate"><span class="pre">engines</span></code> Module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/engines.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-engines">
+<span id="engines-module"></span><span id="engine-main"></span><h1><code class="docutils literal notranslate"><span class="pre">engines</span></code> Module<a class="headerlink" href="#module-engines" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="engines.Engine">
+<em class="property">class </em><code class="descclassname">engines.</code><code class="descname">Engine</code><a class="headerlink" href="#engines.Engine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Engine</span></code> is a base class for all functional computation engines.</p>
+<dl class="staticmethod">
+<dt id="engines.Engine.extract">
+<em class="property">static </em><code class="descname">extract</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>point</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.Engine.extract" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Abstract method</strong>. Subclasses must override this method with the exact same input arguments. It must return
+a dict containing relevant parameters needed to calculate diffraction efficiency using <code class="docutils literal notranslate"><span class="pre">solve()</span></code> method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>hologram</strong> – an instance of class or subclass of Holograms</li>
+<li><strong>point</strong> – an instance of class sympy.vector.Point</li>
+<li><strong>playback</strong> – an instance of a Playback class.</li>
+<li><strong>order</strong> – an integer specifying what order to diffract into</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a dict of parameters</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="engines.Engine.solve">
+<em class="property">static </em><code class="descname">solve</code><span class="sig-paren">(</span><em>param</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.Engine.solve" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Abstract method</strong>. Subclasses must override this method. The first required input argument should be <code class="docutils literal notranslate"><span class="pre">param</span></code>,
+which should be an output from <code class="docutils literal notranslate"><span class="pre">extract()</span></code> method. More input arguments can be added, but they must have default
+values. This is because, in this release, <code class="docutils literal notranslate"><span class="pre">Response.get_efficiency_at_points()</span></code> only call <code class="docutils literal notranslate"><span class="pre">.solver(param)</span></code> without
+other additional arguments.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>param</strong> – a dict generated from <code class="docutils literal notranslate"><span class="pre">extract()</span></code> method.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a dict of parameters</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="engines.KogelnikAnalytical">
+<em class="property">class </em><code class="descclassname">engines.</code><code class="descname">KogelnikAnalytical</code><a class="headerlink" href="#engines.KogelnikAnalytical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#engines.Engine" title="engines.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">engines.Engine</span></code></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">KogelnikAnalytical</span></code> assume a <strong>lossless hologram.</strong> Based on the paper Kogelnik, 1969, Coupled Wave Theory for Thick Hologram Gratings, Bell System
+Technical Journal, Vol 48, No 9. It uses ananlytical equations to solver for diffraction efficiency.
+This assumes that the surface of the hologram is perpendicular to the z axis,
+as defined in the paper. <strong>The recording wave vectors of the holograms must NOT have a y-axis component</strong>.</p>
+<dl class="staticmethod">
+<dt id="engines.KogelnikAnalytical.extract">
+<em class="property">static </em><code class="descname">extract</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>point</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.KogelnikAnalytical.extract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract relevant parameters from a set of hologram and playback for a single point on a hologram and at
+a specified diffraction order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>hologram</strong> – an instance of class or subclass of Holograms</li>
+<li><strong>point</strong> – an instance of class sympy.vector.Point</li>
+<li><strong>playback</strong> – an instance of a Playback class.</li>
+<li><strong>order</strong> – an integer specifying what order to diffract into</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="engines.KogelnikAnalytical.solve">
+<em class="property">static </em><code class="descname">solve</code><span class="sig-paren">(</span><em>param</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.KogelnikAnalytical.solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solve for diffraction efficiency of a set of parameters which must be extracted from the class’ <code class="docutils literal notranslate"><span class="pre">extract</span></code> method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>param</strong> – a dict containing important parameters extracted from a set of hologram and playback.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Return efficiency:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">a numeric value of diffraction efficiency</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return mode:</th><td class="field-body">a mode of a hologram, i.e. being transmissive or reflective</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return caches:</th><td class="field-body">a dict of relevant calculated parameters for a particular engine. It is useful to debug.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="engines.KogelnikTwoWave">
+<em class="property">class </em><code class="descclassname">engines.</code><code class="descname">KogelnikTwoWave</code><a class="headerlink" href="#engines.KogelnikTwoWave" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#engines.Engine" title="engines.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">engines.Engine</span></code></a></p>
+<p>KogelnikTwoWave assumes a <strong>lossless hologram</strong>. It is based on a vectorial version of the coupled wave theory and only consider two-wave interaction.
+This allows a polarization effect and the y-component of the wave vector. The engine relies on scipy.integrate.solve_bvp
+to solve a boundary condition problem for ordinary differential equation (ODE) systems.</p>
+<p>Let’s denote the electric-field complex amplitudes of the reference field and the diffracted field as Ar and Ad.
+Assume that the hologram’s surface starts at z=0 and lies on the xy plane. The hologram thickness extends in z-axis.
+The field state can be represented by a matrix [Ar, Ad], i.e. a (2,) ndarray. This field state evolves as the fields propagate in z-direction.</p>
+<p>The evolution is a system of ODE that relate [Ar, Ad] to [dAr/dz, dAd/dz], and it is typically via a 2x2 matrix.
+The element of the matrix depends on many parameters including interacting wave vectors, grating vectors, index modulation, etc.</p>
+<dl class="staticmethod">
+<dt id="engines.KogelnikTwoWave.extract">
+<em class="property">static </em><code class="descname">extract</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>point</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.KogelnikTwoWave.extract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract relevant parameters from a set of hologram and playback for a single point on a hologram and at
+a specified diffraction order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>hologram</strong> – an instance of class or subclass of Holograms</li>
+<li><strong>point</strong> – an instance of class sympy.vector.Point</li>
+<li><strong>playback</strong> – an instance of a Playback class.</li>
+<li><strong>order</strong> – an integer specifying what order to diffract into</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="engines.KogelnikTwoWave.solve">
+<em class="property">static </em><code class="descname">solve</code><span class="sig-paren">(</span><em>param</em>, <em>bc_guess=None</em>, <em>tol=0.01</em>, <em>mesh_number=2</em>, <em>max_nodes=10000</em>, <em>verbose=1</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.KogelnikTwoWave.solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solve for diffraction efficiency of a set of parameters which must be extracted from the class’ <code class="docutils literal notranslate"><span class="pre">extract</span></code> method.</p>
+<p>Generally, only <code class="docutils literal notranslate"><span class="pre">param</span></code> is needed. However, if the <code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_bvp</span></code> fails to find a solution. It is still
+possible to locate a solution by adjusting <code class="docutils literal notranslate"><span class="pre">solve_bvp``s</span> <span class="pre">arguments,</span> <span class="pre">including</span> <span class="pre">``bc_guess</span></code>, <code class="docutils literal notranslate"><span class="pre">mess_number</span></code>,
+<code class="docutils literal notranslate"><span class="pre">max_nodes</span></code>, and <code class="docutils literal notranslate"><span class="pre">tol</span></code>. Refer to <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_bvp.html#scipy.integrate.solve_bvp">https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_bvp.html#scipy.integrate.solve_bvp</a> for more information.</p>
+<p><code class="docutils literal notranslate"><span class="pre">bc_guess</span></code> specifies an initial guess on the value of the field states at z=0 and z=thickness. It is a (2,2) ndarray.
+<code class="docutils literal notranslate"><span class="pre">bc_guess[0]</span> <span class="pre">=</span> <span class="pre">np.array([1.0,</span> <span class="pre">0.99],</span> <span class="pre">dtype=np.complex)</span></code> guesses that at z=0, Ar = 1.0 and at z=thickness, Ar=0.99.
+<code class="docutils literal notranslate"><span class="pre">bc_guess[1]</span> <span class="pre">=</span> <span class="pre">np.array([0.05,</span> <span class="pre">0],</span> <span class="pre">dtype=np.complex)</span></code> guesses that at z=0, Ad=0.05 and at z=thickness, Ad=0.0, which is
+a reasonble initial guess for a reflection hologram.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>param</strong> – a set of parameters needed to calculate efficiencies. Extract them from .extract(…)</li>
+<li><strong>bc_guess</strong> – an initial guess for the boundary condition.</li>
+<li><strong>tol</strong> – a tolerance value for <code class="docutils literal notranslate"><span class="pre">solve_bvp</span></code>. Default = 0.01.</li>
+<li><strong>mesh_number</strong> – The number of mesh points in the independent axis to start with. It must be an integer larger than one.</li>
+<li><strong>max_nodes</strong> – the maximum number of nodes used in attempt to solve the problem. Solver will terminate when the number of mesh nodes is exceeded.</li>
+<li><strong>verbose</strong> – verbose option for scipy.integrate.solve_bvp. 0 for silent, 1 for result only, 2 for detail.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return eff:</th><td class="field-body"><p class="first">efficiency of the hologram. If <code class="docutils literal notranslate"><span class="pre">solve_bvp</span></code> fails to converge, None is returned.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return mode:</th><td class="field-body"><p class="first">hologram mode, i.e. reflection or transmission</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return caches:</th><td class="field-body"><p class="first last">a dictionary. ‘solver detail’ for result from <code class="docutils literal notranslate"><span class="pre">solve_bvp</span></code> function and <code class="docutils literal notranslate"><span class="pre">matrix</span></code> for the interaction matrix.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="engines.get_dephase_at_point">
+<code class="descclassname">engines.</code><code class="descname">get_dephase_at_point</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>point</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.get_dephase_at_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dephase value for a specified point on a hologram. Dephase is defined as (k^2-k_diff^2)/2/k where
+k is a magnitude of wave vector (i.e. 2*pi*n/lambda) and k_diff is the magnitude of the diffracted wave vector
+(i.e. k_diff = k_in - order*K).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>hologram</strong> – an instance of holograms.HologramBase subclasses.</li>
+<li><strong>playback</strong> – an instance of illumination.Playback</li>
+<li><strong>point</strong> – an instance of sympy.vector.Point specifying a point on a hologram</li>
+<li><strong>order</strong> – an integer specifying a diffraction order</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return dephase:</th><td class="field-body"><p class="first last">a number</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="engines.get_dephase_at_points">
+<code class="descclassname">engines.</code><code class="descname">get_dephase_at_points</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>points</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.get_dephase_at_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of dephase values for specified points on a hologram. Dephase is defined as (k^2-k_diff^2)/2/k where
+k is a magnitude of wave vector (i.e. 2*pi*n/lambda) and k_diff is the magnitude of the diffracted wave vector
+(i.e. k_diff = k_in - order*K).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>hologram</strong> – an instance of class or subclass of Holograms</li>
+<li><strong>points</strong> – an instance of a list of instances of class sympy.vector.Point</li>
+<li><strong>playback</strong> – an instance of a Playback class.</li>
+<li><strong>order</strong> – an non-zero integer specifying what order to diffract into.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return dephase:</th><td class="field-body"><p class="first last">a list of dephase values</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="engines.get_k_diff_at_point">
+<code class="descclassname">engines.</code><code class="descname">get_k_diff_at_point</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>point</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.get_k_diff_at_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a k_diff vector (instance of sympy.vector.Vector) at a given point on the hologram</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>hologram</strong> – an instance of holograms.HologramBase subclasses.</li>
+<li><strong>playback</strong> – an instance of illumination.Playback</li>
+<li><strong>point</strong> – an instance of sympy.vector.Point specifying a point on a hologram</li>
+<li><strong>order</strong> – an integer specifying a diffraction order</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return k_diff:</th><td class="field-body"><p class="first last">an instance of sympy.vector.Vector</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="engines.get_k_diff_at_points">
+<code class="descclassname">engines.</code><code class="descname">get_k_diff_at_points</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>points</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.get_k_diff_at_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of diffracted wave vectors for specified points on a hologram.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>hologram</strong> – an instance of class or subclass of Holograms</li>
+<li><strong>points</strong> – an instance of a list of instances of class sympy.vector.Point</li>
+<li><strong>playback</strong> – an instance of a Playback class.</li>
+<li><strong>order</strong> – an non-zero integer specifying what order to diffract into.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">[k_diff]: a list of diffracted k calculated by momentum matching (instances of sympy.vector.Vector)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="engines.get_k_hologram_at_point">
+<code class="descclassname">engines.</code><code class="descname">get_k_hologram_at_point</code><span class="sig-paren">(</span><em>hologram</em>, <em>point</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.get_k_hologram_at_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a grating vector as defined by k1-k2 from two recording sources.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>hologram</strong> – an instance of holograms.HologramBase subclasses</li>
+<li><strong>point</strong> – an instance of sympy.vector.Point</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Return k_hologram:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last">an instance of sympy.vector.Vector</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="engines.get_k_hologram_at_points">
+<code class="descclassname">engines.</code><code class="descname">get_k_hologram_at_points</code><span class="sig-paren">(</span><em>hologram</em>, <em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.get_k_hologram_at_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of grating vectors for specified points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>hologram</strong> – an instance of holograms.HologramBase subclasses</li>
+<li><strong>points</strong> – an instance of a list of instances of class sympy.vector.Point</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Return [k_holo]:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last">a list of sympy.vector.Vector instances.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="engines.get_k_out_off_hologram_at_point">
+<code class="descclassname">engines.</code><code class="descname">get_k_out_off_hologram_at_point</code><span class="sig-paren">(</span><em>k_pp</em>, <em>hologram</em>, <em>point</em>, <em>material_out</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.get_k_out_off_hologram_at_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a k vector that refracts out off a hologram. k_pp should be a k vector at the specified point.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>k_pp</strong> – a k vector inside a hologram, instance of sympy.vector.Vector</li>
+<li><strong>hologram</strong> – an instance of holograms.HologramBase subclasses</li>
+<li><strong>point</strong> – an instance of sympy.vector.Point</li>
+<li><strong>material_out</strong> – an instance of materials.Material subclasses. Must be able to return a refractive index using <code class="docutils literal notranslate"><span class="pre">.n()</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="engines.get_source_k_into_hologram_at_point">
+<code class="descclassname">engines.</code><code class="descname">get_source_k_into_hologram_at_point</code><span class="sig-paren">(</span><em>point</em>, <em>hologram</em>, <em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.get_source_k_into_hologram_at_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a k vector inside a hologram given a k vector from a source’s side.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>point</strong> – an instance of sympy.vector.Point</li>
+<li><strong>source</strong> – an instance of Source subclasses.</li>
+<li><strong>hologram</strong> – an instance of hologram.HologramBase subclasses</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return k_pp:</th><td class="field-body"><p class="first last">an instance of sympy.vector.Vector</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="engines.loss_rms_de">
+<code class="descclassname">engines.</code><code class="descname">loss_rms_de</code><span class="sig-paren">(</span><em>de_targ</em>, <em>de_cand</em>, <em>weights=array([1.])</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.loss_rms_de" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a root-mean-square-error loss between target DE and candidate DE.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>de_targ</strong> – a list or (N,) ndarray of target DE values</li>
+<li><strong>de_cand</strong> – a list or (N,) ndarray of candidate DE values</li>
+<li><strong>weights</strong> – a scalar number, a list of number defined a weight for each DE point.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">loss value</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="engines.loss_rms_k">
+<code class="descclassname">engines.</code><code class="descname">loss_rms_k</code><span class="sig-paren">(</span><em>k_targ</em>, <em>k_cand</em>, <em>weights=array([1.])</em>, <em>norm_fac=1000000.0</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.loss_rms_k" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a root-mean-square-error loss between the target K vectors and the candidate K vectors. The distance dK = Ktarg -
+Kcand is a Euclidean norm. Since dK is typically large, it will make optimization very difficult. Therefore, it is
+useful to normalize dK before squaring. Default normalization is 1e6.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>k_targ</strong> – a list of sympy.vector.Vector instances, representing a target K vector</li>
+<li><strong>k_cand</strong> – a list of sympy.vector.Vector instances, representing a candidate K vector</li>
+<li><strong>weights</strong> – a scalar number, a list of number defined a weight for each K point.</li>
+<li><strong>norm_fac</strong> – Normalization factor applied to dK before squaring them. Default = 1e6.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">loss value</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="utilities.html" class="btn btn-neutral float-right" title="utilities Package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="routines.html" class="btn btn-neutral" title="routines Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Pisek Kultavewuti
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

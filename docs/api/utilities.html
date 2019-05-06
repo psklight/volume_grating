@@ -1,0 +1,643 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>utilities Package &mdash; holo_py 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="engines Module" href="engines.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> holo_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../API.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="holograms.html"><code class="docutils literal notranslate"><span class="pre">holograms</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="illumination.html"><code class="docutils literal notranslate"><span class="pre">illumination</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sources.html"><code class="docutils literal notranslate"><span class="pre">sources</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="materials.html"><code class="docutils literal notranslate"><span class="pre">materials</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solvers.html"><code class="docutils literal notranslate"><span class="pre">solvers</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routines.html"><code class="docutils literal notranslate"><span class="pre">routines</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="engines.html"><code class="docutils literal notranslate"><span class="pre">engines</span></code> Module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">utilities</span></code> Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-geometry"><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#surface-fitting-module"><code class="docutils literal notranslate"><span class="pre">surface_fitting</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optics-module"><code class="docutils literal notranslate"><span class="pre">optics</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualize-module"><code class="docutils literal notranslate"><span class="pre">visualize</span></code> Module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">holo_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../API.html">API</a> &raquo;</li>
+        
+      <li><code class="docutils literal notranslate"><span class="pre">utilities</span></code> Package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/utilities.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="utilities-package">
+<h1><code class="docutils literal notranslate"><span class="pre">utilities</span></code> Package<a class="headerlink" href="#utilities-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-geometry">
+<span id="geometry-module"></span><h2><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Module<a class="headerlink" href="#module-geometry" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="geometry.cartersian_to_spherical">
+<code class="descclassname">geometry.</code><code class="descname">cartersian_to_spherical</code><span class="sig-paren">(</span><em>arrays</em>, <em>decimals=None</em><span class="sig-paren">)</span><a class="headerlink" href="#geometry.cartersian_to_spherical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return (N,3)-ndarray spherical coordinates of given (N,3)-ndarray Cartesian coordinates. For each i in N of spherical coordinates,
+1 value = the length or radius from origin
+2 value = the angle with respect to the x axis of the projection on the to xy plane
+3 value = the angle of projection on to the z axis</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>array</strong> – a (N, 3) ndarray of (x,y,z) Cartesian coordinates. N is the number of points.</li>
+<li><strong>decimals</strong> – [optional, default to None]. This resolves rounding error that might cause the argument to <code class="docutils literal notranslate"><span class="pre">arccos</span></code> to be larger than one.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a (N,3) ndarray of spherical coordinates</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="geometry.ndarray_to_point">
+<code class="descclassname">geometry.</code><code class="descname">ndarray_to_point</code><span class="sig-paren">(</span><em>array</em>, <em>O</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#geometry.ndarray_to_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an instance of sympy.vector.Point for a (3,) coordinate.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>array</strong> – a (3,) ndarray containing x,y,z coordinate value</li>
+<li><strong>name</strong> – [default=None] a name of the point, in string. If None, the name will be (x,y,z).</li>
+<li><strong>O</strong> – Coordinate system in Cartesian</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an instance of sympy.vector.Point</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="geometry.ndarray_to_vector">
+<code class="descclassname">geometry.</code><code class="descname">ndarray_to_vector</code><span class="sig-paren">(</span><em>array</em>, <em>O</em><span class="sig-paren">)</span><a class="headerlink" href="#geometry.ndarray_to_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a sympy.vector.Vector instance from a (3,) ndarray</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>array</strong> – a (3,) array of numeric</li>
+<li><strong>O</strong> – Coordinate system from sympy, Cartesian</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a sympy.vector.Vector instance from a (3,) ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="geometry.point_to_ndarray">
+<code class="descclassname">geometry.</code><code class="descname">point_to_ndarray</code><span class="sig-paren">(</span><em>point</em>, <em>O</em><span class="sig-paren">)</span><a class="headerlink" href="#geometry.point_to_ndarray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a (3,) ndarry for x, y, z coordinate from a given sympy.vector.Point</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>point</strong> – an instance of sympy.vector.Point</li>
+<li><strong>O</strong> – an instance of sympy.vector.CoordSys3D</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a (3,) ndarry for x, y, z coordinate</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="geometry.points_to_ndarray">
+<code class="descclassname">geometry.</code><code class="descname">points_to_ndarray</code><span class="sig-paren">(</span><em>points</em>, <em>O</em><span class="sig-paren">)</span><a class="headerlink" href="#geometry.points_to_ndarray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return (N,3) ndarray of (x,y,z) coordinate from a list of sympy.vector.Point instances.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>points</strong> – a list of sympy.vector.Point instances. <code class="docutils literal notranslate"><span class="pre">N=len(points)</span></code>.</li>
+<li><strong>O</strong> – Coordinate system from sympy, Cartesian</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">(N,3) ndarray of (x,y,z) coordinate</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="geometry.spherical_to_cartesian">
+<code class="descclassname">geometry.</code><code class="descname">spherical_to_cartesian</code><span class="sig-paren">(</span><em>arrays</em>, <em>decimals=None</em><span class="sig-paren">)</span><a class="headerlink" href="#geometry.spherical_to_cartesian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return (N,3)-ndarray Cartesian coordinates from give (N,3)-ndarray spherical coordinates. For each i in N of spherical coordinates,
+1 value = the length or radius from origin
+2 value = the angle with respect to the x axis of the projection on the to xy plane
+3 value = the angle of projection on to the z axis</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>array</strong> – a (N, 3) ndarray of (r, theta, tilt) coordinates. N is the number of points.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a (N,3) ndarray of Cartesian coordinates</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="geometry.vector_to_ndarray">
+<code class="descclassname">geometry.</code><code class="descname">vector_to_ndarray</code><span class="sig-paren">(</span><em>v</em>, <em>O</em><span class="sig-paren">)</span><a class="headerlink" href="#geometry.vector_to_ndarray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a (3,) ndarray of vector components from an input sympy.vector.Vector instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> – an instance of sympy.vector.Vector</li>
+<li><strong>O</strong> – Coordinate system from sympy, Cartesian</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Return a (3,) ndarray of vector components</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="geometry.vectors_to_ndarray">
+<code class="descclassname">geometry.</code><code class="descname">vectors_to_ndarray</code><span class="sig-paren">(</span><em>vs</em>, <em>O</em><span class="sig-paren">)</span><a class="headerlink" href="#geometry.vectors_to_ndarray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return (N,3) ndarray of vector components from a list of sympy.vector.Vector instances.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>vs</strong> – a list of sympy.vector.Vector instances. <code class="docutils literal notranslate"><span class="pre">N=len(vs)</span></code>.</li>
+<li><strong>O</strong> – Coordinate system from sympy, Cartesian</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">(N,3) ndarray of vector components</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="surface-fitting-module">
+<h2><code class="docutils literal notranslate"><span class="pre">surface_fitting</span></code> Module<a class="headerlink" href="#surface-fitting-module" title="Permalink to this headline">¶</a></h2>
+<p>This module contains functions that are useful to fit 3D data points to a 2D second-order polynomial function of the form:</p>
+<div class="math notranslate nohighlight">
+\[z = f(x,y) = c_0 + c_1 x + c_2 y + c_3 x^2 + c_4 xy + c_5y^2\]</div>
+<span class="target" id="module-surface_fitting"></span><dl class="function">
+<dt id="surface_fitting.prepare_surface_poly_2nd_fit">
+<code class="descclassname">surface_fitting.</code><code class="descname">prepare_surface_poly_2nd_fit</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>z</em><span class="sig-paren">)</span><a class="headerlink" href="#surface_fitting.prepare_surface_poly_2nd_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare ranges in x (shape of (Nx,)) and y (shape of (Ny,)) and gridded ground-truth z (shape of (Nx, Ny)) for optimization
+2D polynomial fit.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> – (Nx,) ndarray of point ranges in x axis</li>
+<li><strong>y</strong> – (Ny,) ndarray of point ranges in y axis</li>
+<li><strong>z</strong> – (Nx, Ny) ndarray of ground-truth z values</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return xs:</th><td class="field-body"><p class="first">(Nx*Ny, 2) grid-meshed (x_norm, y_norm) points that are also normalized.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return z_norm:</th><td class="field-body"><p class="first">(Nx*Ny,) ground-truth values that are normalized</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Return norm_factors:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last">a dictionary of normalization factors</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="surface_fitting.reverse_scale_surface">
+<code class="descclassname">surface_fitting.</code><code class="descname">reverse_scale_surface</code><span class="sig-paren">(</span><em>norm_factors</em>, <em>x=None</em>, <em>y=None</em>, <em>z=None</em><span class="sig-paren">)</span><a class="headerlink" href="#surface_fitting.reverse_scale_surface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverse the normalization step for input <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code> data points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>norm_factors</strong> – a dictionary of normalization factors. Must have keys of ‘… mean’ and ‘… range’ where … is in {x, y, z}.</li>
+<li><strong>x</strong> – ndarray of input normalized x values</li>
+<li><strong>y</strong> – ndarray of input normalized y values</li>
+<li><strong>z</strong> – ndarray of input normalized z values</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return x:</th><td class="field-body"><p class="first">unnormalized x values. None if <code class="docutils literal notranslate"><span class="pre">x</span></code> is None.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return y:</th><td class="field-body"><p class="first">unnormalized x values. None if <code class="docutils literal notranslate"><span class="pre">y</span></code> is None.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return z:</th><td class="field-body"><p class="first last">unnormalized x values. None if <code class="docutils literal notranslate"><span class="pre">z</span></code> is None.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="surface_fitting.scale_surface">
+<code class="descclassname">surface_fitting.</code><code class="descname">scale_surface</code><span class="sig-paren">(</span><em>norm_factors</em>, <em>x=None</em>, <em>y=None</em>, <em>z=None</em><span class="sig-paren">)</span><a class="headerlink" href="#surface_fitting.scale_surface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply normalization factors to input <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code> data points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>norm_factors</strong> – a dictionary of normalization factors. Must have keys of ‘… mean’ and ‘… range’ where … is in {x, y, z}.</li>
+<li><strong>x</strong> – ndarray of x values. Can be None.</li>
+<li><strong>y</strong> – ndarray of y values. Can be None.</li>
+<li><strong>z</strong> – ndarray of z values. Can be None.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return x_norm:</th><td class="field-body"><p class="first">normalized x values. None if input <code class="docutils literal notranslate"><span class="pre">x</span></code> is None.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return y_norm:</th><td class="field-body"><p class="first">normalized x values. None if input <code class="docutils literal notranslate"><span class="pre">y</span></code> is None.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return z_norm:</th><td class="field-body"><p class="first last">normalized x values. None if input <code class="docutils literal notranslate"><span class="pre">z</span></code> is None.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="surface_fitting.surface_gradients">
+<code class="descclassname">surface_fitting.</code><code class="descname">surface_gradients</code><span class="sig-paren">(</span><em>coeffs</em>, <em>xs</em><span class="sig-paren">)</span><a class="headerlink" href="#surface_fitting.surface_gradients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a tuple of (dz/dx, dz/dy) when z = f(x,y) = c0 + c1*x + c2*y + c3*x^2 + c4*x*y + c5*y^2.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>xs</strong> – (N, 2) ndarray for coordiates (x,y).</li>
+<li><strong>coeffs</strong> – a (6,) ndarray or a list of six numbers for coefficients.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return dz/dx:</th><td class="field-body"><p class="first">(N,) ndarray of dz/dx values.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return dz/dy:</th><td class="field-body"><p class="first last">(N,) ndarray of dz/dy values.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="surface_fitting.surface_poly_2nd">
+<code class="descclassname">surface_fitting.</code><code class="descname">surface_poly_2nd</code><span class="sig-paren">(</span><em>coeffs</em>, <em>xs</em><span class="sig-paren">)</span><a class="headerlink" href="#surface_fitting.surface_poly_2nd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return z = f(x,y) = c0 + c1*x + c2*y + c3*x^2 + c4*x*y + c5*y^2. It is a second-order 2D polynomial function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>xs</strong> – (N, 2) ndarray for coordiates (x,y).</li>
+<li><strong>coeffs</strong> – a (6,) ndarray or a list of six numbers for coefficients.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">(N,) ndarray of z vales.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="surface_fitting.surface_poly_2nd_loss_func">
+<code class="descclassname">surface_fitting.</code><code class="descname">surface_poly_2nd_loss_func</code><span class="sig-paren">(</span><em>coeffs</em>, <em>xs</em>, <em>z_truth</em>, <em>regularization=0</em><span class="sig-paren">)</span><a class="headerlink" href="#surface_fitting.surface_poly_2nd_loss_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a mean-squared error (MSE) of predicted z values and ground-trough z values. Predicted z values are calculated using
+<code class="docutils literal notranslate"><span class="pre">surface_poly_2nd</span></code> function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>coeffs</strong> – a (6,) ndarray of coordinate or a list of six numbers.</li>
+<li><strong>xs</strong> – a (N, 2) ndarray of N (x,y) coordinates.</li>
+<li><strong>z_truth</strong> – (N,) ndarray of ground-trugh z values.</li>
+<li><strong>regularization</strong> – [default=0] a level of reqularization.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a MSE value.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="surface_fitting.to_xs">
+<code class="descclassname">surface_fitting.</code><code class="descname">to_xs</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#surface_fitting.to_xs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a (N,2) of (x,y) pairs from two (N,) ndarrays of x and y values. <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> must have the same shape.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> – ndarray of x values. Must have the same shape as <code class="docutils literal notranslate"><span class="pre">y</span></code>.</li>
+<li><strong>y</strong> – ndarray of y values. Must have the same shape as <code class="docutils literal notranslate"><span class="pre">x</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">(N,2) of (x,y) pairs</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="optics-module">
+<h2><code class="docutils literal notranslate"><span class="pre">optics</span></code> Module<a class="headerlink" href="#optics-module" title="Permalink to this headline">¶</a></h2>
+<p>This module contains functions related to optics, such as Snell’s law.</p>
+<span class="target" id="module-optics"></span><dl class="function">
+<dt id="optics.snell_law_k_space">
+<code class="descclassname">optics.</code><code class="descname">snell_law_k_space</code><span class="sig-paren">(</span><em>k_in</em>, <em>norm_vec</em>, <em>n_in</em>, <em>n_out</em>, <em>notify_tir=True</em><span class="sig-paren">)</span><a class="headerlink" href="#optics.snell_law_k_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a wave vector k_out due to refraction.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>k_in</strong> – a sympy.vector.Vector for incoming k vector (with magnitude 2*pi*n/lambda)</li>
+<li><strong>norm_vec</strong> – a normalized normal vector pointing into an incoming medium</li>
+<li><strong>n_in</strong> – (real-part) of refractive index of the incoming medium</li>
+<li><strong>n_out</strong> – (real-part) of a refractive index of the outgoing medium</li>
+<li><strong>notify_tir</strong> – [default=True] True to catch TIR by printing out and return None instead.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return k_out:</th><td class="field-body"><p class="first last">an instance of sympy.vector.Vector</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="visualize-module">
+<h2><code class="docutils literal notranslate"><span class="pre">visualize</span></code> Module<a class="headerlink" href="#visualize-module" title="Permalink to this headline">¶</a></h2>
+<p>This module has helper functions to plot.</p>
+<span class="target" id="module-visualize"></span><dl class="function">
+<dt id="visualize.visualize_vector_transverse">
+<code class="descclassname">visualize.</code><code class="descname">visualize_vector_transverse</code><span class="sig-paren">(</span><em>vectors</em>, <em>points</em>, <em>axes=None</em>, <em>O=GCS</em><span class="sig-paren">)</span><a class="headerlink" href="#visualize.visualize_vector_transverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot transvere components (v_xy = v-v_z) in a transverse plane (xy) for all vectors in <code class="docutils literal notranslate"><span class="pre">vectors</span></code>, each at a point in <code class="docutils literal notranslate"><span class="pre">points</span></code>.
+The number of vectors and points must equal.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>vectors</strong> – a list of sympy.vector.Vector instances</li>
+<li><strong>points</strong> – a list of sympy.vector.Point instances</li>
+<li><strong>axes</strong> – a matplot.pyplot.Axes instance, an axes to plot to.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return Q:</th><td class="field-body"><p class="first">an output from matplotlib.pyplot.quiver.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return axes:</th><td class="field-body"><p class="first last">a matplotlib.pyplot.Axes instance to which the function plots.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="engines.html" class="btn btn-neutral" title="engines Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Pisek Kultavewuti
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

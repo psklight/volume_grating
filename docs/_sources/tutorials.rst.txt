@@ -1,0 +1,206 @@
+.. _tutorial_main:
+
+Tutorials
+=========
+
+The ``holo_py`` library makes analysis and design of holograms simple by breaking things into objects.
+
+Assumptions
+-----------
+
+- A hologram center is located at ``GCS.origin`` and its local surface here is perpendicular to the z axis.
+
+- Currently, a hologram is assumed flat. This means points on a hologram will always have z-coordinate of 0.
+
+- Currently, sources should be embedded in the same material to that of a hologram. This can be done by setting ``material`` attribute to the same material instance.
+
+- A response of a hologram at a point is calculated **point-wise** by assuming that within the vincity of that point, a hologram's property (i.e. index modulation) is periodic without chirping, i.e. an ideal hologram. The size of the vincity should be several times of the associated optical wavelength and the grating period.
+
+
+Define a hologram
+-----------------
+
+In the lab, a hologram is made by illuminating a photo-sensitive material with two coherent light sources. Therefore, we will need two light sources that define an illumination to *record* a hologram, and we will need to define hologram materials. The two light sources can be defined from the ``sources`` module. From ``illumination`` module, a recording illumination can be defined using these two light source objects. Finally, using ``holograms`` module, a hologram is made by giving it the illumination object.
+
+The following codes do exactly the above paragraph:
+
+.. code-block:: python
+
+    from holograms import Hologram
+    from illumination import Record
+    from sources import Planewave
+    from material import cauchy_dict, Cauchy_2coeff
+
+    # define material model for photopolymer, pp
+    mat_lib = materials.cauchy_dict
+    pp = materials.Cauchy_2coeff(mat_lib['pp_original'])
+
+    src1 = Planewave(direction=[1,0,1], material=pp, wavelength = 660e-9 )
+    src2 = Planewave(direction=[1,0,-1], material=pp, wavelength = 660e-9 )
+
+    record = Record(source1=src1, source2=src2)
+
+    hoe = Hologram(material=pp, recording=record, thickness=10e-6, dn=0.05)
+
+Find hologram responses
+-----------------------
+
+``solvers.Response`` takes care of extracting responses of a hologram. Especially for diffraction efficiency, there exists several methods to calculate it, such as Kogelnik-based two-wave analytical solutions, two-wave numerical integration, three-wave system, etc. These computation methods are defined as different classes in ``engines`` module, and we call them **engine**. We need to give ``Response`` which *engine* to use.
+
+Note that a ``Response`` object does not use ``engine`` to solve for a diffracted wave vector. But for consistency, the instanciation of ``Response`` still requires ``engine`` to be specified.
+
+We also need to specify how the hologram will be illuminated for a playback step. This is because we want to know hologram responses under this playback illumination. Therefore, we will define a source to use for playback and create an illumination.
+
+.. code-block:: python
+
+    from engines import KogelnikTwoWave
+    from solvers import Response
+    from illumination import Playback
+
+    src3 = Planewave(direction=[1,0,0.95], material=pp, wavelength = 700e-9)
+    playback = Playback(source=src3)
+
+    kgl = KogelnikTwoWave()
+    solver = Response(hologram=hoe, playback=playback, engine=kgl, order=1)
+
+We are then ready to find a diffraction efficiency (DE) at a set of points on a hologram. For example, we want to know DE at (0, 0, 0) and (1, 0, 0). We will make a list of these points.
+
+.. code-block:: python
+    
+    p1 = GCS.origin
+    p2 = GCS.origin.locate_new('p2', 1.0*GCS.i)
+    points = [p1, p2]
+
+    DEs = solver.get_efficiency_at_points(points=points)
+
+Alternatively, we can directly use an *engine* to calculate diffraction efficiency by first using ``extract()`` to get ``param`` and second feeding ``param`` to ``solve()`` method. See ``engines`` module documentation for more detail.
+
+Additionally, a hologram instance has a method ``get_points_from_xy_arrays(arrays, O=GCS)`` that converts a given (x,y) pair into (x,y,z) on a hologram.
+
+Sweep parameters for responses
+------------------------------
+``routines`` module contains a ``sweep()`` function that aids in sweeping parameters in response analysis. In this section, we will would like to know how DE would change if we change the wavelength of the playback source. We start by defining an ``update_func`` that changes the *system*. Our system is a hologram ``hoe`` and a playback illumination ``playback``. However, both of them are captured as a part of ``solver``. That is why ``update_func`` needs ``solver`` as an argument.
+
+.. code-block:: python
+
+    wavelengths = np.linspace(600, 800, 201)*1e-9  # wavelengths in meter
+
+    def update_func(wavelength, solver):
+        """
+        :param wavelength: a numeric value
+        :param solver: an instance of solvers.Response
+        """
+
+        # update the wavelength of the playback
+        solver.playback.source.wavelength = wavelength
+
+        return solver
+
+    solver_funcs = [solvers.Response.get_efficiency_at_point]
+
+In the above codes, we also define a list ``solver_func`` that contains a method from class ``Response``. We can add other methods from the class to a list if needed. But for our interest, we only need efficiency.
+
+We can run a wavelength sweep simply with a following call, assuming we want to know only at the center of the hologram.
+
+.. code-block:: python
+
+    from routines import sweep
+
+    DE = sweep(wavelengths, [GCS.origin], update_func, solver, solver_funcs, verbose=True)
+
+
+
+Make hologram with a target response
+------------------------------------
+Sometimes we need to find a recording illumination needed to achieve a certain playback response. For example, consider we want a hologram that will be played back at a wavelength of 660 nm. We also know the wave vector (at 660 nm) of the playback beam and know or demand the diffracted beam to comes out at a certain way. However, we only have a laser at 520 nm to record a hologram. The question is how to make a target hologram with light sources we have. This question can be rephrased to what would the recording illumination (i.e. what and where are the sources) would be? This is an optimization problem.
+
+``solvers.Designer`` is written to answer this question. To instanciate ``Designer`` object, we need, among other arguments, ``update_func`` and ``loss_func``. ``update_func`` serves a similar purpose to that when we want to sweep a parameter set, but with a slight difference. ``loss_func`` evalutes how close a **candidate** hologram is to a **target** hologram.
+
+Assume that the ``hoe`` we defined previous is our target hologram. It was defined by ``src1`` and ``src2``. Let's define a candidate hologram.
+
+.. code-block:: python
+
+    src3 = Planewave(direction=[1,0,1], material=pp, wavelength = 520e-9 )
+    src4 = Planewave(direction=[1,0,-1], material=pp, wavelength = 520e-9 )
+
+    record_candidate = Record(source1=src3, source2=src4)
+
+    hoe_candidate = Hologram(material=pp, recording=record_candidate, thickness=10e-6, dn=0.05)
+
+    playback_test = Playback(source=src1)
+
+    response = Response(hologram=hoe_candidate, playback=playback_candidate, engine=kgl, order=1)
+
+
+In this case, the direction of planewave ``src3`` and ``src4`` will be altered in the optimization search. The ``direction`` we gave them is not important at this point.
+
+Note that this ``hoe_candidate`` will be tested for its playback response against a target ``hoe``. Therefore, its playback ``playback_test`` should be a `Playback` object with one of the two sources from a target hologram ``hoe``. And that's what we did above.
+
+We created another ``Response`` object called ``response`` to analyze the response of ``hoe_candidate``.
+
+We are ready to define ``update_func``. Since only a direction of a planewave affects our situation, we would like to keep the wave vectors on the *xz* plane and turn its angle with respect to a +z axis. This means we have two angles to tune, one for each of ``src3`` and ``src4``. The following is an appropriate ``update_func``:
+
+.. code-block:: python
+
+    def update_func(xs, hoe):
+        """
+        :param xs: np.array([theta1, theta2]). Thetas are the angle of the k vector on the xz plane, making angle
+        with respect to the +z axis
+        :param hoe: an instance of HologramBase subclasses to update.
+        """
+        theta1 = xs[0]
+        theta2 = xs[1]
+        src1 = hoe.recording.source1
+        src2 = hoe.recording.source2
+        src1.point = np.array([np.sin(np.deg2rad(theta1)), 0, np.cos(np.deg2rad(theta1))])
+        src2.point = np.array([np.sin(np.deg2rad(theta2)), 0, np.cos(np.deg2rad(theta2))])
+        return hoe
+
+    # test the update_func
+    xs = np.array([10, 170], dtype=np.float)
+    hoe_candidate = update_func_1(xs, hoe_candidate)
+    print('source 1: ', hoe_candidate.recording.source1.point)
+    print('source 2: ', hoe_candidate.recording.source2.point)
+
+Next, we have to define how to compute a loss value for ``loss_func``. The following code define a loss function that updates a candidate hologram (from ``response``) for a set of parameter ``xs`` by calling ``update_func``. It calculate grating vectors at specified ``points`` and measure error from target grating vectors (using ``engines.loss_rms_k()``).
+
+We focus on matching grating vectors because grating vector defines how a ray is diffracted, i.e. representing an optical function of a hologram. While diffraction efficiency can be adjusted by changing a hologram thickness and index modulation, grating vectors is mostly affected by a incoming wave vectors in a recording illumination.
+
+.. code-block:: python
+
+    def loss_func(xs, update_func, reponse, points, target):
+        hoe = response.hologram
+        hoe = update_func(xs, hoe)
+
+        # custome codes start here
+        candidate = response.get_k_hologram_at_points(points)
+
+        return loss_rms_k(k_cand=candidate, k_targ=target)
+
+    print('Test loss_func')
+    loss_func(xs, update_func, response, points, Ks_target)
+
+
+We are ready to put them all together. First, we define a point of interest and gather a grating vector of our target.
+
+.. code-block:: python
+
+    points = [GCS.origin]
+    response_target = Response(hologram=hoe, playback=playback_test, engine=kgl, order=1)
+    Ks_target = response_target.get_k_hologram_at_points(points) # return a list
+    
+    from solvers import Designer
+
+    design = Designer(loss_func=loss_func, response=response, update_func=update_func)
+
+    xs = np.array([10, 170], dtype=np.float) # initial guess
+    result = design.run(xs=xs, points=points, target=Ks_target, method='SLSQP')
+
+``result`` is a return from ``scipy.optimize.minimize()``. The optimization succeeded when ``result.success`` is True, and the optimized set of parameter can be accesed via ``result.x``.
+
+
+What is next?
+-------------
+This brings us to the end of the tutorial. The library will regularly be upgraded to have more realistic hologram class definition or better helper functions to make a life of hologram enthusiats easier. Interfacing with other simulation software such as Zemax and Virtual Labs might be considered as well.
+
+

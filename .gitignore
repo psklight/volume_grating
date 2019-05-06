@@ -1,0 +1,22 @@
+# Dependencies
+.psci_modules
+bower_components
+node_modules
+
+# Generated files
+.psci
+output
+
+.idea
+
+*.sublime-workspace
+
+utilities/__pycache__/*
+
+__pycache__
+holo_py/.DS_Store
+.DS_Store
+
+sphinx
+
+*.pyc

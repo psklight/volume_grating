@@ -1,0 +1,7 @@
+``routines`` Module
+===================
+
+.. automodule:: routines
+    :members:
+    :inherited-members:
+    :show-inheritance:

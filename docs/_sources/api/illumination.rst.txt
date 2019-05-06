@@ -1,0 +1,7 @@
+``illumination`` Module
+=======================
+
+.. automodule:: illumination
+    :members:
+    :inherited-members:
+    :show-inheritance:

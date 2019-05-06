@@ -1,0 +1,8 @@
+``holograms`` Module
+====================
+
+.. automodule:: holograms
+    :members:
+    :special-members: __init__
+    :inherited-members:
+    :show-inheritance:

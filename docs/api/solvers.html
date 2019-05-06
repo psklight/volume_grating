@@ -1,0 +1,414 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>solvers Module &mdash; holo_py 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="routines Module" href="routines.html" />
+    <link rel="prev" title="materials Module" href="materials.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> holo_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../API.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="holograms.html"><code class="docutils literal notranslate"><span class="pre">holograms</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="illumination.html"><code class="docutils literal notranslate"><span class="pre">illumination</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sources.html"><code class="docutils literal notranslate"><span class="pre">sources</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="materials.html"><code class="docutils literal notranslate"><span class="pre">materials</span></code> Module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">solvers</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routines.html"><code class="docutils literal notranslate"><span class="pre">routines</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="engines.html"><code class="docutils literal notranslate"><span class="pre">engines</span></code> Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html"><code class="docutils literal notranslate"><span class="pre">utilities</span></code> Package</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">holo_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../API.html">API</a> &raquo;</li>
+        
+      <li><code class="docutils literal notranslate"><span class="pre">solvers</span></code> Module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/solvers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-solvers">
+<span id="solvers-module"></span><h1><code class="docutils literal notranslate"><span class="pre">solvers</span></code> Module<a class="headerlink" href="#module-solvers" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="solvers.Designer">
+<em class="property">class </em><code class="descclassname">solvers.</code><code class="descname">Designer</code><span class="sig-paren">(</span><em>response</em>, <em>update_func</em>, <em>loss_func</em>, <em>optim_method='BFGS'</em><span class="sig-paren">)</span><a class="headerlink" href="#solvers.Designer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Designer</span></code> is a base instanceable class to design a recording geometry from a target hologram.</p>
+<p><code class="docutils literal notranslate"><span class="pre">update_func</span></code> must be of a following structure:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_func</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">hologram</span><span class="p">):</span>
+    <span class="c1"># :param xs: a (1, M) ndarray of a set of parameters to search</span>
+    <span class="c1"># :param hologram: an instance of HologramBase subclasses.</span>
+
+    <span class="c1"># codes that use xs to update a hologram, most likely its recording,</span>
+    <span class="c1"># which is an instance of illumination.Record</span>
+
+    <span class="k">return</span> <span class="n">hologram</span> <span class="c1"># now updated to a parameter set xs</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">loss_func</span></code> must be of a following structure:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">loss_func</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">update_func</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
+    <span class="c1"># required:</span>
+
+    <span class="c1"># :param xs: a (1,M) ndarray of a set of parameters to search</span>
+    <span class="c1"># :param update_func: a update_func to update a hologram with xs</span>
+    <span class="c1"># :param response: an instance of solvers.Response</span>
+    <span class="c1"># :param points: a list of sympy.vector.Point instances, representing points on a hologram</span>
+    <span class="c1"># :param target: a list of target response, such as grating vectors or diffraction efficiency, with the same length as that of points argument.</span>
+
+    <span class="c1"># optionals:</span>
+    <span class="c1"># :param weights: weight for each item in points. This optional argument must be named exactly ``weights``.</span>
+
+    <span class="n">hoe</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">hologram</span>
+    <span class="n">hoe</span> <span class="o">=</span> <span class="n">update_func</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">hoe</span><span class="p">)</span>
+
+    <span class="c1"># custom codes starts here</span>
+
+    <span class="c1"># calculate loss between the target and the candidate</span>
+
+    <span class="k">return</span> <span class="n">loss_value</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>response</strong> – an instance of solvers.Response solver.</li>
+<li><strong>update_func</strong> – a function that will update a hologram against a list of parameters.</li>
+<li><strong>loss_func</strong> – a function that calculate error/loss metrics between the target hologram and a candidate hologram.</li>
+<li><strong>optim_method</strong> – a method that <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code> recognizes.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="solvers.Designer.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>xs_init</em>, <em>points</em>, <em>target</em>, <em>points_weight=array([1.])</em>, <em>method=None</em><span class="sig-paren">)</span><a class="headerlink" href="#solvers.Designer.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the candidate search by minimizing the loss/error value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>xs_init</strong> – (N,) ndarray values specifying the initial guess of the parameters to optimize</li>
+<li><strong>points</strong> – a list of points on the hologram to optimize, must be a list of sympy.vector.Point.</li>
+<li><strong>target</strong> – a list of target response, such as grating vectors or diffraction efficiency, with the same length as that of points argument.</li>
+<li><strong>points_weight</strong> – an (N,) ndarry of weight for each hologram points. If a scalar number if provided, the same weight is applied to all points. Default is one.</li>
+<li><strong>method</strong> – [optional, Default=None] a method that scipy.optimize.minimize uses. If None, self.optim_method will be used.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a return from <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="solvers.Response">
+<em class="property">class </em><code class="descclassname">solvers.</code><code class="descname">Response</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback=None</em>, <em>engine=None</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#solvers.Response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Response</span></code> is a base instanceable class to compute responses of a hologram. <code class="docutils literal notranslate"><span class="pre">playback</span></code> is needed when any diffraction
+responses are queried. <code class="docutils literal notranslate"><span class="pre">engine</span></code> is needed when diffraction efficiency is queried.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>hologram</strong> – an instance of HologramBase subclasses only.</li>
+<li><strong>playback</strong> – [default = None] an instance of illumination.Playback.</li>
+<li><strong>engine</strong> – [default = None] an instance of Engine subclasses that defines physics used to calculate diffraction efficiency.</li>
+<li><strong>order</strong> – an integer to specify a diffraction order to compute.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="solvers.Response.get_dephase_at_points">
+<code class="descname">get_dephase_at_points</code><span class="sig-paren">(</span><em>points</em>, <em>order=None</em><span class="sig-paren">)</span><a class="headerlink" href="#solvers.Response.get_dephase_at_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of dephase quantity at a specified point for a specified list of diffraction order.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>points</strong> – a list of sympy.vector.Point instances</li>
+<li><strong>order</strong> – [optional, default=None] a diffraction order, must be an integer. If None, orders will be set to order of the solver instance.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Return [dephase]:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last">a list of dephase (numeric values).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="solvers.Response.get_efficiency_at_points">
+<code class="descname">get_efficiency_at_points</code><span class="sig-paren">(</span><em>points</em>, <em>order=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#solvers.Response.get_efficiency_at_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a ndarray of efficiency against a list of Point instances</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>points</strong> – a list of Point instance</li>
+<li><strong>order</strong> – [optional, default=None] a diffraction order, must be an integer. If None, orders will be set to order of the solver instance.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Return [efficiency]:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last">a ndarray of diffraction efficiencies</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="solvers.Response.get_k_diff_at_points">
+<code class="descname">get_k_diff_at_points</code><span class="sig-paren">(</span><em>points</em>, <em>order=None</em>, <em>materail_outside=None</em><span class="sig-paren">)</span><a class="headerlink" href="#solvers.Response.get_k_diff_at_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of diffracted k vector against a list of Point instances for a specified order. If the order is
+left None, the order value would be that of the solver instance. The environment outside a hologram is defined
+by a Material instance in <code class="docutils literal notranslate"><span class="pre">material_outside</span></code>. If <code class="docutils literal notranslate"><span class="pre">material_outside</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, the returned diffracted
+k vector is inside the hologram. Otherwise, Snell’s law will be applied to return diffracted k vectors that are
+already refracted into the environment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>points</strong> – a list of sympy.vector.Point instances.</li>
+<li><strong>order</strong> – [optional, default=None] a diffraction order, must be an integer. If None, orders will be set to order of the solver instance.</li>
+<li><strong>material_outside</strong> – [default=None] an instance of Material subclasses, representing an environmental material.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Return [k_diff]:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last">a list of sympy.vector.Vector instances.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="solvers.Response.get_k_hologram_at_points">
+<code class="descname">get_k_hologram_at_points</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#solvers.Response.get_k_hologram_at_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of grating vectors of a hologram at the specified points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>points</strong> – a list of sympy.vector.Point instances.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Return [k_holo]:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">a list of sympy.vector.Vector instances.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="routines.html" class="btn btn-neutral float-right" title="routines Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="materials.html" class="btn btn-neutral" title="materials Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Pisek Kultavewuti
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

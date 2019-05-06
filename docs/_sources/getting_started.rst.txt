@@ -1,0 +1,52 @@
+Getting Started
+===============
+
+Installation 
+------------
+In order to run ``holo_py``, the following python libraries are necessary:
+
+1. ``numpy``
+
+2. ``scipy``
+
+3. ``sympy``
+
+4. ``tqdm``
+
+Make sure you install them, either via ``pip`` or ``conda``.
+
+Things to keep in mind
+----------------------
+
+Vectors and Points
+^^^^^^^^^^^^^^^^^^
+
+Physics of holograms involves vectors, such as wave vectors, and points in space, such as the origin. In order to represent these entities, ``sympy`` library is used. When any modules of ``holo_py`` is imported, each of them will have an identical **global coordinate system** ``GCS`` (which is definied in ``__init__.py`` module of the library). When needed, ``GCS`` should be defined from ``GCS = vec.CoordSys3D('GCS')``.
+
+Vectors that are returned by most functions, such as ``solvers.Response.get_k_diff_at_points()`` will be an instace of ``sympy.vector.Vector``. A result of vector operations (such as addition, inner product, etc) will remain an object of some ``sympy.vector`` classes.
+
+To construct a ``sympy.vector.Vector`` (or simply ``Vector`` onward) object, use this syntax:
+
+.. code-block:: python
+
+    import sympy.vector as vec
+    GCS = vec.CoordSys3D('GCS')
+    v1 = 1.0*GCS.i - 2.*GCS.j + 3.0*GCS.k
+
+The length of ``v`` is simply ``v1.magnitude()``, but this will not be a built-in ``float``. To get a Python built-in float value, compute ``float( v1.magnitude() )``.
+
+To construct a ``sympy.vector.Point`` (or simply ``Point`` onward) object, it is more complicated. The best way is to refer to **origin**, ``GCS.origin``. The following code create a ``Point`` instance at (1,2,3) coordinate with respect to ``GCS.origin``.
+
+.. code-block:: python
+
+    p1 = GCS.origin.locate_new(name='(1,2,3)', 1.*GCS.i + 2.*GCS.j + 3.*GCS.k)
+
+Convert ``Vector`` and ``Point`` to ``ndarray``
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+``utilities.geometry`` module has convenient functions to convert ``Vector`` and ``Point`` objects to ``ndarray``.
+
+
+
+
+

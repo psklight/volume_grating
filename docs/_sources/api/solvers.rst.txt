@@ -1,0 +1,7 @@
+``solvers`` Module
+==================
+
+.. automodule:: solvers
+    :members:
+    :inherited-members:
+    :show-inheritance:

@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorials &mdash; holo_py 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API" href="API.html" />
+    <link rel="prev" title="Getting Started" href="getting_started.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> holo_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#assumptions">Assumptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-a-hologram">Define a hologram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#find-hologram-responses">Find hologram responses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sweep-parameters-for-responses">Sweep parameters for responses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#make-hologram-with-a-target-response">Make hologram with a target response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-next">What is next?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="API.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">holo_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Tutorials</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tutorials.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorials">
+<span id="tutorial-main"></span><h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">holo_py</span></code> library makes analysis and design of holograms simple by breaking things into objects.</p>
+<div class="section" id="assumptions">
+<h2>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>A hologram center is located at <code class="docutils literal notranslate"><span class="pre">GCS.origin</span></code> and its local surface here is perpendicular to the z axis.</li>
+<li>Currently, a hologram is assumed flat. This means points on a hologram will always have z-coordinate of 0.</li>
+<li>Currently, sources should be embedded in the same material to that of a hologram. This can be done by setting <code class="docutils literal notranslate"><span class="pre">material</span></code> attribute to the same material instance.</li>
+<li>A response of a hologram at a point is calculated <strong>point-wise</strong> by assuming that within the vincity of that point, a hologram’s property (i.e. index modulation) is periodic without chirping, i.e. an ideal hologram. The size of the vincity should be several times of the associated optical wavelength and the grating period.</li>
+</ul>
+</div>
+<div class="section" id="define-a-hologram">
+<h2>Define a hologram<a class="headerlink" href="#define-a-hologram" title="Permalink to this headline">¶</a></h2>
+<p>In the lab, a hologram is made by illuminating a photo-sensitive material with two coherent light sources. Therefore, we will need two light sources that define an illumination to <em>record</em> a hologram, and we will need to define hologram materials. The two light sources can be defined from the <code class="docutils literal notranslate"><span class="pre">sources</span></code> module. From <code class="docutils literal notranslate"><span class="pre">illumination</span></code> module, a recording illumination can be defined using these two light source objects. Finally, using <code class="docutils literal notranslate"><span class="pre">holograms</span></code> module, a hologram is made by giving it the illumination object.</p>
+<p>The following codes do exactly the above paragraph:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">holograms</span> <span class="kn">import</span> <span class="n">Hologram</span>
+<span class="kn">from</span> <span class="nn">illumination</span> <span class="kn">import</span> <span class="n">Record</span>
+<span class="kn">from</span> <span class="nn">sources</span> <span class="kn">import</span> <span class="n">Planewave</span>
+<span class="kn">from</span> <span class="nn">material</span> <span class="kn">import</span> <span class="n">cauchy_dict</span><span class="p">,</span> <span class="n">Cauchy_2coeff</span>
+
+<span class="c1"># define material model for photopolymer, pp</span>
+<span class="n">mat_lib</span> <span class="o">=</span> <span class="n">materials</span><span class="o">.</span><span class="n">cauchy_dict</span>
+<span class="n">pp</span> <span class="o">=</span> <span class="n">materials</span><span class="o">.</span><span class="n">Cauchy_2coeff</span><span class="p">(</span><span class="n">mat_lib</span><span class="p">[</span><span class="s1">&#39;pp_original&#39;</span><span class="p">])</span>
+
+<span class="n">src1</span> <span class="o">=</span> <span class="n">Planewave</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">material</span><span class="o">=</span><span class="n">pp</span><span class="p">,</span> <span class="n">wavelength</span> <span class="o">=</span> <span class="mf">660e-9</span> <span class="p">)</span>
+<span class="n">src2</span> <span class="o">=</span> <span class="n">Planewave</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">material</span><span class="o">=</span><span class="n">pp</span><span class="p">,</span> <span class="n">wavelength</span> <span class="o">=</span> <span class="mf">660e-9</span> <span class="p">)</span>
+
+<span class="n">record</span> <span class="o">=</span> <span class="n">Record</span><span class="p">(</span><span class="n">source1</span><span class="o">=</span><span class="n">src1</span><span class="p">,</span> <span class="n">source2</span><span class="o">=</span><span class="n">src2</span><span class="p">)</span>
+
+<span class="n">hoe</span> <span class="o">=</span> <span class="n">Hologram</span><span class="p">(</span><span class="n">material</span><span class="o">=</span><span class="n">pp</span><span class="p">,</span> <span class="n">recording</span><span class="o">=</span><span class="n">record</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="mf">10e-6</span><span class="p">,</span> <span class="n">dn</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="find-hologram-responses">
+<h2>Find hologram responses<a class="headerlink" href="#find-hologram-responses" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">solvers.Response</span></code> takes care of extracting responses of a hologram. Especially for diffraction efficiency, there exists several methods to calculate it, such as Kogelnik-based two-wave analytical solutions, two-wave numerical integration, three-wave system, etc. These computation methods are defined as different classes in <code class="docutils literal notranslate"><span class="pre">engines</span></code> module, and we call them <strong>engine</strong>. We need to give <code class="docutils literal notranslate"><span class="pre">Response</span></code> which <em>engine</em> to use.</p>
+<p>Note that a <code class="docutils literal notranslate"><span class="pre">Response</span></code> object does not use <code class="docutils literal notranslate"><span class="pre">engine</span></code> to solve for a diffracted wave vector. But for consistency, the instanciation of <code class="docutils literal notranslate"><span class="pre">Response</span></code> still requires <code class="docutils literal notranslate"><span class="pre">engine</span></code> to be specified.</p>
+<p>We also need to specify how the hologram will be illuminated for a playback step. This is because we want to know hologram responses under this playback illumination. Therefore, we will define a source to use for playback and create an illumination.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">engines</span> <span class="kn">import</span> <span class="n">KogelnikTwoWave</span>
+<span class="kn">from</span> <span class="nn">solvers</span> <span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">illumination</span> <span class="kn">import</span> <span class="n">Playback</span>
+
+<span class="n">src3</span> <span class="o">=</span> <span class="n">Planewave</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.95</span><span class="p">],</span> <span class="n">material</span><span class="o">=</span><span class="n">pp</span><span class="p">,</span> <span class="n">wavelength</span> <span class="o">=</span> <span class="mf">700e-9</span><span class="p">)</span>
+<span class="n">playback</span> <span class="o">=</span> <span class="n">Playback</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">src3</span><span class="p">)</span>
+
+<span class="n">kgl</span> <span class="o">=</span> <span class="n">KogelnikTwoWave</span><span class="p">()</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">Response</span><span class="p">(</span><span class="n">hologram</span><span class="o">=</span><span class="n">hoe</span><span class="p">,</span> <span class="n">playback</span><span class="o">=</span><span class="n">playback</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">kgl</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We are then ready to find a diffraction efficiency (DE) at a set of points on a hologram. For example, we want to know DE at (0, 0, 0) and (1, 0, 0). We will make a list of these points.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">GCS</span><span class="o">.</span><span class="n">origin</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">GCS</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">locate_new</span><span class="p">(</span><span class="s1">&#39;p2&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">*</span><span class="n">GCS</span><span class="o">.</span><span class="n">i</span><span class="p">)</span>
+<span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">]</span>
+
+<span class="n">DEs</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">get_efficiency_at_points</span><span class="p">(</span><span class="n">points</span><span class="o">=</span><span class="n">points</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Alternatively, we can directly use an <em>engine</em> to calculate diffraction efficiency by first using <code class="docutils literal notranslate"><span class="pre">extract()</span></code> to get <code class="docutils literal notranslate"><span class="pre">param</span></code> and second feeding <code class="docutils literal notranslate"><span class="pre">param</span></code> to <code class="docutils literal notranslate"><span class="pre">solve()</span></code> method. See <code class="docutils literal notranslate"><span class="pre">engines</span></code> module documentation for more detail.</p>
+<p>Additionally, a hologram instance has a method <code class="docutils literal notranslate"><span class="pre">get_points_from_xy_arrays(arrays,</span> <span class="pre">O=GCS)</span></code> that converts a given (x,y) pair into (x,y,z) on a hologram.</p>
+</div>
+<div class="section" id="sweep-parameters-for-responses">
+<h2>Sweep parameters for responses<a class="headerlink" href="#sweep-parameters-for-responses" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">routines</span></code> module contains a <code class="docutils literal notranslate"><span class="pre">sweep()</span></code> function that aids in sweeping parameters in response analysis. In this section, we will would like to know how DE would change if we change the wavelength of the playback source. We start by defining an <code class="docutils literal notranslate"><span class="pre">update_func</span></code> that changes the <em>system</em>. Our system is a hologram <code class="docutils literal notranslate"><span class="pre">hoe</span></code> and a playback illumination <code class="docutils literal notranslate"><span class="pre">playback</span></code>. However, both of them are captured as a part of <code class="docutils literal notranslate"><span class="pre">solver</span></code>. That is why <code class="docutils literal notranslate"><span class="pre">update_func</span></code> needs <code class="docutils literal notranslate"><span class="pre">solver</span></code> as an argument.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wavelengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">201</span><span class="p">)</span><span class="o">*</span><span class="mf">1e-9</span>  <span class="c1"># wavelengths in meter</span>
+
+<span class="k">def</span> <span class="nf">update_func</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">solver</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param wavelength: a numeric value</span>
+<span class="sd">    :param solver: an instance of solvers.Response</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># update the wavelength of the playback</span>
+    <span class="n">solver</span><span class="o">.</span><span class="n">playback</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">wavelength</span> <span class="o">=</span> <span class="n">wavelength</span>
+
+    <span class="k">return</span> <span class="n">solver</span>
+
+<span class="n">solver_funcs</span> <span class="o">=</span> <span class="p">[</span><span class="n">solvers</span><span class="o">.</span><span class="n">Response</span><span class="o">.</span><span class="n">get_efficiency_at_point</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>In the above codes, we also define a list <code class="docutils literal notranslate"><span class="pre">solver_func</span></code> that contains a method from class <code class="docutils literal notranslate"><span class="pre">Response</span></code>. We can add other methods from the class to a list if needed. But for our interest, we only need efficiency.</p>
+<p>We can run a wavelength sweep simply with a following call, assuming we want to know only at the center of the hologram.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">routines</span> <span class="kn">import</span> <span class="n">sweep</span>
+
+<span class="n">DE</span> <span class="o">=</span> <span class="n">sweep</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="p">[</span><span class="n">GCS</span><span class="o">.</span><span class="n">origin</span><span class="p">],</span> <span class="n">update_func</span><span class="p">,</span> <span class="n">solver</span><span class="p">,</span> <span class="n">solver_funcs</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="make-hologram-with-a-target-response">
+<h2>Make hologram with a target response<a class="headerlink" href="#make-hologram-with-a-target-response" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes we need to find a recording illumination needed to achieve a certain playback response. For example, consider we want a hologram that will be played back at a wavelength of 660 nm. We also know the wave vector (at 660 nm) of the playback beam and know or demand the diffracted beam to comes out at a certain way. However, we only have a laser at 520 nm to record a hologram. The question is how to make a target hologram with light sources we have. This question can be rephrased to what would the recording illumination (i.e. what and where are the sources) would be? This is an optimization problem.</p>
+<p><code class="docutils literal notranslate"><span class="pre">solvers.Designer</span></code> is written to answer this question. To instanciate <code class="docutils literal notranslate"><span class="pre">Designer</span></code> object, we need, among other arguments, <code class="docutils literal notranslate"><span class="pre">update_func</span></code> and <code class="docutils literal notranslate"><span class="pre">loss_func</span></code>. <code class="docutils literal notranslate"><span class="pre">update_func</span></code> serves a similar purpose to that when we want to sweep a parameter set, but with a slight difference. <code class="docutils literal notranslate"><span class="pre">loss_func</span></code> evalutes how close a <strong>candidate</strong> hologram is to a <strong>target</strong> hologram.</p>
+<p>Assume that the <code class="docutils literal notranslate"><span class="pre">hoe</span></code> we defined previous is our target hologram. It was defined by <code class="docutils literal notranslate"><span class="pre">src1</span></code> and <code class="docutils literal notranslate"><span class="pre">src2</span></code>. Let’s define a candidate hologram.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">src3</span> <span class="o">=</span> <span class="n">Planewave</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">material</span><span class="o">=</span><span class="n">pp</span><span class="p">,</span> <span class="n">wavelength</span> <span class="o">=</span> <span class="mf">520e-9</span> <span class="p">)</span>
+<span class="n">src4</span> <span class="o">=</span> <span class="n">Planewave</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">material</span><span class="o">=</span><span class="n">pp</span><span class="p">,</span> <span class="n">wavelength</span> <span class="o">=</span> <span class="mf">520e-9</span> <span class="p">)</span>
+
+<span class="n">record_candidate</span> <span class="o">=</span> <span class="n">Record</span><span class="p">(</span><span class="n">source1</span><span class="o">=</span><span class="n">src3</span><span class="p">,</span> <span class="n">source2</span><span class="o">=</span><span class="n">src4</span><span class="p">)</span>
+
+<span class="n">hoe_candidate</span> <span class="o">=</span> <span class="n">Hologram</span><span class="p">(</span><span class="n">material</span><span class="o">=</span><span class="n">pp</span><span class="p">,</span> <span class="n">recording</span><span class="o">=</span><span class="n">record_candidate</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="mf">10e-6</span><span class="p">,</span> <span class="n">dn</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">playback_test</span> <span class="o">=</span> <span class="n">Playback</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">src1</span><span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">Response</span><span class="p">(</span><span class="n">hologram</span><span class="o">=</span><span class="n">hoe_candidate</span><span class="p">,</span> <span class="n">playback</span><span class="o">=</span><span class="n">playback_candidate</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">kgl</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this case, the direction of planewave <code class="docutils literal notranslate"><span class="pre">src3</span></code> and <code class="docutils literal notranslate"><span class="pre">src4</span></code> will be altered in the optimization search. The <code class="docutils literal notranslate"><span class="pre">direction</span></code> we gave them is not important at this point.</p>
+<p>Note that this <code class="docutils literal notranslate"><span class="pre">hoe_candidate</span></code> will be tested for its playback response against a target <code class="docutils literal notranslate"><span class="pre">hoe</span></code>. Therefore, its playback <code class="docutils literal notranslate"><span class="pre">playback_test</span></code> should be a <cite>Playback</cite> object with one of the two sources from a target hologram <code class="docutils literal notranslate"><span class="pre">hoe</span></code>. And that’s what we did above.</p>
+<p>We created another <code class="docutils literal notranslate"><span class="pre">Response</span></code> object called <code class="docutils literal notranslate"><span class="pre">response</span></code> to analyze the response of <code class="docutils literal notranslate"><span class="pre">hoe_candidate</span></code>.</p>
+<p>We are ready to define <code class="docutils literal notranslate"><span class="pre">update_func</span></code>. Since only a direction of a planewave affects our situation, we would like to keep the wave vectors on the <em>xz</em> plane and turn its angle with respect to a +z axis. This means we have two angles to tune, one for each of <code class="docutils literal notranslate"><span class="pre">src3</span></code> and <code class="docutils literal notranslate"><span class="pre">src4</span></code>. The following is an appropriate <code class="docutils literal notranslate"><span class="pre">update_func</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_func</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">hoe</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param xs: np.array([theta1, theta2]). Thetas are the angle of the k vector on the xz plane, making angle</span>
+<span class="sd">    with respect to the +z axis</span>
+<span class="sd">    :param hoe: an instance of HologramBase subclasses to update.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">theta1</span> <span class="o">=</span> <span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">theta2</span> <span class="o">=</span> <span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">src1</span> <span class="o">=</span> <span class="n">hoe</span><span class="o">.</span><span class="n">recording</span><span class="o">.</span><span class="n">source1</span>
+    <span class="n">src2</span> <span class="o">=</span> <span class="n">hoe</span><span class="o">.</span><span class="n">recording</span><span class="o">.</span><span class="n">source2</span>
+    <span class="n">src1</span><span class="o">.</span><span class="n">point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">theta1</span><span class="p">)),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">theta1</span><span class="p">))])</span>
+    <span class="n">src2</span><span class="o">.</span><span class="n">point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">theta2</span><span class="p">)),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">theta2</span><span class="p">))])</span>
+    <span class="k">return</span> <span class="n">hoe</span>
+
+<span class="c1"># test the update_func</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">170</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+<span class="n">hoe_candidate</span> <span class="o">=</span> <span class="n">update_func_1</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">hoe_candidate</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;source 1: &#39;</span><span class="p">,</span> <span class="n">hoe_candidate</span><span class="o">.</span><span class="n">recording</span><span class="o">.</span><span class="n">source1</span><span class="o">.</span><span class="n">point</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;source 2: &#39;</span><span class="p">,</span> <span class="n">hoe_candidate</span><span class="o">.</span><span class="n">recording</span><span class="o">.</span><span class="n">source2</span><span class="o">.</span><span class="n">point</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Next, we have to define how to compute a loss value for <code class="docutils literal notranslate"><span class="pre">loss_func</span></code>. The following code define a loss function that updates a candidate hologram (from <code class="docutils literal notranslate"><span class="pre">response</span></code>) for a set of parameter <code class="docutils literal notranslate"><span class="pre">xs</span></code> by calling <code class="docutils literal notranslate"><span class="pre">update_func</span></code>. It calculate grating vectors at specified <code class="docutils literal notranslate"><span class="pre">points</span></code> and measure error from target grating vectors (using <code class="docutils literal notranslate"><span class="pre">engines.loss_rms_k()</span></code>).</p>
+<p>We focus on matching grating vectors because grating vector defines how a ray is diffracted, i.e. representing an optical function of a hologram. While diffraction efficiency can be adjusted by changing a hologram thickness and index modulation, grating vectors is mostly affected by a incoming wave vectors in a recording illumination.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">loss_func</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">update_func</span><span class="p">,</span> <span class="n">reponse</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">hoe</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">hologram</span>
+    <span class="n">hoe</span> <span class="o">=</span> <span class="n">update_func</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">hoe</span><span class="p">)</span>
+
+    <span class="c1"># custome codes start here</span>
+    <span class="n">candidate</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">get_k_hologram_at_points</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">loss_rms_k</span><span class="p">(</span><span class="n">k_cand</span><span class="o">=</span><span class="n">candidate</span><span class="p">,</span> <span class="n">k_targ</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Test loss_func&#39;</span><span class="p">)</span>
+<span class="n">loss_func</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">update_func</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">Ks_target</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We are ready to put them all together. First, we define a point of interest and gather a grating vector of our target.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="n">GCS</span><span class="o">.</span><span class="n">origin</span><span class="p">]</span>
+<span class="n">response_target</span> <span class="o">=</span> <span class="n">Response</span><span class="p">(</span><span class="n">hologram</span><span class="o">=</span><span class="n">hoe</span><span class="p">,</span> <span class="n">playback</span><span class="o">=</span><span class="n">playback_test</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">kgl</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Ks_target</span> <span class="o">=</span> <span class="n">response_target</span><span class="o">.</span><span class="n">get_k_hologram_at_points</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="c1"># return a list</span>
+
+<span class="kn">from</span> <span class="nn">solvers</span> <span class="kn">import</span> <span class="n">Designer</span>
+
+<span class="n">design</span> <span class="o">=</span> <span class="n">Designer</span><span class="p">(</span><span class="n">loss_func</span><span class="o">=</span><span class="n">loss_func</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span> <span class="n">update_func</span><span class="o">=</span><span class="n">update_func</span><span class="p">)</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">170</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span> <span class="c1"># initial guess</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">design</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">xs</span><span class="o">=</span><span class="n">xs</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><span class="n">points</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">Ks_target</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;SLSQP&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">result</span></code> is a return from <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code>. The optimization succeeded when <code class="docutils literal notranslate"><span class="pre">result.success</span></code> is True, and the optimized set of parameter can be accesed via <code class="docutils literal notranslate"><span class="pre">result.x</span></code>.</p>
+</div>
+<div class="section" id="what-is-next">
+<h2>What is next?<a class="headerlink" href="#what-is-next" title="Permalink to this headline">¶</a></h2>
+<p>This brings us to the end of the tutorial. The library will regularly be upgraded to have more realistic hologram class definition or better helper functions to make a life of hologram enthusiats easier. Interfacing with other simulation software such as Zemax and Virtual Labs might be considered as well.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="API.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="getting_started.html" class="btn btn-neutral" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Pisek Kultavewuti
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

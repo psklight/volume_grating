@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting Started &mdash; holo_py 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorials" href="tutorials.html" />
+    <link rel="prev" title="holo_py home" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> holo_py
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#things-to-keep-in-mind">Things to keep in mind</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vectors-and-points">Vectors and Points</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#convert-vector-and-point-to-ndarray">Convert <code class="docutils literal notranslate"><span class="pre">Vector</span></code> and <code class="docutils literal notranslate"><span class="pre">Point</span></code> to <code class="docutils literal notranslate"><span class="pre">ndarray</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="API.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">holo_py</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Getting Started</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/getting_started.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>In order to run <code class="docutils literal notranslate"><span class="pre">holo_py</span></code>, the following python libraries are necessary:</p>
+<ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">numpy</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">scipy</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">sympy</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">tqdm</span></code></li>
+</ol>
+<p>Make sure you install them, either via <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code>.</p>
+</div>
+<div class="section" id="things-to-keep-in-mind">
+<h2>Things to keep in mind<a class="headerlink" href="#things-to-keep-in-mind" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vectors-and-points">
+<h3>Vectors and Points<a class="headerlink" href="#vectors-and-points" title="Permalink to this headline">¶</a></h3>
+<p>Physics of holograms involves vectors, such as wave vectors, and points in space, such as the origin. In order to represent these entities, <code class="docutils literal notranslate"><span class="pre">sympy</span></code> library is used. When any modules of <code class="docutils literal notranslate"><span class="pre">holo_py</span></code> is imported, each of them will have an identical <strong>global coordinate system</strong> <code class="docutils literal notranslate"><span class="pre">GCS</span></code> (which is definied in <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> module of the library). When needed, <code class="docutils literal notranslate"><span class="pre">GCS</span></code> should be defined from <code class="docutils literal notranslate"><span class="pre">GCS</span> <span class="pre">=</span> <span class="pre">vec.CoordSys3D('GCS')</span></code>.</p>
+<p>Vectors that are returned by most functions, such as <code class="docutils literal notranslate"><span class="pre">solvers.Response.get_k_diff_at_points()</span></code> will be an instace of <code class="docutils literal notranslate"><span class="pre">sympy.vector.Vector</span></code>. A result of vector operations (such as addition, inner product, etc) will remain an object of some <code class="docutils literal notranslate"><span class="pre">sympy.vector</span></code> classes.</p>
+<p>To construct a <code class="docutils literal notranslate"><span class="pre">sympy.vector.Vector</span></code> (or simply <code class="docutils literal notranslate"><span class="pre">Vector</span></code> onward) object, use this syntax:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy.vector</span> <span class="kn">as</span> <span class="nn">vec</span>
+<span class="n">GCS</span> <span class="o">=</span> <span class="n">vec</span><span class="o">.</span><span class="n">CoordSys3D</span><span class="p">(</span><span class="s1">&#39;GCS&#39;</span><span class="p">)</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">*</span><span class="n">GCS</span><span class="o">.</span><span class="n">i</span> <span class="o">-</span> <span class="mf">2.</span><span class="o">*</span><span class="n">GCS</span><span class="o">.</span><span class="n">j</span> <span class="o">+</span> <span class="mf">3.0</span><span class="o">*</span><span class="n">GCS</span><span class="o">.</span><span class="n">k</span>
+</pre></div>
+</div>
+<p>The length of <code class="docutils literal notranslate"><span class="pre">v</span></code> is simply <code class="docutils literal notranslate"><span class="pre">v1.magnitude()</span></code>, but this will not be a built-in <code class="docutils literal notranslate"><span class="pre">float</span></code>. To get a Python built-in float value, compute <code class="docutils literal notranslate"><span class="pre">float(</span> <span class="pre">v1.magnitude()</span> <span class="pre">)</span></code>.</p>
+<p>To construct a <code class="docutils literal notranslate"><span class="pre">sympy.vector.Point</span></code> (or simply <code class="docutils literal notranslate"><span class="pre">Point</span></code> onward) object, it is more complicated. The best way is to refer to <strong>origin</strong>, <code class="docutils literal notranslate"><span class="pre">GCS.origin</span></code>. The following code create a <code class="docutils literal notranslate"><span class="pre">Point</span></code> instance at (1,2,3) coordinate with respect to <code class="docutils literal notranslate"><span class="pre">GCS.origin</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">GCS</span><span class="o">.</span><span class="n">origin</span><span class="o">.</span><span class="n">locate_new</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;(1,2,3)&#39;</span><span class="p">,</span> <span class="mf">1.</span><span class="o">*</span><span class="n">GCS</span><span class="o">.</span><span class="n">i</span> <span class="o">+</span> <span class="mf">2.</span><span class="o">*</span><span class="n">GCS</span><span class="o">.</span><span class="n">j</span> <span class="o">+</span> <span class="mf">3.</span><span class="o">*</span><span class="n">GCS</span><span class="o">.</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="convert-vector-and-point-to-ndarray">
+<h4>Convert <code class="docutils literal notranslate"><span class="pre">Vector</span></code> and <code class="docutils literal notranslate"><span class="pre">Point</span></code> to <code class="docutils literal notranslate"><span class="pre">ndarray</span></code><a class="headerlink" href="#convert-vector-and-point-to-ndarray" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">utilities.geometry</span></code> module has convenient functions to convert <code class="docutils literal notranslate"><span class="pre">Vector</span></code> and <code class="docutils literal notranslate"><span class="pre">Point</span></code> objects to <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorials.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="holo_py home" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Pisek Kultavewuti
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
