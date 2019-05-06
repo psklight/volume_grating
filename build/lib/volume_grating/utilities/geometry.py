@@ -1,6 +1,6 @@
 import numpy as np
 import sympy.vector as vec
-from utilities.validation import validate_input_numeric
+from .validation import validate_input_numeric
 
 
 def ndarray_to_vector(array, O):

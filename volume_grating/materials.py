@@ -1,5 +1,5 @@
 import numpy as np
-from utilities.validation import validate_input_numeric
+from .utilities.validation import validate_input_numeric
 
 
 class Material(object):

@@ -1,9 +1,9 @@
 import numpy as np
 import sympy.vector as vec
-from utilities.validation import validate_input_numeric
-from utilities.geometry import ndarray_to_vector
-import materials
-from systems import GCS
+from .utilities.validation import validate_input_numeric
+from .utilities.geometry import ndarray_to_vector
+from . import materials
+from .systems import GCS
 
 
 class Source(object):

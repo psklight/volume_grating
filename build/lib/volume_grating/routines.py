@@ -1,8 +1,8 @@
 import numpy as np
 import sympy.vector as vec
-import solvers
+from . import solvers
 import inspect
-from utilities.validation import validate_input_numeric
+from .utilities.validation import validate_input_numeric
 import copy
 
 
