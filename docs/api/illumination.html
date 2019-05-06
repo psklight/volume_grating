@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>illumination Module &mdash; holo_py 0.1 documentation</title>
+  <title>illumination Module &mdash; volume_grating 0.1 documentation</title>
   
 
   
@@ -17,38 +17,41 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="sources Module" href="sources.html" />
     <link rel="prev" title="holograms Module" href="holograms.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="../index.html" class="icon icon-home"> holo_py
+            <a href="../index.html" class="icon icon-home"> volume_grating
           
 
           
@@ -107,7 +110,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">holo_py</a>
+          <a href="../index.html">volume_grating</a>
         
       </nav>
 
@@ -167,14 +170,11 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Playback class creates an illumination instance that emulates how a hologram will played back. Therefore, it needs
 only one light source.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>source</strong> – an instance of Source subclasses.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>source</strong> – an instance of Source subclasses.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="class">
@@ -183,18 +183,14 @@ only one light source.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Record class creates an illumination instance that emulates how a hologram will be made. Therefore, it needs two
 light sources as its argument.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>source1</strong> – an instance of Source subclasses.</li>
-<li><strong>source2</strong> – an instance of Source subclasses.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source1</strong> – an instance of Source subclasses.</p></li>
+<li><p><strong>source2</strong> – an instance of Source subclasses.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="class">
@@ -204,18 +200,14 @@ light sources as its argument.</p>
 <p>TargetPlayback class creates an illumination instance that emulates how a hologram should playback in an attempt to
 design a recording process. Therefore, it needs two light sources. Due to the same requirement as the Record class,
 it is convenient to make TargetPlayback a subclass of Record.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>source1</strong> – an instance of Source subclasses.</li>
-<li><strong>source2</strong> – an instance of Source subclasses.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source1</strong> – an instance of Source subclasses.</p></li>
+<li><p><strong>source2</strong> – an instance of Source subclasses.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -231,7 +223,7 @@ it is convenient to make TargetPlayback a subclass of Record.</p>
         <a href="sources.html" class="btn btn-neutral float-right" title="sources Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="holograms.html" class="btn btn-neutral" title="holograms Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="holograms.html" class="btn btn-neutral float-left" title="holograms Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -240,7 +232,7 @@ it is convenient to make TargetPlayback a subclass of Record.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Pisek Kultavewuti
+        &copy; Copyright 2019, Pisek Kultavewuti
 
     </p>
   </div>
@@ -257,26 +249,16 @@ it is convenient to make TargetPlayback a subclass of Record.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

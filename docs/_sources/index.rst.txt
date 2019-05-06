@@ -1,12 +1,12 @@
-.. holo_py documentation master file, created by
+.. volume_grating documentation master file, created by
    sphinx-quickstart on Mon Nov 19 19:09:47 2018.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-holo_py home
-============
+volume_grating home
+===================
 
-``holo_py`` is a Python library that makes hologram simulation intuitive and transparent as much as possible. It is written with a proper object-oriented programming mindset where physical entities are properly defined. These physical entities and simulation tools are defined in different classes and modules that are documented in the :ref:`api_main` documentation.
+``volume_grating`` is a Python library that makes hologram simulation intuitive and transparent as much as possible. It is written with a proper object-oriented programming mindset where physical entities are properly defined. These physical entities and simulation tools are defined in different classes and modules that are documented in the :ref:`api_main` documentation.
 
 
 .. toctree::

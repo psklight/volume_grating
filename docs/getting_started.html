@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started &mdash; holo_py 0.1 documentation</title>
+  <title>Getting Started &mdash; volume_grating 0.1 documentation</title>
   
 
   
@@ -17,38 +17,41 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Tutorials" href="tutorials.html" />
-    <link rel="prev" title="holo_py home" href="index.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+    <link rel="prev" title="volume_grating home" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="index.html" class="icon icon-home"> holo_py
+            <a href="index.html" class="icon icon-home"> volume_grating
           
 
           
@@ -107,7 +110,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">holo_py</a>
+          <a href="index.html">volume_grating</a>
         
       </nav>
 
@@ -161,12 +164,12 @@
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>In order to run <code class="docutils literal notranslate"><span class="pre">holo_py</span></code>, the following python libraries are necessary:</p>
+<p>In order to run <code class="docutils literal notranslate"><span class="pre">volume_grating</span></code>, the following python libraries are necessary:</p>
 <ol class="arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">numpy</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">scipy</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">sympy</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">tqdm</span></code></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scipy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sympy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tqdm</span></code></p></li>
 </ol>
 <p>Make sure you install them, either via <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code>.</p>
 </div>
@@ -174,7 +177,7 @@
 <h2>Things to keep in mind<a class="headerlink" href="#things-to-keep-in-mind" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="vectors-and-points">
 <h3>Vectors and Points<a class="headerlink" href="#vectors-and-points" title="Permalink to this headline">¶</a></h3>
-<p>Physics of holograms involves vectors, such as wave vectors, and points in space, such as the origin. In order to represent these entities, <code class="docutils literal notranslate"><span class="pre">sympy</span></code> library is used. When any modules of <code class="docutils literal notranslate"><span class="pre">holo_py</span></code> is imported, each of them will have an identical <strong>global coordinate system</strong> <code class="docutils literal notranslate"><span class="pre">GCS</span></code> (which is definied in <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> module of the library). When needed, <code class="docutils literal notranslate"><span class="pre">GCS</span></code> should be defined from <code class="docutils literal notranslate"><span class="pre">GCS</span> <span class="pre">=</span> <span class="pre">vec.CoordSys3D('GCS')</span></code>.</p>
+<p>Physics of holograms involves vectors, such as wave vectors, and points in space, such as the origin. In order to represent these entities, <code class="docutils literal notranslate"><span class="pre">sympy</span></code> library is used. When any modules of <code class="docutils literal notranslate"><span class="pre">volume_grating</span></code> is imported, each of them will have an identical <strong>global coordinate system</strong> <code class="docutils literal notranslate"><span class="pre">GCS</span></code> (which is definied in <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> module of the library). When needed, <code class="docutils literal notranslate"><span class="pre">GCS</span></code> should be defined from <code class="docutils literal notranslate"><span class="pre">GCS</span> <span class="pre">=</span> <span class="pre">vec.CoordSys3D('GCS')</span></code>.</p>
 <p>Vectors that are returned by most functions, such as <code class="docutils literal notranslate"><span class="pre">solvers.Response.get_k_diff_at_points()</span></code> will be an instace of <code class="docutils literal notranslate"><span class="pre">sympy.vector.Vector</span></code>. A result of vector operations (such as addition, inner product, etc) will remain an object of some <code class="docutils literal notranslate"><span class="pre">sympy.vector</span></code> classes.</p>
 <p>To construct a <code class="docutils literal notranslate"><span class="pre">sympy.vector.Vector</span></code> (or simply <code class="docutils literal notranslate"><span class="pre">Vector</span></code> onward) object, use this syntax:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy.vector</span> <span class="kn">as</span> <span class="nn">vec</span>
@@ -206,7 +209,7 @@
         <a href="tutorials.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="holo_py home" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="volume_grating home" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -215,7 +218,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Pisek Kultavewuti
+        &copy; Copyright 2019, Pisek Kultavewuti
 
     </p>
   </div>
@@ -232,26 +235,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

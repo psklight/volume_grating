@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>routines Module &mdash; holo_py 0.1 documentation</title>
+  <title>routines Module &mdash; volume_grating 0.1 documentation</title>
   
 
   
@@ -17,38 +17,41 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="engines Module" href="engines.html" />
     <link rel="prev" title="solvers Module" href="solvers.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="../index.html" class="icon icon-home"> holo_py
+            <a href="../index.html" class="icon icon-home"> volume_grating
           
 
           
@@ -107,7 +110,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">holo_py</a>
+          <a href="../index.html">volume_grating</a>
         
       </nav>
 
@@ -178,25 +181,21 @@ the new parameter set <code class="docutils literal notranslate"><span class="pr
 </div>
 <p>For each parameter set <code class="docutils literal notranslate"><span class="pre">xs[i]</span></code>, the <code class="docutils literal notranslate"><span class="pre">sweep</span></code> function update the <code class="docutils literal notranslate"><span class="pre">solver</span></code> using <code class="docutils literal notranslate"><span class="pre">update_func</span></code> , runs each
 <code class="docutils literal notranslate"><span class="pre">solver_func</span></code> for all <code class="docutils literal notranslate"><span class="pre">points</span></code>, and collects the result in <code class="docutils literal notranslate"><span class="pre">outputs</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>xs</strong> – <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">N)</span></code> ndarray of parameters to sweep. M is the number of parameter sets to sweep. Each set has N parameters.</li>
-<li><strong>points</strong> – a list of sympy.vector.Point instances representing points of interest on a hologram. <code class="docutils literal notranslate"><span class="pre">Np=len(points)</span></code>.</li>
-<li><strong>update_func</strong> – a function that updates a <code class="docutils literal notranslate"><span class="pre">solver</span></code> according to a single parameter sweep.</li>
-<li><strong>solver</strong> – an instance of solvers.Response.</li>
-<li><strong>solver_funcs</strong> – a list of functions/methods from a solvers.Response class. <code class="docutils literal notranslate"><span class="pre">Nf=len(solver_funcs)</span></code>.</li>
-<li><strong>verbose</strong> – [Default = False] True or False to print out progress.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xs</strong> – <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">N)</span></code> ndarray of parameters to sweep. M is the number of parameter sets to sweep. Each set has N parameters.</p></li>
+<li><p><strong>points</strong> – a list of sympy.vector.Point instances representing points of interest on a hologram. <code class="docutils literal notranslate"><span class="pre">Np=len(points)</span></code>.</p></li>
+<li><p><strong>update_func</strong> – a function that updates a <code class="docutils literal notranslate"><span class="pre">solver</span></code> according to a single parameter sweep.</p></li>
+<li><p><strong>solver</strong> – an instance of solvers.Response.</p></li>
+<li><p><strong>solver_funcs</strong> – a list of functions/methods from a solvers.Response class. <code class="docutils literal notranslate"><span class="pre">Nf=len(solver_funcs)</span></code>.</p></li>
+<li><p><strong>verbose</strong> – [Default = False] True or False to print out progress.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return outputs:</th><td class="field-body"><p class="first last"><code class="docutils literal notranslate"><span class="pre">(Np,</span> <span class="pre">Nf,</span> <span class="pre">M)</span></code> ndarray</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Return outputs</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">(Np,</span> <span class="pre">Nf,</span> <span class="pre">M)</span></code> ndarray</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -212,7 +211,7 @@ the new parameter set <code class="docutils literal notranslate"><span class="pr
         <a href="engines.html" class="btn btn-neutral float-right" title="engines Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="solvers.html" class="btn btn-neutral" title="solvers Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="solvers.html" class="btn btn-neutral float-left" title="solvers Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -221,7 +220,7 @@ the new parameter set <code class="docutils literal notranslate"><span class="pr
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Pisek Kultavewuti
+        &copy; Copyright 2019, Pisek Kultavewuti
 
     </p>
   </div>
@@ -238,26 +237,16 @@ the new parameter set <code class="docutils literal notranslate"><span class="pr
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

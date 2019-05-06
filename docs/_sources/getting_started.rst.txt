@@ -3,7 +3,7 @@ Getting Started
 
 Installation 
 ------------
-In order to run ``holo_py``, the following python libraries are necessary:
+In order to run ``volume_grating``, the following python libraries are necessary:
 
 1. ``numpy``
 
@@ -21,7 +21,7 @@ Things to keep in mind
 Vectors and Points
 ^^^^^^^^^^^^^^^^^^
 
-Physics of holograms involves vectors, such as wave vectors, and points in space, such as the origin. In order to represent these entities, ``sympy`` library is used. When any modules of ``holo_py`` is imported, each of them will have an identical **global coordinate system** ``GCS`` (which is definied in ``__init__.py`` module of the library). When needed, ``GCS`` should be defined from ``GCS = vec.CoordSys3D('GCS')``.
+Physics of holograms involves vectors, such as wave vectors, and points in space, such as the origin. In order to represent these entities, ``sympy`` library is used. When any modules of ``volume_grating`` is imported, each of them will have an identical **global coordinate system** ``GCS`` (which is definied in ``__init__.py`` module of the library). When needed, ``GCS`` should be defined from ``GCS = vec.CoordSys3D('GCS')``.
 
 Vectors that are returned by most functions, such as ``solvers.Response.get_k_diff_at_points()`` will be an instace of ``sympy.vector.Vector``. A result of vector operations (such as addition, inner product, etc) will remain an object of some ``sympy.vector`` classes.
 

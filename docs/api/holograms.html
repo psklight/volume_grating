@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>holograms Module &mdash; holo_py 0.1 documentation</title>
+  <title>holograms Module &mdash; volume_grating 0.1 documentation</title>
   
 
   
@@ -17,38 +17,41 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="illumination Module" href="illumination.html" />
     <link rel="prev" title="API" href="../API.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="../index.html" class="icon icon-home"> holo_py
+            <a href="../index.html" class="icon icon-home"> volume_grating
           
 
           
@@ -107,7 +110,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">holo_py</a>
+          <a href="../index.html">volume_grating</a>
         
       </nav>
 
@@ -176,37 +179,31 @@
 <code class="descname">get_norm_vec_at_points</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.Hologram.get_norm_vec_at_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of surface normal vector at points on a hologram. For this hologram it’s always flat. Hence, normal vectors
 are along z axis.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>points</strong> – a list of instances of class sympy.vector.Point</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>points</strong> – a list of instances of class sympy.vector.Point</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="holograms.Hologram.get_points_from_xy_arrays">
 <code class="descname">get_points_from_xy_arrays</code><span class="sig-paren">(</span><em>arrays</em>, <em>O=GCS</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.Hologram.get_points_from_xy_arrays" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return an ndarray-type list of Point instances. For this class, all z values will be 0 size the hologram is flat.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>arrays</strong> – a (N, 2) ndarray containing (x, y) coordinates. N is the number of (x, y) pairs.</li>
-<li><strong>O</strong> – an instance of sympy.vector.CoordSys3D. Default to the library’s GCS (Global Coordinate System).</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arrays</strong> – a (N, 2) ndarray containing (x, y) coordinates. N is the number of (x, y) pairs.</p></li>
+<li><p><strong>O</strong> – an instance of sympy.vector.CoordSys3D. Default to the library’s GCS (Global Coordinate System).</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a (N,) ndarray where each item is an instance of sympy.vector.Point corresponding to (x, y, z).</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a (N,) ndarray where each item is an instance of sympy.vector.Point corresponding to (x, y, z).</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -214,14 +211,11 @@ are along z axis.</p>
 <code class="descname">is_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holograms.Hologram.is_ready" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return True or False whether the hologram instance is fully initialized and ready to calculate for its responses.
 Being ready means all of the attributes are not None.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True or False</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -229,16 +223,14 @@ Being ready means all of the attributes are not None.</p>
 <code class="descname">n0</code><span class="sig-paren">(</span><em>wavelengths</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.Hologram.n0" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return refractive index of the material that makes the hologram. This will call the method Material.n(…), which
 returns a (N,) ndarray.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>wavelengths</strong> – a numeric value, a numeric list, or a numeric (N,) ndarray.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an (N,) ndarray.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wavelengths</strong> – a numeric value, a numeric list, or a numeric (N,) ndarray.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an (N,) ndarray.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -250,20 +242,16 @@ returns a (N,) ndarray.</p>
 <p>HologramBase is a base class of other hologram class definitions. It needs some basic physical parameters to
 initialize. However, without being fully initialized (e.g. recording=None), the hologram cannot be asked for its
 responses.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>thickness</strong> – a thickness in meter; must be numeric.</li>
-<li><strong>material</strong> – an instance of Material class or its subclasses. It must be able to be called for refractive index. Default to None.</li>
-<li><strong>dn</strong> – the index modulation of the hologram; must be numeric.</li>
-<li><strong>recording</strong> – an instance of illumination.Record class. Default to None.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>thickness</strong> – a thickness in meter; must be numeric.</p></li>
+<li><p><strong>material</strong> – an instance of Material class or its subclasses. It must be able to be called for refractive index. Default to None.</p></li>
+<li><p><strong>dn</strong> – the index modulation of the hologram; must be numeric.</p></li>
+<li><p><strong>recording</strong> – an instance of illumination.Record class. Default to None.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <dl class="method">
 <dt id="holograms.HologramBase.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><em>thickness=1e-05</em>, <em>material=None</em>, <em>dn=0.045</em>, <em>recording=None</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase.__init__" title="Permalink to this definition">¶</a></dt>
@@ -274,37 +262,31 @@ responses.</p>
 <dt id="holograms.HologramBase.get_norm_vec_at_points">
 <code class="descname">get_norm_vec_at_points</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase.get_norm_vec_at_points" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Abstract method</strong>. Subclasses must override this method.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>points</strong> – a list of instances of class sympy.vector.Point</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>points</strong> – a list of instances of class sympy.vector.Point</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="holograms.HologramBase.get_points_from_xy_arrays">
 <code class="descname">get_points_from_xy_arrays</code><span class="sig-paren">(</span><em>arrays</em>, <em>O=GCS</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase.get_points_from_xy_arrays" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return an ndarray-type list of Point instances. For this class, all z values will be 0 size the hologram is flat.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>arrays</strong> – a (N, 2) ndarray containing (x, y) coordinates. N is the number of (x, y) pairs.</li>
-<li><strong>O</strong> – an instance of sympy.vector.CoordSys3D. Default to the library’s GCS (Global Coordinate System).</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arrays</strong> – a (N, 2) ndarray containing (x, y) coordinates. N is the number of (x, y) pairs.</p></li>
+<li><p><strong>O</strong> – an instance of sympy.vector.CoordSys3D. Default to the library’s GCS (Global Coordinate System).</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a (N,) ndarray where each item is an instance of sympy.vector.Point corresponding to (x, y, z).</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a (N,) ndarray where each item is an instance of sympy.vector.Point corresponding to (x, y, z).</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -312,14 +294,11 @@ responses.</p>
 <code class="descname">is_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase.is_ready" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return True or False whether the hologram instance is fully initialized and ready to calculate for its responses.
 Being ready means all of the attributes are not None.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True or False</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True or False</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -327,16 +306,14 @@ Being ready means all of the attributes are not None.</p>
 <code class="descname">n0</code><span class="sig-paren">(</span><em>wavelengths</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase.n0" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return refractive index of the material that makes the hologram. This will call the method Material.n(…), which
 returns a (N,) ndarray.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>wavelengths</strong> – a numeric value, a numeric list, or a numeric (N,) ndarray.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an (N,) ndarray.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wavelengths</strong> – a numeric value, a numeric list, or a numeric (N,) ndarray.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an (N,) ndarray.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -354,7 +331,7 @@ returns a (N,) ndarray.</p>
         <a href="illumination.html" class="btn btn-neutral float-right" title="illumination Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../API.html" class="btn btn-neutral" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../API.html" class="btn btn-neutral float-left" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -363,7 +340,7 @@ returns a (N,) ndarray.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Pisek Kultavewuti
+        &copy; Copyright 2019, Pisek Kultavewuti
 
     </p>
   </div>
@@ -380,26 +357,16 @@ returns a (N,) ndarray.</p>
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

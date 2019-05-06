@@ -3,7 +3,7 @@
 Tutorials
 =========
 
-The ``holo_py`` library makes analysis and design of holograms simple by breaking things into objects.
+The ``volume_grating`` library makes analysis and design of holograms simple by breaking things into objects.
 
 Assumptions
 -----------

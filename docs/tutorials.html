@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tutorials &mdash; holo_py 0.1 documentation</title>
+  <title>Tutorials &mdash; volume_grating 0.1 documentation</title>
   
 
   
@@ -17,38 +17,41 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="API" href="API.html" />
     <link rel="prev" title="Getting Started" href="getting_started.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="index.html" class="icon icon-home"> holo_py
+            <a href="index.html" class="icon icon-home"> volume_grating
           
 
           
@@ -105,7 +108,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">holo_py</a>
+          <a href="index.html">volume_grating</a>
         
       </nav>
 
@@ -157,14 +160,14 @@
             
   <div class="section" id="tutorials">
 <span id="tutorial-main"></span><h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">holo_py</span></code> library makes analysis and design of holograms simple by breaking things into objects.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">volume_grating</span></code> library makes analysis and design of holograms simple by breaking things into objects.</p>
 <div class="section" id="assumptions">
 <h2>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>A hologram center is located at <code class="docutils literal notranslate"><span class="pre">GCS.origin</span></code> and its local surface here is perpendicular to the z axis.</li>
-<li>Currently, a hologram is assumed flat. This means points on a hologram will always have z-coordinate of 0.</li>
-<li>Currently, sources should be embedded in the same material to that of a hologram. This can be done by setting <code class="docutils literal notranslate"><span class="pre">material</span></code> attribute to the same material instance.</li>
-<li>A response of a hologram at a point is calculated <strong>point-wise</strong> by assuming that within the vincity of that point, a hologram’s property (i.e. index modulation) is periodic without chirping, i.e. an ideal hologram. The size of the vincity should be several times of the associated optical wavelength and the grating period.</li>
+<li><p>A hologram center is located at <code class="docutils literal notranslate"><span class="pre">GCS.origin</span></code> and its local surface here is perpendicular to the z axis.</p></li>
+<li><p>Currently, a hologram is assumed flat. This means points on a hologram will always have z-coordinate of 0.</p></li>
+<li><p>Currently, sources should be embedded in the same material to that of a hologram. This can be done by setting <code class="docutils literal notranslate"><span class="pre">material</span></code> attribute to the same material instance.</p></li>
+<li><p>A response of a hologram at a point is calculated <strong>point-wise</strong> by assuming that within the vincity of that point, a hologram’s property (i.e. index modulation) is periodic without chirping, i.e. an ideal hologram. The size of the vincity should be several times of the associated optical wavelength and the grating period.</p></li>
 </ul>
 </div>
 <div class="section" id="define-a-hologram">
@@ -332,7 +335,7 @@
         <a href="API.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="getting_started.html" class="btn btn-neutral" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -341,7 +344,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Pisek Kultavewuti
+        &copy; Copyright 2019, Pisek Kultavewuti
 
     </p>
   </div>
@@ -358,26 +361,16 @@
   
 
 
-  
-
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
