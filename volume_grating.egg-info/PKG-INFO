@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: volume-grating
+Version: 0.1.1
+Summary: tools to analyze volume gratings
+Home-page: https://github.com/psklight/volume_grating
+Author: Pisek Kultavewuti
+Author-email: psk.light@gmail.com
+License: UNKNOWN
+Description: # ``volume_grating``
+        ``volume_grating`` is a Python library that makes simulation of volume gratings (or holograms) intuitive and transparent as much as possible. It is written with a proper object-oriented programming mindset where physical entities are properly defined.
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.7
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
