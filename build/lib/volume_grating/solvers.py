@@ -1,13 +1,13 @@
 import numpy as np
-import holograms
+from . import holograms
 import sympy.vector as vec
-import illumination
-from utilities.validation import validate_input_numeric
+from . import illumination
+from .utilities.validation import validate_input_numeric
 import inspect
-import engines
-from engines import get_k_diff_at_points, get_dephase_at_points, get_k_hologram_at_points, \
+from . import engines
+from .engines import get_k_diff_at_points, get_dephase_at_points, get_k_hologram_at_points, \
     get_k_out_off_hologram_at_point
-import materials
+from . import materials
 from tqdm import tqdm
 
 

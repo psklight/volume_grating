@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
-from utilities.geometry import vectors_to_ndarray, points_to_ndarray
+from .geometry import vectors_to_ndarray, points_to_ndarray
 import sympy.vector as vec
-from systems import GCS
+from ..systems import GCS
 import numpy as np
 
 

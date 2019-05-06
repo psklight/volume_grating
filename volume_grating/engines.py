@@ -2,12 +2,12 @@
 
 import numpy as np
 import sympy.vector as vec
-import holograms
-import illumination
-from systems import GCS
-from utilities.validation import validate_input_numeric
-from utilities.optics import snell_law_k_space
-from utilities.geometry import vector_to_ndarray
+from . import holograms
+from . import illumination
+from .systems import GCS
+from .utilities.validation import validate_input_numeric
+from .utilities.optics import snell_law_k_space
+from .utilities.geometry import vector_to_ndarray
 
 
 class Engine(object):

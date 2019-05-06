@@ -1,4 +1,4 @@
-from sources import Source
+from .sources import Source
 
 
 class Record(object):

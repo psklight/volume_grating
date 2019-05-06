@@ -1,8 +1,8 @@
-from systems import GCS
-from materials import Cauchy_2coeff
+from .systems import GCS
+from .materials import Cauchy_2coeff
 import sympy.vector as vec
-import illumination
-from utilities.validation import validate_input_numeric
+from . import illumination
+from .utilities.validation import validate_input_numeric
 import numpy as np
 
 
