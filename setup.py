@@ -13,7 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/psklight/volume_grating",
     packages=setuptools.find_packages(),
-    install_requires = ['numpy', 'pandas', 'sympy', 'tqdm', 'matplotlib'],
+    install_requires = ['numpy', 'pandas', 'sympy', 'tqdm', 'matplotlib', 'scipy'],
     classifiers=(
         "Programming Language :: Python :: 3.7",
         "License :: OSI Approved :: MIT License"

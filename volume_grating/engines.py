@@ -8,6 +8,7 @@ from .systems import GCS
 from .utilities.validation import validate_input_numeric
 from .utilities.optics import snell_law_k_space
 from .utilities.geometry import vector_to_ndarray
+from scipy.integrate import solve_bvp
 
 
 class Engine(object):
@@ -56,7 +57,7 @@ class KogelnikAnalytical(Engine):
     """
 
     @staticmethod
-    def solve(param):
+    def solve(param, **kwargs):
         """
         Solve for diffraction efficiency of a set of parameters which must be extracted from the class' ``extract`` method.
 
@@ -110,7 +111,7 @@ class KogelnikAnalytical(Engine):
         return efficiency, mode, caches
 
     @staticmethod
-    def extract(hologram, playback, point, wavelengths=None, order=1, **kwargs):
+    def extract(hologram, playback, point, order=1, **kwargs):
         """
         Extract relevant parameters from a set of hologram and playback for a single point on a hologram and at a
         specified diffraction order. If ``wavelengths`` is None, it will use a wavelength of a source defined in the
@@ -119,8 +120,10 @@ class KogelnikAnalytical(Engine):
         :param hologram: an instance of class or subclass of Holograms
         :param point: an instance of class sympy.vector.Point
         :param playback: an instance of a Playback class.
-        :param wavelengths: a number, or a list of numbers, or a ndarray of number for wavelengths.
         :param order:  an integer specifying what order to diffract into
+
+        ``**kwargs`` parameters:
+        - ``wavelengths``: a number, or a list of numbers, or a ndarray of number for wavelengths.
         """
         assert isinstance(hologram, holograms.Hologram), 'hologram must be an instance of {} or its subclasses.' \
             .format(holograms.Hologram)
@@ -130,10 +133,7 @@ class KogelnikAnalytical(Engine):
 
         assert isinstance(order, int), 'order must be an integer.'
 
-        if wavelengths is None:
-            wavelengths = np.array([playback.source.wavelength])
-        if isinstance(wavelengths, (int, float, list)):
-            wavelengths = np.array([wavelengths])
+        wavelengths = kwargs.setdefault("wavelengths", np.array([playback.source.wavelength]))
         isvalid, msg = validate_input_numeric(wavelengths)
         if not isvalid:
             raise Exception('wavelengths is invalid. ' + msg)
@@ -284,9 +284,81 @@ class KogelnikTwoWave(Engine):
     """
 
     # TODO add effects of polarization
+    # TODO add KogelnikAnalytical's solution as a good starting point
+    # TODO find a way to be broadband solver
+
+    solve_default = {"bc_guress": None,
+                     "tol": 0.01,
+                     "mesh_number": 2,
+                     "max_nodes": 10000,
+                     "verbose": 1}
+    
+    def __init__(self, analytical_aid=True):
+        super(KogelnikTwoWave, self).__init__()
+        self.analytical_aid = analytical_aid
+        
+    @property
+    def analytical_aid(self):
+        return self._analytical_aid
+    
+    @analytical_aid.setter
+    def analytical_aid(self, value):
+        assert value in [True, False], "``analytical_aid can only be boolean."
+        self._analytical_aid = value
 
     @staticmethod
-    def solve(param, bc_guess=None, tol=0.01, mesh_number=2, max_nodes=10000, verbose=1):
+    def extract(hologram, playback, point, order=1,
+                **kwargs):
+        """
+        Extract relevant parameters from a set of hologram and playback for a single point on a hologram and at
+        a specified diffraction order.
+
+        :param hologram: an instance of class or subclass of Holograms
+        :param point: an instance of class sympy.vector.Point
+        :param playback: an instance of a Playback class.
+        :param order:  an integer specifying what order to diffract into
+
+        ``*kwargs`` parameters:
+        - ``wavelengths``: a number, or a list of numbers, or a ndarray of number for wavelengths.
+        """
+        assert isinstance(hologram, holograms.Hologram), 'hologram must be an instance of {} or its subclasses.' \
+            .format(holograms.Hologram)
+        assert isinstance(playback, illumination.Playback), 'playback must be an instance of {}.'.format(
+            illumination.Playback)
+        assert isinstance(point, vec.Point), 'point must be an instance of {}.'.format(vec.Point)
+
+        assert isinstance(order, int), 'order must be an integer.'
+
+        mode = hologram.mode
+        K = get_k_hologram_at_point(hologram=hologram, point=point)
+        n0 = hologram.n0([playback.source.wavelength])[0]
+        dn = hologram.dn
+        thickness = hologram.thickness
+        k_r = get_source_k_into_hologram_at_point(point=point, hologram=hologram, source=playback.source)
+        k_d = get_k_diff_at_points(hologram, playback, [point], order)
+        k_d = k_d[0]
+
+        wavelengths = kwargs.setdefault("wavelengths", np.array([playback.source.wavelength]))
+        isvalid, msg = validate_input_numeric(wavelengths)
+        if not isvalid:
+            raise Exception('wavelengths is invalid. ' + msg)
+        wavelengths = np.squeeze(wavelengths)
+        if wavelengths.ndim == 0:
+            wavelengths = np.expand_dims(wavelengths, axis=-1)
+
+        param = {'mode': mode,
+                 'thickness': thickness,
+                 'n0': n0,
+                 'dn': dn,
+                 'k_r': k_r,
+                 'k_d': k_d,
+                 'K': K,
+                 'order': order,
+                 'wavelength': wavelengths}
+        return param
+
+    @staticmethod
+    def solve(param, bc_guess=None, tol=0.01, mesh_number=2, max_nodes=10000, verbose=1, **kwarg):
         """
         Solve for diffraction efficiency of a set of parameters which must be extracted from the class' ``extract`` method.
 
@@ -329,9 +401,15 @@ class KogelnikTwoWave(Engine):
         dn = param['dn']
         wavelength = param['wavelength']/1e-6  # now in um
 
+        # pre-define ``matrix`` that will be updated later.
+        global matrix
+        matrix = np.ndarray(shape=(2, 2), dtype=np.complex)
+
         # from approximation of (n0+dn)^2 ~ n0^2 + 2*n0*dn, so ep0 = n0^2, ep1~n0*dn
         ep0 = n0 ** 2
         ep1 = 2*dn * n0
+
+
         k0 = 2 * np.pi / wavelength  # free space wavenumber
         beta = k0 * n0
 
@@ -340,8 +418,7 @@ class KogelnikTwoWave(Engine):
         kz_r = float(k_r.dot(GCS.k))
         kz_d = float(k_d.dot(GCS.k))
 
-        global matrix
-        matrix = np.ndarray(shape=(2, 2), dtype=np.complex)
+
         matrix[0, 0] = -(gamma0 - beta**2) / 2 / 1j / kz_r
         matrix[0, 1] = -np.conj(gamma)/2/1j/kz_r
         matrix[1, 0] = -gamma/2/1j/kz_d
@@ -365,8 +442,6 @@ class KogelnikTwoWave(Engine):
         if bc_guess is not None:
             y_guess = bc_guess
 
-        from scipy.integrate import solve_bvp
-
         result_detail = solve_bvp(fun=KogelnikTwoWave._rhs,
                                   bc=boundary_func, x=z, y=y_guess, verbose=verbose, max_nodes=max_nodes,
                                   tol=tol)
@@ -385,44 +460,6 @@ class KogelnikTwoWave(Engine):
                   'matrix': matrix}
 
         return efficiency, mode, caches
-
-    @staticmethod
-    def extract(hologram, playback, point, order=1, **kwargs):
-        """
-        Extract relevant parameters from a set of hologram and playback for a single point on a hologram and at
-        a specified diffraction order.
-
-        :param hologram: an instance of class or subclass of Holograms
-        :param point: an instance of class sympy.vector.Point
-        :param playback: an instance of a Playback class.
-        :param order:  an integer specifying what order to diffract into
-        """
-        assert isinstance(hologram, holograms.Hologram), 'hologram must be an instance of {} or its subclasses.' \
-            .format(holograms.Hologram)
-        assert isinstance(playback, illumination.Playback), 'playback must be an instance of {}.'.format(
-            illumination.Playback)
-        assert isinstance(point, vec.Point), 'point must be an instance of {}.'.format(vec.Point)
-
-        assert isinstance(order, int), 'order must be an integer.'
-
-        mode = hologram.mode
-        K = get_k_hologram_at_point(hologram=hologram, point=point)
-        n0 = hologram.n0([playback.source.wavelength])[0]
-        dn = hologram.dn
-        thickness = hologram.thickness
-        k_r = get_source_k_into_hologram_at_point(point=point, hologram=hologram, source=playback.source)
-        k_d = get_k_diff_at_points(hologram, playback, [point], order)
-        k_d = k_d[0]
-        param = {'mode': mode,
-                 'thickness': thickness,
-                 'n0': n0,
-                 'dn': dn,
-                 'k_r': k_r,
-                 'k_d': k_d,
-                 'K': K,
-                 'order': order,
-                 'wavelength': playback.source.wavelength}
-        return param
 
     @staticmethod
     def _rhs(x, y):

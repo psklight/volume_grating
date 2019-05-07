@@ -144,22 +144,21 @@ class Response(object):
         eng = self.engine
 
         # config tqdm
-        verbose = True
-        if 'verbose' in list(kwargs.keys()):
-            verbose = bool(kwargs['verbose'])
+        verbose = kwargs.setdefault("verbose", True)
 
-        wavelengths = np.array([self.playback.source.wavelength])
-        if "wavelengths" in list(kwargs.keys()):
-            wavelengths = np.array(kwargs["wavelengths"])
+        wavelengths = kwargs.setdefault("wavelengths", np.array([self.playback.source.wavelength]))
 
         efficiency = np.ndarray(shape=(len(points), wavelengths.size), dtype=np.float)
 
         for i in tqdm(range(len(points)), disable=not verbose, leave=True):
             p = points[i]
-            param = eng.extract(hologram=self.hologram, playback=self.playback, point=p, order=self.order,
-                                wavelengths=wavelengths)
-            eff, _, _ = eng.solve(param)
-            efficiency[i] = eff
+            param = eng.extract(hologram=self.hologram,
+                                playback=self.playback,
+                                point=p,
+                                order=self.order,
+                                **kwargs)
+            eff, _, _ = eng.solve(param, **kwargs)
+            efficiency[i] = eff*1e6
         return efficiency
 
 
