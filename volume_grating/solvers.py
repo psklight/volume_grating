@@ -8,6 +8,7 @@ from . import engines
 from .engines import get_k_diff_at_points, get_dephase_at_points, get_k_hologram_at_points, \
     get_k_out_off_hologram_at_point
 from . import materials
+from .systems import GCS
 from tqdm import tqdm
 
 
@@ -149,6 +150,7 @@ class Response(object):
         wavelengths = kwargs.setdefault("wavelengths", np.array([self.playback.source.wavelength]))
 
         efficiency = np.ndarray(shape=(len(points), wavelengths.size), dtype=np.float)
+        caches = np.ndarray(shape=(len(points)), dtype=np.object)
 
         for i in tqdm(range(len(points)), disable=not verbose, leave=True):
             p = points[i]
@@ -157,9 +159,25 @@ class Response(object):
                                 point=p,
                                 order=self.order,
                                 **kwargs)
-            eff, _, _ = eng.solve(param, **kwargs)
-            efficiency[i] = eff*1e6
-        return efficiency
+            eff, _, cache = eng.solve(param, **kwargs)
+            efficiency[i] = eff
+            caches[i] = cache
+        return efficiency, caches
+
+    def extract_params(self, point=GCS.origin, **kwargs):
+        """
+        A convenient method to call an ``extract`` method of ``Response.engine`` instance, which will return
+        a parameter set to that ``Response.engine`` will use to solve for a solution.
+
+        :param point: a sympy.Point at which to extract a parameter set.
+        :return params: a dict of a parameter set, which is an output from ``engine.extract`` method.
+        """
+        assert self.engine is not None, KeyError("``engine`` cannot be None.")
+        return self.engine.extract(hologram=self.hologram,
+                                playback=self.playback,
+                                point=point,
+                                order=self.order,
+                                **kwargs)
 
 
 class Designer(object):
