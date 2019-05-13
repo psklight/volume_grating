@@ -8,6 +8,7 @@ from .systems import GCS
 from .utilities.validation import validate_input_numeric
 from .utilities.optics import snell_law_k_space
 from .utilities.geometry import vector_to_ndarray
+from scipy.integrate import solve_bvp
 
 
 class Engine(object):
@@ -56,7 +57,7 @@ class KogelnikAnalytical(Engine):
     """
 
     @staticmethod
-    def solve(param):
+    def solve(param, **kwargs):
         """
         Solve for diffraction efficiency of a set of parameters which must be extracted from the class' ``extract`` method.
 
@@ -95,22 +96,30 @@ class KogelnikAnalytical(Engine):
         if mode is "transmission":  # transmission
             # Eq. 34
             s = 1j * kappa / cs / (gamma1 - gamma2) * (np.exp(gamma2 * thickness) - np.exp(gamma1 * thickness))
+            r1 = -gamma2/(gamma1-gamma2)
+            r2 = gamma1/(gamma1-gamma2)
+            r_end = r1*np.exp(gamma1*thickness) + r2*np.exp(gamma2*thickness)
         if mode is "reflection":
             # Eq. 39
             denum = 1j * dephase + cs * (gamma1 * np.exp(gamma2 * thickness) - gamma2 * np.exp(gamma1 * thickness)) / (
                         np.exp(gamma2 * thickness) - np.exp(gamma1 * thickness))
             s = -1j * kappa / denum
+            # reference wave at the end of the hologram
+            r1 = -1/(gamma1/gamma2*np.exp(thickness*(gamma1-gamma2)) - 1)
+            r2 = 1-r1
+            r_end = r1*np.exp(gamma1*thickness) + r2*np.exp(gamma2*thickness)
 
         efficiency = np.abs(cs) / cr * np.abs(s) ** 2
         caches = {'kappa': kappa,
                   'dephase': dephase,
                   'cr': cr,
                   'cs': cs,
-                  'S': s}
+                  's': s,
+                  'r_end': r_end}
         return efficiency, mode, caches
 
     @staticmethod
-    def extract(hologram, playback, point, wavelengths=None, order=1, **kwargs):
+    def extract(hologram, playback, point, order=1, **kwargs):
         """
         Extract relevant parameters from a set of hologram and playback for a single point on a hologram and at a
         specified diffraction order. If ``wavelengths`` is None, it will use a wavelength of a source defined in the
@@ -119,8 +128,10 @@ class KogelnikAnalytical(Engine):
         :param hologram: an instance of class or subclass of Holograms
         :param point: an instance of class sympy.vector.Point
         :param playback: an instance of a Playback class.
-        :param wavelengths: a number, or a list of numbers, or a ndarray of number for wavelengths.
         :param order:  an integer specifying what order to diffract into
+
+        ``**kwargs`` parameters:
+        - ``wavelengths``: a number, or a list of numbers, or a ndarray of number for wavelengths.
         """
         assert isinstance(hologram, holograms.Hologram), 'hologram must be an instance of {} or its subclasses.' \
             .format(holograms.Hologram)
@@ -130,10 +141,7 @@ class KogelnikAnalytical(Engine):
 
         assert isinstance(order, int), 'order must be an integer.'
 
-        if wavelengths is None:
-            wavelengths = np.array([playback.source.wavelength])
-        if isinstance(wavelengths, (int, float, list)):
-            wavelengths = np.array([wavelengths])
+        wavelengths = np.array(kwargs.setdefault("wavelengths", playback.source.wavelength))
         isvalid, msg = validate_input_numeric(wavelengths)
         if not isvalid:
             raise Exception('wavelengths is invalid. ' + msg)
@@ -284,9 +292,49 @@ class KogelnikTwoWave(Engine):
     """
 
     # TODO add effects of polarization
+    # TODO add KogelnikAnalytical's solution as a good starting point
+    # TODO find a way to be broadband solver
+
+    solve_default = {"y_guess": None,
+                     "tol": 0.001,
+                     "mesh_number": 3,
+                     "max_nodes": 10000,
+                     "verbose": 1}
+    
+    def __init__(self, analytical_aid=True):
+        super(KogelnikTwoWave, self).__init__()
+        self.analytical_aid = analytical_aid
+        
+    @property
+    def analytical_aid(self):
+        return self._analytical_aid
+    
+    @analytical_aid.setter
+    def analytical_aid(self, value):
+        assert value in [True, False], "``analytical_aid can only be boolean."
+        self._analytical_aid = value
 
     @staticmethod
-    def solve(param, bc_guess=None, tol=0.01, mesh_number=2, max_nodes=10000, verbose=1):
+    def extract(hologram, playback, point, order=1,
+                **kwargs):
+        """
+        Extract relevant parameters from a set of hologram and playback for a single point on a hologram and at
+        a specified diffraction order.
+
+        :param hologram: an instance of class or subclass of Holograms
+        :param point: an instance of class sympy.vector.Point
+        :param playback: an instance of a Playback class.
+        :param order:  an integer specifying what order to diffract into
+
+        ``*kwargs`` parameters:
+        - ``wavelengths``: a number, or a list of numbers, or a ndarray of number for wavelengths.
+        """
+
+        param = KogelnikAnalytical.extract(hologram, playback, point, order=order, **kwargs)
+        return param
+
+    @staticmethod
+    def solve(param, **kwarg):
         """
         Solve for diffraction efficiency of a set of parameters which must be extracted from the class' ``extract`` method.
 
@@ -294,9 +342,9 @@ class KogelnikTwoWave(Engine):
         possible to locate a solution by adjusting ``solve_bvp``s arguments, including ``bc_guess``, ``mess_number``,
         ``max_nodes``, and ``tol``. Refer to https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_bvp.html#scipy.integrate.solve_bvp for more information.
 
-        ``bc_guess`` specifies an initial guess on the value of the field states at z=0 and z=thickness. It is a (2,2) ndarray.
-        ``bc_guess[0] = np.array([1.0, 0.99], dtype=np.complex)`` guesses that at z=0, Ar = 1.0 and at z=thickness, Ar=0.99.
-        ``bc_guess[1] = np.array([0.05, 0], dtype=np.complex)`` guesses that at z=0, Ad=0.05 and at z=thickness, Ad=0.0, which is
+        ``y_guess`` specifies an initial guess on the value of the field states at z=0 and z=thickness. It is a (2,2) ndarray.
+        ``y_guess[0] = np.array([1.0, 0.99], dtype=np.complex)`` guesses that at z=0, Ar = 1.0 and at z=thickness, Ar=0.99.
+        ``y_guess[1] = np.array([0.05, 0], dtype=np.complex)`` guesses that at z=0, Ad=0.05 and at z=thickness, Ad=0.0, which is
         a reasonble initial guess for a reflection hologram.
 
         :param param: a set of parameters needed to calculate efficiencies. Extract them from .extract(...)
@@ -309,16 +357,24 @@ class KogelnikTwoWave(Engine):
         :return eff: efficiency of the hologram. If ``solve_bvp`` fails to converge, None is returned.
         :return mode: hologram mode, i.e. reflection or transmission
         :return caches: a dictionary. 'solver detail' for result from ``solve_bvp`` function and ``matrix`` for the interaction matrix.
+
+        ``**kwargs``
+        - ``analytical_aid``: boolean whether to use analytical result as a starting point.
         """
 
-        # handle boolean verbose sent from solver.Response
-        if isinstance(verbose, bool):
-            verbose = int(verbose)
+        y_guess_user = kwarg.setdefault("y_guess", KogelnikTwoWave.solve_default["y_guess"])
+        verbose = int(kwarg.setdefault("verbose", 0))
+        mesh_number = kwarg.setdefault("mesh_number", KogelnikTwoWave.solve_default["mesh_number"])
+        max_nodes = kwarg.setdefault("max_nodes", KogelnikTwoWave.solve_default["max_nodes"])
+        tol = kwarg.setdefault("tol", KogelnikTwoWave.solve_default["tol"])
+        analytical_aid = kwarg.setdefault("analytical_aid", False)
 
-        assert bc_guess is None or bc_guess.shape == (2,2), 'bc_guess must be None or a (2,2) ndarray of type np.complex.'
+        assert y_guess_user is None or y_guess_user.shape == (2, 2), 'bc_guess must be None or a (2,2) ndarray of type np.complex.'
         assert isinstance(mesh_number, int) and mesh_number>1, 'mesh_number must be an integer larger than 1.'
         assert verbose in (0,1,2), 'verbose must be either 0, 1, or 2.'
-        assert isinstance(max_nodes, int) and max_nodes>0, 'max_nodes must be positive integer.'
+        assert isinstance(max_nodes, int) and max_nodes > 0, 'max_nodes must be positive integer.'
+        assert tol > 0, 'tol must be positive number.'
+        assert isinstance(analytical_aid, bool), 'analytical_aid must be boolean.'
 
         mode = param['mode']
         k_r = param['k_r']/1e6  # reference wave vector, now in 1/um unit
@@ -327,102 +383,89 @@ class KogelnikTwoWave(Engine):
         thickness = param['thickness']/1e-6  # now in um
         n0 = param['n0']
         dn = param['dn']
-        wavelength = param['wavelength']/1e-6  # now in um
+        wavelengths = param['wavelength']/1e-6  # now in um
+
+        # pre-define ``matrix`` that will be updated later.
+        global matrix
+        matrix = np.ndarray(shape=(2, 2), dtype=np.complex)
 
         # from approximation of (n0+dn)^2 ~ n0^2 + 2*n0*dn, so ep0 = n0^2, ep1~n0*dn
         ep0 = n0 ** 2
         ep1 = 2*dn * n0
-        k0 = 2 * np.pi / wavelength  # free space wavenumber
-        beta = k0 * n0
-
-        gamma0 = k0**2*ep0
-        gamma = k0**2* ep1 / 2
-        kz_r = float(k_r.dot(GCS.k))
-        kz_d = float(k_d.dot(GCS.k))
-
-        global matrix
-        matrix = np.ndarray(shape=(2, 2), dtype=np.complex)
-        matrix[0, 0] = -(gamma0 - beta**2) / 2 / 1j / kz_r
-        matrix[0, 1] = -np.conj(gamma)/2/1j/kz_r
-        matrix[1, 0] = -gamma/2/1j/kz_d
-        matrix[1, 1] = -(gamma0-(float(k_d.magnitude()))**2)/2/1j/kz_d
-        matrix = np.reshape(matrix, newshape=(matrix.size,))
 
         z = np.linspace(0.0, thickness, mesh_number)
 
-        if mode == "transmission":
+        efficiency = np.zeros_like(wavelengths)*np.nan
+        bvp_sols = np.ndarray(shape=efficiency.shape, dtype=np.object)
+
+        if analytical_aid:
+            _, _, caches_anlt = KogelnikAnalytical.solve(param, **kwarg)
+            r_end_anlt = caches_anlt['r_end']  # r wave at z=thickness
+            s_anlt = caches_anlt['s']
+
+        for i, wavelength in enumerate(wavelengths):
+            k0 = 2 * np.pi / wavelength  # free space wavenumber
+            beta = k0 * n0[i]
+
+            gamma0 = k0**2*ep0[i]
+            gamma = k0**2*ep1[i] / 2
+            kz_r = k_r[i][-1]
+            kz_d = k_d[i][-1]
+
+            matrix = np.reshape(matrix, newshape=(2, 2))
+            matrix[0, 0] = -(gamma0 - beta**2) / 2 / 1j / kz_r
+            matrix[0, 1] = -np.conj(gamma)/2/1j/kz_r
+            matrix[1, 0] = -gamma/2/1j/kz_d
+            # matrix[1, 1] = -(gamma0-(float(k_d.magnitude()))**2)/2/1j/kz_d
+            matrix[1, 1] = -(gamma0 - np.sum(np.array(k_d[i])**2)) / 2 / 1j / kz_d
+            matrix = np.reshape(matrix, newshape=(matrix.size,))
+
             y_guess = np.ndarray(shape=(2, z.size), dtype=np.complex)
-            y_guess[0] = np.linspace(1.0, 0.95, z.size, dtype=np.complex)
-            y_guess[1] = np.linspace(0.0, 0.05, z.size, dtype=np.complex)
-            boundary_func = KogelnikTwoWave._boundary_for_transmission
 
-        if mode == "reflection":
-            y_guess = np.ndarray(shape=(2, z.size), dtype=np.complex)
-            y_guess[0] = np.linspace(1.0, 0.95, z.size, dtype=np.complex)
-            y_guess[1] = np.linspace(0.05, 0.0, z.size, dtype=np.complex)
-            boundary_func = KogelnikTwoWave._boundary_for_reflection
-
-        if bc_guess is not None:
-            y_guess = bc_guess
-
-        from scipy.integrate import solve_bvp
-
-        result_detail = solve_bvp(fun=KogelnikTwoWave._rhs,
-                                  bc=boundary_func, x=z, y=y_guess, verbose=verbose, max_nodes=max_nodes,
-                                  tol=tol)
-
-        if result_detail.success:
             if mode == "transmission":
-                efficiency = result_detail.y[1, -1]
-            else:
-                efficiency = result_detail.y[1, 0]
-            efficiency = np.abs(efficiency)**2
-            efficiency *= kz_d/kz_r
-        else:
-            efficiency = None
+                if analytical_aid:
+                    y_guess[0] = np.linspace(1.0, r_end_anlt[i], z.size, dtype=np.complex)
+                    y_guess[1] = np.linspace(0.0, s_anlt[i], z.size, dtype=np.complex)
+                else:
+                    y_guess[0] = np.linspace(1.0, 0.50, z.size, dtype=np.complex)
+                    y_guess[1] = np.linspace(0.0, 0.50, z.size, dtype=np.complex)
+                boundary_func = KogelnikTwoWave._boundary_for_transmission
 
-        caches = {'solver detail': result_detail,
-                  'matrix': matrix}
+            if mode == "reflection":
+                if analytical_aid:
+                    print(r_end_anlt[i], s_anlt[i])
+                    y_guess[0] = np.linspace(1.0, np.real(r_end_anlt[i]), z.size, dtype=np.complex)
+                    y_guess[1] = np.linspace(np.real(s_anlt[i]), 0.0, z.size, dtype=np.complex)
+                else:
+                    y_guess[0] = np.linspace(1.0, 0.50, z.size, dtype=np.complex)
+                    y_guess[1] = np.linspace(0.50, 0.0, z.size, dtype=np.complex)
+                boundary_func = KogelnikTwoWave._boundary_for_reflection
+
+            if y_guess_user is not None:
+                y_guess = y_guess_user
+
+            result_detail = solve_bvp(fun=KogelnikTwoWave._rhs,
+                                      bc=boundary_func, x=z, y=y_guess,
+                                      verbose=verbose, max_nodes=max_nodes,
+                                      tol=tol)
+            bvp_sols[i] = result_detail
+
+            if result_detail.success:
+                if mode == "transmission":
+                    eff = result_detail.y[1, -1]
+                else:
+                    eff = result_detail.y[1, 0]
+                eff = np.abs(eff)**2
+                eff *= kz_d/kz_r
+                efficiency[i] = eff
+            else:
+                efficiency[i] = np.nan
+
+        caches = {'bvp_sols': bvp_sols}
+        if analytical_aid:
+            caches['analytical caches'] = caches_anlt
 
         return efficiency, mode, caches
-
-    @staticmethod
-    def extract(hologram, playback, point, order=1, **kwargs):
-        """
-        Extract relevant parameters from a set of hologram and playback for a single point on a hologram and at
-        a specified diffraction order.
-
-        :param hologram: an instance of class or subclass of Holograms
-        :param point: an instance of class sympy.vector.Point
-        :param playback: an instance of a Playback class.
-        :param order:  an integer specifying what order to diffract into
-        """
-        assert isinstance(hologram, holograms.Hologram), 'hologram must be an instance of {} or its subclasses.' \
-            .format(holograms.Hologram)
-        assert isinstance(playback, illumination.Playback), 'playback must be an instance of {}.'.format(
-            illumination.Playback)
-        assert isinstance(point, vec.Point), 'point must be an instance of {}.'.format(vec.Point)
-
-        assert isinstance(order, int), 'order must be an integer.'
-
-        mode = hologram.mode
-        K = get_k_hologram_at_point(hologram=hologram, point=point)
-        n0 = hologram.n0([playback.source.wavelength])[0]
-        dn = hologram.dn
-        thickness = hologram.thickness
-        k_r = get_source_k_into_hologram_at_point(point=point, hologram=hologram, source=playback.source)
-        k_d = get_k_diff_at_points(hologram, playback, [point], order)
-        k_d = k_d[0]
-        param = {'mode': mode,
-                 'thickness': thickness,
-                 'n0': n0,
-                 'dn': dn,
-                 'k_r': k_r,
-                 'k_d': k_d,
-                 'K': K,
-                 'order': order,
-                 'wavelength': playback.source.wavelength}
-        return param
 
     @staticmethod
     def _rhs(x, y):
@@ -444,6 +487,14 @@ class KogelnikTwoWave(Engine):
     @staticmethod
     def _boundary_for_transmission(ya, yb):
         return np.array([ya[0] - 1, ya[1]])
+
+    @staticmethod
+    def _fun_jac(z):
+        def fun_jac(x, y):
+            return np.repeat(np.expand_dims(matrix.reshape((2, 2)), axis=-1),
+                             repeats=z.size,
+                             axis=-1)
+        return fun_jac
 
 
 def loss_rms_k(k_targ, k_cand, weights=np.array([1.]), norm_fac=1e6):
