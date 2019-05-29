@@ -4,6 +4,7 @@ from . import solvers
 import inspect
 from .utilities.validation import validate_input_numeric
 import copy
+from tqdm import tqdm
 
 
 def sweep(xs, points, update_func, solver, solver_funcs, verbose=False):
@@ -31,7 +32,7 @@ def sweep(xs, points, update_func, solver, solver_funcs, verbose=False):
     :param points: a list of sympy.vector.Point instances representing points of interest on a hologram. ``Np=len(points)``.
     :param update_func: a function that updates a ``solver`` according to a single parameter sweep.
     :param solver: an instance of solvers.Response.
-    :param solver_funcs: a list of functions/methods from a solvers.Response class. ``Nf=len(solver_funcs)``.
+    :param solver_funcs: a list of functions/methods from a solvers.Response class (not instance). ``Nf=len(solver_funcs)``.
     :param verbose: [Default = False] True or False to print out progress.
     :return outputs: ``(Np, Nf, M)`` ndarray
     """
@@ -55,18 +56,16 @@ def sweep(xs, points, update_func, solver, solver_funcs, verbose=False):
 
     solver = copy.deepcopy(solver)
 
-    for i in range(M):
+    for i in tqdm(range(M), position=1, disable=not verbose):
 
         # update a solver, i.e. HOE and playback etc
         solver = update_func(xs[i], solver)
 
         # loop to consider each solver functions
         for j, func in enumerate(solver_funcs):
-            result = func(solver, points)  # result will be a list of things
+            result = func(solver, points, order=solver.order,
+                          verbose=False)  # result will be a list of things
             for k in range(Np):
                 outputs[k, j, i] = result[k]
-
-        if verbose and (np.floor(float(i)/(M-1))*100) % 5 == 0:
-            print("Sweep progress at {}%".format(np.floor(float(i)/(M-1)*100)))
 
     return outputs

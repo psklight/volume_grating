@@ -20,3 +20,5 @@ holo_py/.DS_Store
 sphinx
 
 *.pyc
+
+debug/*

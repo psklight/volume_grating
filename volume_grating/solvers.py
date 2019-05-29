@@ -65,7 +65,7 @@ class Response(object):
         assert isinstance(value, int), 'order must be an integer.'
         self._order = value
 
-    def get_k_hologram_at_points(self, points):
+    def get_k_hologram_at_points(self, points, **kwargs):
         """
         Return a list of grating vectors of a hologram at the specified points.
 
@@ -77,7 +77,7 @@ class Response(object):
 
         return get_k_hologram_at_points(self.hologram, points=points)
 
-    def get_k_diff_at_points(self, points, order=None, materail_outside = None):
+    def get_k_diff_at_points(self, points, order=None, materail_outside = None, **kwargs):
         """
         Return a list of diffracted k vector against a list of Point instances for a specified order. If the order is
         left None, the order value would be that of the solver instance. The environment outside a hologram is defined
@@ -106,7 +106,7 @@ class Response(object):
                 new_k_diffs.append(new_k)
             return new_k_diffs
 
-    def get_dephase_at_points(self, points, order=None):
+    def get_dephase_at_points(self, points, order=None, **kwargs):
         """
         Returns a list of dephase quantity at a specified point for a specified list of diffraction order.
 
@@ -144,24 +144,25 @@ class Response(object):
 
         eng = self.engine
 
-        # config tqdm
-        verbose = kwargs.setdefault("verbose", True)
-
         wavelengths = kwargs.setdefault("wavelengths", np.array([self.playback.source.wavelength]))
 
         efficiency = np.ndarray(shape=(len(points), wavelengths.size), dtype=np.float)
         caches = np.ndarray(shape=(len(points)), dtype=np.object)
 
-        for i in tqdm(range(len(points)), disable=not verbose, leave=True):
+        # config tqdm
+        verbose = kwargs.setdefault("verbose", True)
+
+        for i in tqdm(range(len(points)), disable=not verbose):
             p = points[i]
             param = eng.extract(hologram=self.hologram,
                                 playback=self.playback,
                                 point=p,
-                                order=self.order,
+                                order=order,
                                 **kwargs)
             eff, _, cache = eng.solve(param, **kwargs)
             efficiency[i] = eff
             caches[i] = cache
+
         return efficiency, caches
 
     def extract_params(self, point=GCS.origin, **kwargs):
