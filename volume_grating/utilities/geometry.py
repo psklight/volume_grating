@@ -125,6 +125,11 @@ def cartersian_to_spherical(arrays, decimals=None):
     :return: a (N,3) ndarray of spherical coordinates
 
     """
+    expanded = False
+    if arrays.shape == (3,):
+        arrays = np.expand_dims(arrays, axis=0)
+        expanded = True
+
     sph = np.ndarray(shape=arrays.shape, dtype=np.float)
 
     for i in range(arrays.shape[0]):
@@ -135,6 +140,9 @@ def cartersian_to_spherical(arrays, decimals=None):
         sph[i, 0] = r
         sph[i, 1] = theta
         sph[i, 2] = tilt
+
+    if expanded:
+        sph = sph.squeeze()
     return sph
 
 
@@ -148,6 +156,11 @@ def spherical_to_cartesian(arrays, decimals=None):
     :param array: a (N, 3) ndarray of (r, theta, tilt) coordinates. N is the number of points.
     :return: a (N,3) ndarray of Cartesian coordinates
     """
+    expanded = False
+    if arrays.shape == (3,):
+        arrays = np.expand_dims(arrays, axis=0)
+        expanded = True
+
     cart = np.ndarray(shape=arrays.shape, dtype=np.float)
     for i in range(arrays.shape[0]):
         v = arrays[i]
@@ -161,6 +174,9 @@ def spherical_to_cartesian(arrays, decimals=None):
             cart[i] = np.array([x, y, z], dtype=np.float)
         else:
             cart[i] = np.round(np.array([x,y,z], dtype=np.float), decimals=decimals)
+
+    if expanded:
+        cart = cart.squeeze()
     return cart
 
 
