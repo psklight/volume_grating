@@ -1,7 +1,7 @@
 ``sources`` Module
 ==================
 
-.. automodule:: sources
+.. automodule:: volume_grating.sources
     :members:
     :inherited-members:
     :show-inheritance:

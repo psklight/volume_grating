@@ -162,21 +162,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-holograms">
-<span id="holograms-module"></span><h1><code class="docutils literal notranslate"><span class="pre">holograms</span></code> Module<a class="headerlink" href="#module-holograms" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-volume_grating.holograms">
+<span id="holograms-module"></span><h1><code class="docutils literal notranslate"><span class="pre">holograms</span></code> Module<a class="headerlink" href="#module-volume_grating.holograms" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="holograms.Hologram">
-<em class="property">class </em><code class="descclassname">holograms.</code><code class="descname">Hologram</code><span class="sig-paren">(</span><em>thickness=1e-05</em>, <em>material=None</em>, <em>dn=0.045</em>, <em>recording=None</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.Hologram" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#holograms.HologramBase" title="holograms.HologramBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">holograms.HologramBase</span></code></a></p>
+<dt id="volume_grating.holograms.Hologram">
+<em class="property">class </em><code class="descclassname">volume_grating.holograms.</code><code class="descname">Hologram</code><span class="sig-paren">(</span><em>thickness=1e-05</em>, <em>material=None</em>, <em>dn=0.045</em>, <em>recording=None</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.holograms.Hologram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#volume_grating.holograms.HologramBase" title="volume_grating.holograms.HologramBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">volume_grating.holograms.HologramBase</span></code></a></p>
 <dl class="method">
-<dt id="holograms.Hologram.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>thickness=1e-05</em>, <em>material=None</em>, <em>dn=0.045</em>, <em>recording=None</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.Hologram.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.holograms.Hologram.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>thickness=1e-05</em>, <em>material=None</em>, <em>dn=0.045</em>, <em>recording=None</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.holograms.Hologram.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="holograms.Hologram.get_norm_vec_at_points">
-<code class="descname">get_norm_vec_at_points</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.Hologram.get_norm_vec_at_points" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.holograms.Hologram.get_norm_vec_at_points">
+<code class="descname">get_norm_vec_at_points</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.holograms.Hologram.get_norm_vec_at_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of surface normal vector at points on a hologram. For this hologram it’s always flat. Hence, normal vectors
 are along z axis.</p>
 <dl class="field-list simple">
@@ -190,8 +190,8 @@ are along z axis.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="holograms.Hologram.get_points_from_xy_arrays">
-<code class="descname">get_points_from_xy_arrays</code><span class="sig-paren">(</span><em>arrays</em>, <em>O=GCS</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.Hologram.get_points_from_xy_arrays" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.holograms.Hologram.get_points_from_xy_arrays">
+<code class="descname">get_points_from_xy_arrays</code><span class="sig-paren">(</span><em>arrays</em>, <em>O=GCS</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.holograms.Hologram.get_points_from_xy_arrays" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return an ndarray-type list of Point instances. For this class, all z values will be 0 size the hologram is flat.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -207,8 +207,8 @@ are along z axis.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="holograms.Hologram.is_ready">
-<code class="descname">is_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holograms.Hologram.is_ready" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.holograms.Hologram.is_ready">
+<code class="descname">is_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.holograms.Hologram.is_ready" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return True or False whether the hologram instance is fully initialized and ready to calculate for its responses.
 Being ready means all of the attributes are not None.</p>
 <dl class="field-list simple">
@@ -219,8 +219,8 @@ Being ready means all of the attributes are not None.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="holograms.Hologram.n0">
-<code class="descname">n0</code><span class="sig-paren">(</span><em>wavelengths</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.Hologram.n0" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.holograms.Hologram.n0">
+<code class="descname">n0</code><span class="sig-paren">(</span><em>wavelengths</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.holograms.Hologram.n0" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return refractive index of the material that makes the hologram. This will call the method Material.n(…), which
 returns a (N,) ndarray.</p>
 <dl class="field-list simple">
@@ -236,8 +236,8 @@ returns a (N,) ndarray.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="holograms.HologramBase">
-<em class="property">class </em><code class="descclassname">holograms.</code><code class="descname">HologramBase</code><span class="sig-paren">(</span><em>thickness=1e-05</em>, <em>material=None</em>, <em>dn=0.045</em>, <em>recording=None</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.holograms.HologramBase">
+<em class="property">class </em><code class="descclassname">volume_grating.holograms.</code><code class="descname">HologramBase</code><span class="sig-paren">(</span><em>thickness=1e-05</em>, <em>material=None</em>, <em>dn=0.045</em>, <em>recording=None</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.holograms.HologramBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>HologramBase is a base class of other hologram class definitions. It needs some basic physical parameters to
 initialize. However, without being fully initialized (e.g. recording=None), the hologram cannot be asked for its
@@ -253,14 +253,14 @@ responses.</p>
 </dd>
 </dl>
 <dl class="method">
-<dt id="holograms.HologramBase.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>thickness=1e-05</em>, <em>material=None</em>, <em>dn=0.045</em>, <em>recording=None</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.holograms.HologramBase.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>thickness=1e-05</em>, <em>material=None</em>, <em>dn=0.045</em>, <em>recording=None</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.holograms.HologramBase.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="holograms.HologramBase.get_norm_vec_at_points">
-<code class="descname">get_norm_vec_at_points</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase.get_norm_vec_at_points" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.holograms.HologramBase.get_norm_vec_at_points">
+<code class="descname">get_norm_vec_at_points</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.holograms.HologramBase.get_norm_vec_at_points" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Abstract method</strong>. Subclasses must override this method.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -273,8 +273,8 @@ responses.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="holograms.HologramBase.get_points_from_xy_arrays">
-<code class="descname">get_points_from_xy_arrays</code><span class="sig-paren">(</span><em>arrays</em>, <em>O=GCS</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase.get_points_from_xy_arrays" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.holograms.HologramBase.get_points_from_xy_arrays">
+<code class="descname">get_points_from_xy_arrays</code><span class="sig-paren">(</span><em>arrays</em>, <em>O=GCS</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.holograms.HologramBase.get_points_from_xy_arrays" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return an ndarray-type list of Point instances. For this class, all z values will be 0 size the hologram is flat.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -290,8 +290,8 @@ responses.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="holograms.HologramBase.is_ready">
-<code class="descname">is_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase.is_ready" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.holograms.HologramBase.is_ready">
+<code class="descname">is_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.holograms.HologramBase.is_ready" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return True or False whether the hologram instance is fully initialized and ready to calculate for its responses.
 Being ready means all of the attributes are not None.</p>
 <dl class="field-list simple">
@@ -302,8 +302,8 @@ Being ready means all of the attributes are not None.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="holograms.HologramBase.n0">
-<code class="descname">n0</code><span class="sig-paren">(</span><em>wavelengths</em><span class="sig-paren">)</span><a class="headerlink" href="#holograms.HologramBase.n0" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.holograms.HologramBase.n0">
+<code class="descname">n0</code><span class="sig-paren">(</span><em>wavelengths</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.holograms.HologramBase.n0" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return refractive index of the material that makes the hologram. This will call the method Material.n(…), which
 returns a (N,) ndarray.</p>
 <dl class="field-list simple">

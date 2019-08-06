@@ -162,11 +162,90 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-routines">
-<span id="routines-module"></span><h1><code class="docutils literal notranslate"><span class="pre">routines</span></code> Module<a class="headerlink" href="#module-routines" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-volume_grating.routines">
+<span id="routines-module"></span><h1><code class="docutils literal notranslate"><span class="pre">routines</span></code> Module<a class="headerlink" href="#module-volume_grating.routines" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="routines.sweep">
-<code class="descclassname">routines.</code><code class="descname">sweep</code><span class="sig-paren">(</span><em>xs</em>, <em>points</em>, <em>update_func</em>, <em>solver</em>, <em>solver_funcs</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#routines.sweep" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.routines.fit_de_spectral">
+<code class="descclassname">volume_grating.routines.</code><code class="descname">fit_de_spectral</code><span class="sig-paren">(</span><em>wavelengths</em>, <em>de_data</em>, <em>solver</em>, <em>update_solver</em>, <em>initial_guess</em>, <em>bounds</em>, <em>plot=True</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.routines.fit_de_spectral" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function fits a data of diffraction efficiency with prediction calculated via <code class="docutils literal notranslate"><span class="pre">solvers.Response</span></code> object.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">update_solver_func(params,</span> <span class="pre">solver)</span></code> must be a callable with two arguments, in order, <code class="docutils literal notranslate"><span class="pre">params</span></code> and <code class="docutils literal notranslate"><span class="pre">solver</span></code>. These arguments are the same as for <code class="docutils literal notranslate"><span class="pre">objective</span></code> function.</p>
+<p>For example, the following code will fit data with prediction by varying <code class="docutils literal notranslate"><span class="pre">dn</span></code> and <code class="docutils literal notranslate"><span class="pre">thickness</span></code> of a hologram.
+.. code-block:: python</p>
+<blockquote>
+<div><p># wavelengths are defined in nm
+# de are 1D numpy array from experimental result.</p>
+<dl class="simple">
+<dt>def update_solver(params, solver):</dt><dd><p>dn = params[0]
+t = params[1]
+solver.hologram.dn = dn
+solver.hologram.thickness = t</p>
+</dd>
+</dl>
+<p>x0 = np.array([0.035, 1.5e-6, 0.0])  # x0 has 3 elements because the last element is used to DC-offset.</p>
+<p>result = fit_de_spectral(wavelengths*1e-9, de, solver, update_solver, x0, bounds=((0.01, 0.08), (1e-6, 2e-6), (-0.2, 0.2)))</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelengths</strong> – numpy array for wavelengths in meter.</p></li>
+<li><p><strong>de_data</strong> – numpy array for ground-truth or measured diffraction efficiency</p></li>
+<li><p><strong>solver</strong> – an instance of <code class="docutils literal notranslate"><span class="pre">solvers.Response</span></code></p></li>
+<li><p><strong>update_solver</strong> – a callable function with two arguments <code class="docutils literal notranslate"><span class="pre">params</span></code> and <code class="docutils literal notranslate"><span class="pre">solver</span></code>, see explanation above.</p></li>
+<li><p><strong>initial_guess</strong> – the initial guess for <code class="docutils literal notranslate"><span class="pre">params</span></code> in <code class="docutils literal notranslate"><span class="pre">update_solver</span></code>.</p></li>
+<li><p><strong>bounds</strong> – a tuple where each item is of the form (min, max), indicating min and max values for each parameter in <code class="docutils literal notranslate"><span class="pre">params</span></code></p></li>
+<li><p><strong>plot</strong> – True or False to plot the fitting result.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>fitting result (from scipy.optimize.minimize)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="volume_grating.routines.get_de">
+<code class="descclassname">volume_grating.routines.</code><code class="descname">get_de</code><span class="sig-paren">(</span><em>solver</em>, <em>squeeze=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.routines.get_de" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns diffraction efficients of a given <code class="docutils literal notranslate"><span class="pre">solver</span></code> object and <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> for it. It is a convenient functional representation for other purposes such as optimization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>solver</strong> – an instance of <code class="docutils literal notranslate"><span class="pre">solvers.Responses</span></code>.</p></li>
+<li><p><strong>squeeze</strong> – True or False whether to remove singleton dimension of the diffraction efficiency result.</p></li>
+<li><p><strong>kwargs</strong> – <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> that works for <code class="docutils literal notranslate"><span class="pre">solvers.Response.get_efficiency_at_points()</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>diffraction efficiencies in numpy array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="volume_grating.routines.objective">
+<code class="descclassname">volume_grating.routines.</code><code class="descname">objective</code><span class="sig-paren">(</span><em>params</em>, <em>truth</em>, <em>solver</em>, <em>update_solver_func</em>, <em>get_de_func</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.routines.objective" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is an objective function (or a loss function) for <code class="docutils literal notranslate"><span class="pre">fit_de_spectral</span></code> to minimize mean-squared-error (MSE) loss.</p>
+<p><code class="docutils literal notranslate"><span class="pre">params</span></code> is used to update <code class="docutils literal notranslate"><span class="pre">solver</span></code> via <code class="docutils literal notranslate"><span class="pre">updated_solver_function</span></code>. Then, the predicted diffraction efficiency is calculated, via <code class="docutils literal notranslate"><span class="pre">get_de_func</span></code>. The MSE is calculated between the ground truth DE and the predicted DE.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">update_solver_func(params,</span> <span class="pre">solver)</span></code> must be a callable with two arguments, in order, <code class="docutils literal notranslate"><span class="pre">params</span></code> and <code class="docutils literal notranslate"><span class="pre">solver</span></code>. These arguments are the same as for <code class="docutils literal notranslate"><span class="pre">objective</span></code> function.</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_de_func(solver)</span></code> should only take one argument. It should return a numpy array for diffraction efficiencies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> – a 1D numpy array. <strong>The last element of ``params`` is reserved to a DC offset.</strong></p></li>
+<li><p><strong>truth</strong> – a numpy array with the same dimension as the output from <code class="docutils literal notranslate"><span class="pre">get_de_func</span></code>.</p></li>
+<li><p><strong>solver</strong> – an instance of <code class="docutils literal notranslate"><span class="pre">solvers.Response</span></code> class.</p></li>
+<li><p><strong>update_solver_func</strong> – a callable function with two arguments <code class="docutils literal notranslate"><span class="pre">params</span></code> and <code class="docutils literal notranslate"><span class="pre">solver</span></code>, see explanation above.</p></li>
+<li><p><strong>get_de_func</strong> – a callable function that has only one argument, being <code class="docutils literal notranslate"><span class="pre">solver</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>MSE value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="volume_grating.routines.sweep">
+<code class="descclassname">volume_grating.routines.</code><code class="descname">sweep</code><span class="sig-paren">(</span><em>xs</em>, <em>points</em>, <em>update_func</em>, <em>solver</em>, <em>solver_funcs</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.routines.sweep" title="Permalink to this definition">¶</a></dt>
 <dd><p>This functions generalizes parameter sweeping to extract responses from a hologram.</p>
 <p>Given an ndarray <code class="docutils literal notranslate"><span class="pre">xs</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">N)</span></code>. <code class="docutils literal notranslate"><span class="pre">M</span></code> is the number of parameter sets to sweep. <code class="docutils literal notranslate"><span class="pre">N</span></code> is the number of parameters
 in each set.</p>
@@ -188,7 +267,7 @@ the new parameter set <code class="docutils literal notranslate"><span class="pr
 <li><p><strong>points</strong> – a list of sympy.vector.Point instances representing points of interest on a hologram. <code class="docutils literal notranslate"><span class="pre">Np=len(points)</span></code>.</p></li>
 <li><p><strong>update_func</strong> – a function that updates a <code class="docutils literal notranslate"><span class="pre">solver</span></code> according to a single parameter sweep.</p></li>
 <li><p><strong>solver</strong> – an instance of solvers.Response.</p></li>
-<li><p><strong>solver_funcs</strong> – a list of functions/methods from a solvers.Response class. <code class="docutils literal notranslate"><span class="pre">Nf=len(solver_funcs)</span></code>.</p></li>
+<li><p><strong>solver_funcs</strong> – a list of functions/methods from a solvers.Response class (not instance). <code class="docutils literal notranslate"><span class="pre">Nf=len(solver_funcs)</span></code>.</p></li>
 <li><p><strong>verbose</strong> – [Default = False] True or False to print out progress.</p></li>
 </ul>
 </dd>

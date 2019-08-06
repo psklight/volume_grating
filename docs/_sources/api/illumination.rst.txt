@@ -1,7 +1,7 @@
 ``illumination`` Module
 =======================
 
-.. automodule:: illumination
+.. automodule:: volume_grating.illumination
     :members:
     :inherited-members:
     :show-inheritance:

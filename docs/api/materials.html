@@ -162,12 +162,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-materials">
-<span id="materials-module"></span><h1><code class="docutils literal notranslate"><span class="pre">materials</span></code> Module<a class="headerlink" href="#module-materials" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-volume_grating.materials">
+<span id="materials-module"></span><h1><code class="docutils literal notranslate"><span class="pre">materials</span></code> Module<a class="headerlink" href="#module-volume_grating.materials" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="materials.Cauchy_2coeff">
-<em class="property">class </em><code class="descclassname">materials.</code><code class="descname">Cauchy_2coeff</code><span class="sig-paren">(</span><em>coeff</em><span class="sig-paren">)</span><a class="headerlink" href="#materials.Cauchy_2coeff" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#materials.Material" title="materials.Material"><code class="xref py py-class docutils literal notranslate"><span class="pre">materials.Material</span></code></a></p>
+<dt id="volume_grating.materials.Cauchy_2coeff">
+<em class="property">class </em><code class="descclassname">volume_grating.materials.</code><code class="descname">Cauchy_2coeff</code><span class="sig-paren">(</span><em>coeff</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.materials.Cauchy_2coeff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#volume_grating.materials.Material" title="volume_grating.materials.Material"><code class="xref py py-class docutils literal notranslate"><span class="pre">volume_grating.materials.Material</span></code></a></p>
 <p>Cauchy_2coeff models a material with two Cauchy coefficients, B and C.
 See <a class="reference external" href="https://en.wikipedia.org/wiki/Cauchy%27s_equation">https://en.wikipedia.org/wiki/Cauchy%27s_equation</a> for Cauchy model.
 Unit of C is micron**2.</p>
@@ -177,8 +177,8 @@ Unit of C is micron**2.</p>
 </dd>
 </dl>
 <dl class="method">
-<dt id="materials.Cauchy_2coeff.n">
-<code class="descname">n</code><span class="sig-paren">(</span><em>wavelength</em><span class="sig-paren">)</span><a class="headerlink" href="#materials.Cauchy_2coeff.n" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.materials.Cauchy_2coeff.n">
+<code class="descname">n</code><span class="sig-paren">(</span><em>wavelength</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.materials.Cauchy_2coeff.n" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a (real-part) of refractive indices at specified wavelengths.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -193,13 +193,13 @@ Unit of C is micron**2.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="materials.Material">
-<em class="property">class </em><code class="descclassname">materials.</code><code class="descname">Material</code><a class="headerlink" href="#materials.Material" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.materials.Material">
+<em class="property">class </em><code class="descclassname">volume_grating.materials.</code><code class="descname">Material</code><a class="headerlink" href="#volume_grating.materials.Material" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Material is a base class to model optical material.</p>
 <dl class="method">
-<dt id="materials.Material.n">
-<code class="descname">n</code><span class="sig-paren">(</span><em>wavelengths</em><span class="sig-paren">)</span><a class="headerlink" href="#materials.Material.n" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.materials.Material.n">
+<code class="descname">n</code><span class="sig-paren">(</span><em>wavelengths</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.materials.Material.n" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Abstract method</strong>. Subclasses must re-define <code class="docutils literal notranslate"><span class="pre">n</span></code> method that returns a (real-part) of refractive indices at
 specified wavelengths.</p>
 <dl class="field-list simple">
@@ -215,9 +215,9 @@ specified wavelengths.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="materials.NKconstant">
-<em class="property">class </em><code class="descclassname">materials.</code><code class="descname">NKconstant</code><span class="sig-paren">(</span><em>N</em>, <em>K=0</em><span class="sig-paren">)</span><a class="headerlink" href="#materials.NKconstant" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#materials.Material" title="materials.Material"><code class="xref py py-class docutils literal notranslate"><span class="pre">materials.Material</span></code></a></p>
+<dt id="volume_grating.materials.NKconstant">
+<em class="property">class </em><code class="descclassname">volume_grating.materials.</code><code class="descname">NKconstant</code><span class="sig-paren">(</span><em>N</em>, <em>K=0</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.materials.NKconstant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#volume_grating.materials.Material" title="volume_grating.materials.Material"><code class="xref py py-class docutils literal notranslate"><span class="pre">volume_grating.materials.Material</span></code></a></p>
 <p>NKconstant models a material with a constant complex index of N + i*K.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -228,8 +228,8 @@ specified wavelengths.</p>
 </dd>
 </dl>
 <dl class="method">
-<dt id="materials.NKconstant.get_complex_index">
-<code class="descname">get_complex_index</code><span class="sig-paren">(</span><em>wavelength</em><span class="sig-paren">)</span><a class="headerlink" href="#materials.NKconstant.get_complex_index" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.materials.NKconstant.get_complex_index">
+<code class="descname">get_complex_index</code><span class="sig-paren">(</span><em>wavelength</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.materials.NKconstant.get_complex_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the whole complex refractive index, i.e. n+i*k, which is constant</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -242,8 +242,8 @@ specified wavelengths.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="materials.NKconstant.k">
-<code class="descname">k</code><span class="sig-paren">(</span><em>wavelength</em><span class="sig-paren">)</span><a class="headerlink" href="#materials.NKconstant.k" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.materials.NKconstant.k">
+<code class="descname">k</code><span class="sig-paren">(</span><em>wavelength</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.materials.NKconstant.k" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the imaginary part, k, of the complex refractive index (n+i*k)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -256,8 +256,8 @@ specified wavelengths.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="materials.NKconstant.n">
-<code class="descname">n</code><span class="sig-paren">(</span><em>wavelength</em><span class="sig-paren">)</span><a class="headerlink" href="#materials.NKconstant.n" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.materials.NKconstant.n">
+<code class="descname">n</code><span class="sig-paren">(</span><em>wavelength</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.materials.NKconstant.n" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the real part, n, of the complex refractive index (n+i*k)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -272,14 +272,14 @@ specified wavelengths.</p>
 </dd></dl>
 
 <dl class="data">
-<dt id="materials.air">
-<code class="descclassname">materials.</code><code class="descname">air</code><em class="property"> = &lt;materials.NKconstant object&gt;</em><a class="headerlink" href="#materials.air" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.materials.air">
+<code class="descclassname">volume_grating.materials.</code><code class="descname">air</code><em class="property"> = &lt;volume_grating.materials.NKconstant object&gt;</em><a class="headerlink" href="#volume_grating.materials.air" title="Permalink to this definition">¶</a></dt>
 <dd><p>NKconstant instance of air or vacuum.</p>
 </dd></dl>
 
 <dl class="data">
-<dt id="materials.cauchy_dict">
-<code class="descclassname">materials.</code><code class="descname">cauchy_dict</code><em class="property"> = {'bk7': [1.5046, 0.0042], 'lens': [1.5321, 0.00743], 'pc': [1.5551, 0.00972], 'pp_original': [1.4824, 0.00693], 'pp_processed': [1.49, 0.00696]}</em><a class="headerlink" href="#materials.cauchy_dict" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.materials.cauchy_dict">
+<code class="descclassname">volume_grating.materials.</code><code class="descname">cauchy_dict</code><em class="property"> = {'bk7': [1.5046, 0.0042], 'lens': [1.5321, 0.00743], 'pc': [1.5551, 0.00972], 'pp_original': [1.4824, 0.00693], 'pp_processed': [1.49, 0.00696]}</em><a class="headerlink" href="#volume_grating.materials.cauchy_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dictionary of Cauchy coefficients for some materials.</p>
 </dd></dl>
 

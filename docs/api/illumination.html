@@ -162,11 +162,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-illumination">
-<span id="illumination-module"></span><h1><code class="docutils literal notranslate"><span class="pre">illumination</span></code> Module<a class="headerlink" href="#module-illumination" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-volume_grating.illumination">
+<span id="illumination-module"></span><h1><code class="docutils literal notranslate"><span class="pre">illumination</span></code> Module<a class="headerlink" href="#module-volume_grating.illumination" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="illumination.Playback">
-<em class="property">class </em><code class="descclassname">illumination.</code><code class="descname">Playback</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#illumination.Playback" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.illumination.Playback">
+<em class="property">class </em><code class="descclassname">volume_grating.illumination.</code><code class="descname">Playback</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.illumination.Playback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Playback class creates an illumination instance that emulates how a hologram will played back. Therefore, it needs
 only one light source.</p>
@@ -178,8 +178,8 @@ only one light source.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="illumination.Record">
-<em class="property">class </em><code class="descclassname">illumination.</code><code class="descname">Record</code><span class="sig-paren">(</span><em>source1</em>, <em>source2</em><span class="sig-paren">)</span><a class="headerlink" href="#illumination.Record" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.illumination.Record">
+<em class="property">class </em><code class="descclassname">volume_grating.illumination.</code><code class="descname">Record</code><span class="sig-paren">(</span><em>source1</em>, <em>source2</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.illumination.Record" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Record class creates an illumination instance that emulates how a hologram will be made. Therefore, it needs two
 light sources as its argument.</p>
@@ -194,9 +194,9 @@ light sources as its argument.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="illumination.TargetPlayback">
-<em class="property">class </em><code class="descclassname">illumination.</code><code class="descname">TargetPlayback</code><span class="sig-paren">(</span><em>source1</em>, <em>source2</em><span class="sig-paren">)</span><a class="headerlink" href="#illumination.TargetPlayback" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#illumination.Record" title="illumination.Record"><code class="xref py py-class docutils literal notranslate"><span class="pre">illumination.Record</span></code></a></p>
+<dt id="volume_grating.illumination.TargetPlayback">
+<em class="property">class </em><code class="descclassname">volume_grating.illumination.</code><code class="descname">TargetPlayback</code><span class="sig-paren">(</span><em>source1</em>, <em>source2</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.illumination.TargetPlayback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#volume_grating.illumination.Record" title="volume_grating.illumination.Record"><code class="xref py py-class docutils literal notranslate"><span class="pre">volume_grating.illumination.Record</span></code></a></p>
 <p>TargetPlayback class creates an illumination instance that emulates how a hologram should playback in an attempt to
 design a recording process. Therefore, it needs two light sources. Due to the same requirement as the Record class,
 it is convenient to make TargetPlayback a subclass of Record.</p>
