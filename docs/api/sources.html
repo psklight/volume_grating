@@ -162,12 +162,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-sources">
-<span id="sources-module"></span><h1><code class="docutils literal notranslate"><span class="pre">sources</span></code> Module<a class="headerlink" href="#module-sources" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-volume_grating.sources">
+<span id="sources-module"></span><h1><code class="docutils literal notranslate"><span class="pre">sources</span></code> Module<a class="headerlink" href="#module-volume_grating.sources" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="sources.Planewave">
-<em class="property">class </em><code class="descclassname">sources.</code><code class="descname">Planewave</code><span class="sig-paren">(</span><em>material</em>, <em>direction</em>, <em>wavelength=6.6e-07</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.Planewave" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#sources.Source" title="sources.Source"><code class="xref py py-class docutils literal notranslate"><span class="pre">sources.Source</span></code></a></p>
+<dt id="volume_grating.sources.Planewave">
+<em class="property">class </em><code class="descclassname">volume_grating.sources.</code><code class="descname">Planewave</code><span class="sig-paren">(</span><em>material</em>, <em>direction</em>, <em>wavelength=6.6e-07</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.sources.Planewave" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#volume_grating.sources.Source" title="volume_grating.sources.Source"><code class="xref py py-class docutils literal notranslate"><span class="pre">volume_grating.sources.Source</span></code></a></p>
 <p>Planewave class defines a planewave source, whose wave vector is the same every where.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -179,8 +179,8 @@
 </dd>
 </dl>
 <dl class="method">
-<dt id="sources.Planewave.get_k_at_points">
-<code class="descname">get_k_at_points</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.Planewave.get_k_at_points" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.sources.Planewave.get_k_at_points">
+<code class="descname">get_k_at_points</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.sources.Planewave.get_k_at_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of wave vectors for a set of specified points.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -195,9 +195,9 @@
 </dd></dl>
 
 <dl class="class">
-<dt id="sources.PointSource">
-<em class="property">class </em><code class="descclassname">sources.</code><code class="descname">PointSource</code><span class="sig-paren">(</span><em>point</em>, <em>material</em>, <em>direction='diverge'</em>, <em>wavelength=6.6e-07</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.PointSource" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#sources.Source" title="sources.Source"><code class="xref py py-class docutils literal notranslate"><span class="pre">sources.Source</span></code></a></p>
+<dt id="volume_grating.sources.PointSource">
+<em class="property">class </em><code class="descclassname">volume_grating.sources.</code><code class="descname">PointSource</code><span class="sig-paren">(</span><em>point</em>, <em>material</em>, <em>direction='diverge'</em>, <em>wavelength=6.6e-07</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.sources.PointSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#volume_grating.sources.Source" title="volume_grating.sources.Source"><code class="xref py py-class docutils literal notranslate"><span class="pre">volume_grating.sources.Source</span></code></a></p>
 <p>PointSource class defines a source that light either diverges or focuses to a point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -210,8 +210,8 @@
 </dd>
 </dl>
 <dl class="method">
-<dt id="sources.PointSource.get_k_at_points">
-<code class="descname">get_k_at_points</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.PointSource.get_k_at_points" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.sources.PointSource.get_k_at_points">
+<code class="descname">get_k_at_points</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.sources.PointSource.get_k_at_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of wave vectors for a set of specified points.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -226,8 +226,8 @@
 </dd></dl>
 
 <dl class="class">
-<dt id="sources.Source">
-<em class="property">class </em><code class="descclassname">sources.</code><code class="descname">Source</code><span class="sig-paren">(</span><em>material</em>, <em>wavelength=6.6e-07</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.Source" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.sources.Source">
+<em class="property">class </em><code class="descclassname">volume_grating.sources.</code><code class="descname">Source</code><span class="sig-paren">(</span><em>material</em>, <em>wavelength=6.6e-07</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.sources.Source" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Source is a base class for all optical source classes.</p>
 <dl class="field-list simple">
@@ -239,8 +239,8 @@
 </dd>
 </dl>
 <dl class="method">
-<dt id="sources.Source.get_k_at_points">
-<code class="descname">get_k_at_points</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.Source.get_k_at_points" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.sources.Source.get_k_at_points">
+<code class="descname">get_k_at_points</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.sources.Source.get_k_at_points" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Abstract method</strong>. Subclasses must override this method. Returns a list of wave vectors for a set of
 specified points.</p>
 <dl class="field-list simple">

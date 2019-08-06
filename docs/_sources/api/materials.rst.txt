@@ -1,7 +1,7 @@
 ``materials`` Module
 ====================
 
-.. automodule:: materials
+.. automodule:: volume_grating.materials
     :members:
     :inherited-members:
     :show-inheritance:

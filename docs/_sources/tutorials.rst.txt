@@ -14,7 +14,7 @@ Assumptions
 
 - Currently, sources should be embedded in the same material to that of a hologram. This can be done by setting ``material`` attribute to the same material instance.
 
-- A response of a hologram at a point is calculated **point-wise** by assuming that within the vincity of that point, a hologram's property (i.e. index modulation) is periodic without chirping, i.e. an ideal hologram. The size of the vincity should be several times of the associated optical wavelength and the grating period.
+- A response of a hologram at a point is calculated **point-wise** by assuming that within the vicinity of that point, a hologram's property (i.e. index modulation) is periodic without chirping, i.e. an ideal hologram. The size of the vicinity should be several times of the associated optical wavelength and the grating period.
 
 
 Define a hologram
@@ -79,7 +79,7 @@ Additionally, a hologram instance has a method ``get_points_from_xy_arrays(array
 
 Sweep parameters for responses
 ------------------------------
-``routines`` module contains a ``sweep()`` function that aids in sweeping parameters in response analysis. In this section, we will would like to know how DE would change if we change the wavelength of the playback source. We start by defining an ``update_func`` that changes the *system*. Our system is a hologram ``hoe`` and a playback illumination ``playback``. However, both of them are captured as a part of ``solver``. That is why ``update_func`` needs ``solver`` as an argument.
+``routines`` module contains a ``sweep()`` function that aids in sweeping parameters in response analysis. In this section, we would like to know how DE would change if we change the wavelength of the playback source. We start by defining an ``update_func`` that changes the *system*. Our system is a hologram ``hoe`` and a playback illumination ``playback``. However, both of them are captured as a part of ``solver``. That is why ``update_func`` needs ``solver`` as an argument.
 
 .. code-block:: python
 

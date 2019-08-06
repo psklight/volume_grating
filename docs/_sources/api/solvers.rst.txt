@@ -1,7 +1,7 @@
 ``solvers`` Module
 ==================
 
-.. automodule:: solvers
+.. automodule:: volume_grating.solvers
     :members:
     :inherited-members:
     :show-inheritance:

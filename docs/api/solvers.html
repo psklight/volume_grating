@@ -162,11 +162,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-solvers">
-<span id="solvers-module"></span><h1><code class="docutils literal notranslate"><span class="pre">solvers</span></code> Module<a class="headerlink" href="#module-solvers" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-volume_grating.solvers">
+<span id="solvers-module"></span><h1><code class="docutils literal notranslate"><span class="pre">solvers</span></code> Module<a class="headerlink" href="#module-volume_grating.solvers" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="solvers.Designer">
-<em class="property">class </em><code class="descclassname">solvers.</code><code class="descname">Designer</code><span class="sig-paren">(</span><em>response</em>, <em>update_func</em>, <em>loss_func</em>, <em>optim_method='BFGS'</em><span class="sig-paren">)</span><a class="headerlink" href="#solvers.Designer" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.solvers.Designer">
+<em class="property">class </em><code class="descclassname">volume_grating.solvers.</code><code class="descname">Designer</code><span class="sig-paren">(</span><em>response</em>, <em>update_func</em>, <em>loss_func</em>, <em>optim_method='BFGS'</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.solvers.Designer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">Designer</span></code> is a base instanceable class to design a recording geometry from a target hologram.</p>
 <p><code class="docutils literal notranslate"><span class="pre">update_func</span></code> must be of a following structure:</p>
@@ -214,8 +214,8 @@
 </dd>
 </dl>
 <dl class="method">
-<dt id="solvers.Designer.run">
-<code class="descname">run</code><span class="sig-paren">(</span><em>xs_init</em>, <em>points</em>, <em>target</em>, <em>points_weight=array([1.])</em>, <em>method=None</em><span class="sig-paren">)</span><a class="headerlink" href="#solvers.Designer.run" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.solvers.Designer.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>xs_init</em>, <em>points</em>, <em>target</em>, <em>points_weight=array([1.])</em>, <em>method=None</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.solvers.Designer.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs the candidate search by minimizing the loss/error value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -236,8 +236,8 @@
 </dd></dl>
 
 <dl class="class">
-<dt id="solvers.Response">
-<em class="property">class </em><code class="descclassname">solvers.</code><code class="descname">Response</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback=None</em>, <em>engine=None</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#solvers.Response" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.solvers.Response">
+<em class="property">class </em><code class="descclassname">volume_grating.solvers.</code><code class="descname">Response</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback=None</em>, <em>engine=None</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.solvers.Response" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">Response</span></code> is a base instanceable class to compute responses of a hologram. <code class="docutils literal notranslate"><span class="pre">playback</span></code> is needed when any diffraction
 responses are queried. <code class="docutils literal notranslate"><span class="pre">engine</span></code> is needed when diffraction efficiency is queried.</p>
@@ -252,8 +252,23 @@ responses are queried. <code class="docutils literal notranslate"><span class="p
 </dd>
 </dl>
 <dl class="method">
-<dt id="solvers.Response.get_dephase_at_points">
-<code class="descname">get_dephase_at_points</code><span class="sig-paren">(</span><em>points</em>, <em>order=None</em><span class="sig-paren">)</span><a class="headerlink" href="#solvers.Response.get_dephase_at_points" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.solvers.Response.extract_params">
+<code class="descname">extract_params</code><span class="sig-paren">(</span><em>point=GCS.origin</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.solvers.Response.extract_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>A convenient method to call an <code class="docutils literal notranslate"><span class="pre">extract</span></code> method of <code class="docutils literal notranslate"><span class="pre">Response.engine</span></code> instance, which will return
+a parameter set to that <code class="docutils literal notranslate"><span class="pre">Response.engine</span></code> will use to solve for a solution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>point</strong> – a sympy.Point at which to extract a parameter set.</p>
+</dd>
+<dt class="field-even">Return params</dt>
+<dd class="field-even"><p>a dict of a parameter set, which is an output from <code class="docutils literal notranslate"><span class="pre">engine.extract</span></code> method.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="volume_grating.solvers.Response.get_dephase_at_points">
+<code class="descname">get_dephase_at_points</code><span class="sig-paren">(</span><em>points</em>, <em>order=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.solvers.Response.get_dephase_at_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of dephase quantity at a specified point for a specified list of diffraction order.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -269,8 +284,8 @@ responses are queried. <code class="docutils literal notranslate"><span class="p
 </dd></dl>
 
 <dl class="method">
-<dt id="solvers.Response.get_efficiency_at_points">
-<code class="descname">get_efficiency_at_points</code><span class="sig-paren">(</span><em>points</em>, <em>order=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#solvers.Response.get_efficiency_at_points" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.solvers.Response.get_efficiency_at_points">
+<code class="descname">get_efficiency_at_points</code><span class="sig-paren">(</span><em>points</em>, <em>order=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.solvers.Response.get_efficiency_at_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a ndarray of efficiency against a list of Point instances</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -289,8 +304,8 @@ responses are queried. <code class="docutils literal notranslate"><span class="p
 </dd></dl>
 
 <dl class="method">
-<dt id="solvers.Response.get_k_diff_at_points">
-<code class="descname">get_k_diff_at_points</code><span class="sig-paren">(</span><em>points</em>, <em>order=None</em>, <em>materail_outside=None</em><span class="sig-paren">)</span><a class="headerlink" href="#solvers.Response.get_k_diff_at_points" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.solvers.Response.get_k_diff_at_points">
+<code class="descname">get_k_diff_at_points</code><span class="sig-paren">(</span><em>points</em>, <em>order=None</em>, <em>materail_outside=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.solvers.Response.get_k_diff_at_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of diffracted k vector against a list of Point instances for a specified order. If the order is
 left None, the order value would be that of the solver instance. The environment outside a hologram is defined
 by a Material instance in <code class="docutils literal notranslate"><span class="pre">material_outside</span></code>. If <code class="docutils literal notranslate"><span class="pre">material_outside</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, the returned diffracted
@@ -311,8 +326,8 @@ already refracted into the environment.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="solvers.Response.get_k_hologram_at_points">
-<code class="descname">get_k_hologram_at_points</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#solvers.Response.get_k_hologram_at_points" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.solvers.Response.get_k_hologram_at_points">
+<code class="descname">get_k_hologram_at_points</code><span class="sig-paren">(</span><em>points</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.solvers.Response.get_k_hologram_at_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of grating vectors of a hologram at the specified points.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

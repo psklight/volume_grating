@@ -3,7 +3,7 @@
 ``engines`` Module
 ==================
 
-.. automodule:: engines
+.. automodule:: volume_grating.engines
     :members:
     :inherited-members:
     :show-inheritance:

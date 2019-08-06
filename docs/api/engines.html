@@ -162,16 +162,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-engines">
-<span id="engines-module"></span><span id="engine-main"></span><h1><code class="docutils literal notranslate"><span class="pre">engines</span></code> Module<a class="headerlink" href="#module-engines" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-volume_grating.engines">
+<span id="engines-module"></span><span id="engine-main"></span><h1><code class="docutils literal notranslate"><span class="pre">engines</span></code> Module<a class="headerlink" href="#module-volume_grating.engines" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="engines.Engine">
-<em class="property">class </em><code class="descclassname">engines.</code><code class="descname">Engine</code><a class="headerlink" href="#engines.Engine" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.Engine">
+<em class="property">class </em><code class="descclassname">volume_grating.engines.</code><code class="descname">Engine</code><a class="headerlink" href="#volume_grating.engines.Engine" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">Engine</span></code> is a base class for all functional computation engines.</p>
 <dl class="staticmethod">
-<dt id="engines.Engine.extract">
-<em class="property">static </em><code class="descname">extract</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>point</em>, <em>order=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.Engine.extract" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.Engine.extract">
+<em class="property">static </em><code class="descname">extract</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>point</em>, <em>order=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.Engine.extract" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Abstract method</strong>. Subclasses must override this method with the exact same input arguments. It must return
 a dict containing relevant parameters needed to calculate diffraction efficiency using <code class="docutils literal notranslate"><span class="pre">solve()</span></code> method.</p>
 <dl class="field-list simple">
@@ -190,8 +190,8 @@ a dict containing relevant parameters needed to calculate diffraction efficiency
 </dd></dl>
 
 <dl class="staticmethod">
-<dt id="engines.Engine.solve">
-<em class="property">static </em><code class="descname">solve</code><span class="sig-paren">(</span><em>param</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.Engine.solve" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.Engine.solve">
+<em class="property">static </em><code class="descname">solve</code><span class="sig-paren">(</span><em>param</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.Engine.solve" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Abstract method</strong>. Subclasses must override this method. The first required input argument should be <code class="docutils literal notranslate"><span class="pre">param</span></code>,
 which should be an output from <code class="docutils literal notranslate"><span class="pre">extract()</span></code> method. More input arguments can be added, but they must have default
 values. This is because, in this release, <code class="docutils literal notranslate"><span class="pre">Response.get_efficiency_at_points()</span></code> only call <code class="docutils literal notranslate"><span class="pre">.solver(param)</span></code> without
@@ -209,16 +209,16 @@ other additional arguments.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="engines.KogelnikAnalytical">
-<em class="property">class </em><code class="descclassname">engines.</code><code class="descname">KogelnikAnalytical</code><a class="headerlink" href="#engines.KogelnikAnalytical" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#engines.Engine" title="engines.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">engines.Engine</span></code></a></p>
+<dt id="volume_grating.engines.KogelnikAnalytical">
+<em class="property">class </em><code class="descclassname">volume_grating.engines.</code><code class="descname">KogelnikAnalytical</code><a class="headerlink" href="#volume_grating.engines.KogelnikAnalytical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#volume_grating.engines.Engine" title="volume_grating.engines.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">volume_grating.engines.Engine</span></code></a></p>
 <p><code class="docutils literal notranslate"><span class="pre">KogelnikAnalytical</span></code> assume a <strong>lossless hologram.</strong> Based on the paper Kogelnik, 1969, Coupled Wave Theory for Thick Hologram Gratings, Bell System
 Technical Journal, Vol 48, No 9. It uses ananlytical equations to solver for diffraction efficiency.
 This assumes that the surface of the hologram is perpendicular to the z axis,
 as defined in the paper. <strong>The recording wave vectors of the holograms must NOT have a y-axis component</strong>.</p>
 <dl class="staticmethod">
-<dt id="engines.KogelnikAnalytical.extract">
-<em class="property">static </em><code class="descname">extract</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>point</em>, <em>wavelengths=None</em>, <em>order=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.KogelnikAnalytical.extract" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.KogelnikAnalytical.extract">
+<em class="property">static </em><code class="descname">extract</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>point</em>, <em>order=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.KogelnikAnalytical.extract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract relevant parameters from a set of hologram and playback for a single point on a hologram and at a
 specified diffraction order. If <code class="docutils literal notranslate"><span class="pre">wavelengths</span></code> is None, it will use a wavelength of a source defined in the
 playback.</p>
@@ -228,16 +228,17 @@ playback.</p>
 <li><p><strong>hologram</strong> – an instance of class or subclass of Holograms</p></li>
 <li><p><strong>point</strong> – an instance of class sympy.vector.Point</p></li>
 <li><p><strong>playback</strong> – an instance of a Playback class.</p></li>
-<li><p><strong>wavelengths</strong> – a number, or a list of numbers, or a ndarray of number for wavelengths.</p></li>
 <li><p><strong>order</strong> – an integer specifying what order to diffract into</p></li>
 </ul>
 </dd>
 </dl>
+<p><code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> parameters:
+- <code class="docutils literal notranslate"><span class="pre">wavelengths</span></code>: a number, or a list of numbers, or a ndarray of number for wavelengths.</p>
 </dd></dl>
 
 <dl class="staticmethod">
-<dt id="engines.KogelnikAnalytical.solve">
-<em class="property">static </em><code class="descname">solve</code><span class="sig-paren">(</span><em>param</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.KogelnikAnalytical.solve" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.KogelnikAnalytical.solve">
+<em class="property">static </em><code class="descname">solve</code><span class="sig-paren">(</span><em>param</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.KogelnikAnalytical.solve" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solve for diffraction efficiency of a set of parameters which must be extracted from the class’ <code class="docutils literal notranslate"><span class="pre">extract</span></code> method.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -258,9 +259,9 @@ playback.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="engines.KogelnikTwoWave">
-<em class="property">class </em><code class="descclassname">engines.</code><code class="descname">KogelnikTwoWave</code><a class="headerlink" href="#engines.KogelnikTwoWave" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#engines.Engine" title="engines.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">engines.Engine</span></code></a></p>
+<dt id="volume_grating.engines.KogelnikTwoWave">
+<em class="property">class </em><code class="descclassname">volume_grating.engines.</code><code class="descname">KogelnikTwoWave</code><span class="sig-paren">(</span><em>analytical_aid=True</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.KogelnikTwoWave" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#volume_grating.engines.Engine" title="volume_grating.engines.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">volume_grating.engines.Engine</span></code></a></p>
 <p>KogelnikTwoWave assumes a <strong>lossless hologram</strong>. It is based on a vectorial version of the coupled wave theory and only consider two-wave interaction.
 This allows a polarization effect and the y-component of the wave vector. The engine relies on scipy.integrate.solve_bvp
 to solve a boundary condition problem for ordinary differential equation (ODE) systems.</p>
@@ -270,8 +271,8 @@ The field state can be represented by a matrix [Ar, Ad], i.e. a (2,) ndarray. Th
 <p>The evolution is a system of ODE that relate [Ar, Ad] to [dAr/dz, dAd/dz], and it is typically via a 2x2 matrix.
 The element of the matrix depends on many parameters including interacting wave vectors, grating vectors, index modulation, etc.</p>
 <dl class="staticmethod">
-<dt id="engines.KogelnikTwoWave.extract">
-<em class="property">static </em><code class="descname">extract</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>point</em>, <em>order=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.KogelnikTwoWave.extract" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.KogelnikTwoWave.extract">
+<em class="property">static </em><code class="descname">extract</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>point</em>, <em>order=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.KogelnikTwoWave.extract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract relevant parameters from a set of hologram and playback for a single point on a hologram and at
 a specified diffraction order.</p>
 <dl class="field-list simple">
@@ -284,18 +285,20 @@ a specified diffraction order.</p>
 </ul>
 </dd>
 </dl>
+<p><code class="docutils literal notranslate"><span class="pre">*kwargs</span></code> parameters:
+- <code class="docutils literal notranslate"><span class="pre">wavelengths</span></code>: a number, or a list of numbers, or a ndarray of number for wavelengths.</p>
 </dd></dl>
 
 <dl class="staticmethod">
-<dt id="engines.KogelnikTwoWave.solve">
-<em class="property">static </em><code class="descname">solve</code><span class="sig-paren">(</span><em>param</em>, <em>bc_guess=None</em>, <em>tol=0.01</em>, <em>mesh_number=2</em>, <em>max_nodes=10000</em>, <em>verbose=1</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.KogelnikTwoWave.solve" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.KogelnikTwoWave.solve">
+<em class="property">static </em><code class="descname">solve</code><span class="sig-paren">(</span><em>param</em>, <em>**kwarg</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.KogelnikTwoWave.solve" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solve for diffraction efficiency of a set of parameters which must be extracted from the class’ <code class="docutils literal notranslate"><span class="pre">extract</span></code> method.</p>
 <p>Generally, only <code class="docutils literal notranslate"><span class="pre">param</span></code> is needed. However, if the <code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_bvp</span></code> fails to find a solution. It is still
 possible to locate a solution by adjusting <code class="docutils literal notranslate"><span class="pre">solve_bvp``s</span> <span class="pre">arguments,</span> <span class="pre">including</span> <span class="pre">``bc_guess</span></code>, <code class="docutils literal notranslate"><span class="pre">mess_number</span></code>,
 <code class="docutils literal notranslate"><span class="pre">max_nodes</span></code>, and <code class="docutils literal notranslate"><span class="pre">tol</span></code>. Refer to <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_bvp.html#scipy.integrate.solve_bvp">https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_bvp.html#scipy.integrate.solve_bvp</a> for more information.</p>
-<p><code class="docutils literal notranslate"><span class="pre">bc_guess</span></code> specifies an initial guess on the value of the field states at z=0 and z=thickness. It is a (2,2) ndarray.
-<code class="docutils literal notranslate"><span class="pre">bc_guess[0]</span> <span class="pre">=</span> <span class="pre">np.array([1.0,</span> <span class="pre">0.99],</span> <span class="pre">dtype=np.complex)</span></code> guesses that at z=0, Ar = 1.0 and at z=thickness, Ar=0.99.
-<code class="docutils literal notranslate"><span class="pre">bc_guess[1]</span> <span class="pre">=</span> <span class="pre">np.array([0.05,</span> <span class="pre">0],</span> <span class="pre">dtype=np.complex)</span></code> guesses that at z=0, Ad=0.05 and at z=thickness, Ad=0.0, which is
+<p><code class="docutils literal notranslate"><span class="pre">y_guess</span></code> specifies an initial guess on the value of the field states at z=0 and z=thickness. It is a (2,2) ndarray.
+<code class="docutils literal notranslate"><span class="pre">y_guess[0]</span> <span class="pre">=</span> <span class="pre">np.array([1.0,</span> <span class="pre">0.99],</span> <span class="pre">dtype=np.complex)</span></code> guesses that at z=0, Ar = 1.0 and at z=thickness, Ar=0.99.
+<code class="docutils literal notranslate"><span class="pre">y_guess[1]</span> <span class="pre">=</span> <span class="pre">np.array([0.05,</span> <span class="pre">0],</span> <span class="pre">dtype=np.complex)</span></code> guesses that at z=0, Ad=0.05 and at z=thickness, Ad=0.0, which is
 a reasonble initial guess for a reflection hologram.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -318,13 +321,15 @@ a reasonble initial guess for a reflection hologram.</p>
 <dd class="field-even"><p>a dictionary. ‘solver detail’ for result from <code class="docutils literal notranslate"><span class="pre">solve_bvp</span></code> function and <code class="docutils literal notranslate"><span class="pre">matrix</span></code> for the interaction matrix.</p>
 </dd>
 </dl>
+<p><code class="docutils literal notranslate"><span class="pre">**kwargs</span></code>
+- <code class="docutils literal notranslate"><span class="pre">analytical_aid</span></code>: boolean whether to use analytical result as a starting point.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="function">
-<dt id="engines.get_dephase_at_point">
-<code class="descclassname">engines.</code><code class="descname">get_dephase_at_point</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>point</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.get_dephase_at_point" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.get_dephase_at_point">
+<code class="descclassname">volume_grating.engines.</code><code class="descname">get_dephase_at_point</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>point</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.get_dephase_at_point" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a dephase value for a specified point on a hologram. Dephase is defined as (k^2-k_diff^2)/2/k where
 k is a magnitude of wave vector (i.e. 2*pi*n/lambda) and k_diff is the magnitude of the diffracted wave vector
 (i.e. k_diff = k_in - order*K).</p>
@@ -344,8 +349,8 @@ k is a magnitude of wave vector (i.e. 2*pi*n/lambda) and k_diff is the magnitude
 </dd></dl>
 
 <dl class="function">
-<dt id="engines.get_dephase_at_points">
-<code class="descclassname">engines.</code><code class="descname">get_dephase_at_points</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>points</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.get_dephase_at_points" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.get_dephase_at_points">
+<code class="descclassname">volume_grating.engines.</code><code class="descname">get_dephase_at_points</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>points</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.get_dephase_at_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of dephase values for specified points on a hologram. Dephase is defined as (k^2-k_diff^2)/2/k where
 k is a magnitude of wave vector (i.e. 2*pi*n/lambda) and k_diff is the magnitude of the diffracted wave vector
 (i.e. k_diff = k_in - order*K).</p>
@@ -365,8 +370,8 @@ k is a magnitude of wave vector (i.e. 2*pi*n/lambda) and k_diff is the magnitude
 </dd></dl>
 
 <dl class="function">
-<dt id="engines.get_k_diff_at_point">
-<code class="descclassname">engines.</code><code class="descname">get_k_diff_at_point</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>point</em>, <em>order=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.get_k_diff_at_point" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.get_k_diff_at_point">
+<code class="descclassname">volume_grating.engines.</code><code class="descname">get_k_diff_at_point</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>point</em>, <em>order=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.get_k_diff_at_point" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a k_diff vector (instance of sympy.vector.Vector) at a given point on the hologram</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -384,8 +389,8 @@ k is a magnitude of wave vector (i.e. 2*pi*n/lambda) and k_diff is the magnitude
 </dd></dl>
 
 <dl class="function">
-<dt id="engines.get_k_diff_at_points">
-<code class="descclassname">engines.</code><code class="descname">get_k_diff_at_points</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>points</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.get_k_diff_at_points" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.get_k_diff_at_points">
+<code class="descclassname">volume_grating.engines.</code><code class="descname">get_k_diff_at_points</code><span class="sig-paren">(</span><em>hologram</em>, <em>playback</em>, <em>points</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.get_k_diff_at_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of diffracted wave vectors for specified points on a hologram.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -403,8 +408,8 @@ k is a magnitude of wave vector (i.e. 2*pi*n/lambda) and k_diff is the magnitude
 </dd></dl>
 
 <dl class="function">
-<dt id="engines.get_k_hologram_at_point">
-<code class="descclassname">engines.</code><code class="descname">get_k_hologram_at_point</code><span class="sig-paren">(</span><em>hologram</em>, <em>point</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.get_k_hologram_at_point" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.get_k_hologram_at_point">
+<code class="descclassname">volume_grating.engines.</code><code class="descname">get_k_hologram_at_point</code><span class="sig-paren">(</span><em>hologram</em>, <em>point</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.get_k_hologram_at_point" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a grating vector as defined by k1-k2 from two recording sources.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -420,8 +425,8 @@ k is a magnitude of wave vector (i.e. 2*pi*n/lambda) and k_diff is the magnitude
 </dd></dl>
 
 <dl class="function">
-<dt id="engines.get_k_hologram_at_points">
-<code class="descclassname">engines.</code><code class="descname">get_k_hologram_at_points</code><span class="sig-paren">(</span><em>hologram</em>, <em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.get_k_hologram_at_points" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.get_k_hologram_at_points">
+<code class="descclassname">volume_grating.engines.</code><code class="descname">get_k_hologram_at_points</code><span class="sig-paren">(</span><em>hologram</em>, <em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.get_k_hologram_at_points" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of grating vectors for specified points.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -437,8 +442,8 @@ k is a magnitude of wave vector (i.e. 2*pi*n/lambda) and k_diff is the magnitude
 </dd></dl>
 
 <dl class="function">
-<dt id="engines.get_k_out_off_hologram_at_point">
-<code class="descclassname">engines.</code><code class="descname">get_k_out_off_hologram_at_point</code><span class="sig-paren">(</span><em>k_pp</em>, <em>hologram</em>, <em>point</em>, <em>material_out</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.get_k_out_off_hologram_at_point" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.get_k_out_off_hologram_at_point">
+<code class="descclassname">volume_grating.engines.</code><code class="descname">get_k_out_off_hologram_at_point</code><span class="sig-paren">(</span><em>k_pp</em>, <em>hologram</em>, <em>point</em>, <em>material_out</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.get_k_out_off_hologram_at_point" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a k vector that refracts out off a hologram. k_pp should be a k vector at the specified point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -456,8 +461,8 @@ k is a magnitude of wave vector (i.e. 2*pi*n/lambda) and k_diff is the magnitude
 </dd></dl>
 
 <dl class="function">
-<dt id="engines.get_source_k_into_hologram_at_point">
-<code class="descclassname">engines.</code><code class="descname">get_source_k_into_hologram_at_point</code><span class="sig-paren">(</span><em>point</em>, <em>hologram</em>, <em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.get_source_k_into_hologram_at_point" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.get_source_k_into_hologram_at_point">
+<code class="descclassname">volume_grating.engines.</code><code class="descname">get_source_k_into_hologram_at_point</code><span class="sig-paren">(</span><em>point</em>, <em>hologram</em>, <em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.get_source_k_into_hologram_at_point" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a k vector inside a hologram given a k vector from a source’s side.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -474,8 +479,8 @@ k is a magnitude of wave vector (i.e. 2*pi*n/lambda) and k_diff is the magnitude
 </dd></dl>
 
 <dl class="function">
-<dt id="engines.loss_rms_de">
-<code class="descclassname">engines.</code><code class="descname">loss_rms_de</code><span class="sig-paren">(</span><em>de_targ</em>, <em>de_cand</em>, <em>weights=array([1.])</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.loss_rms_de" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.loss_rms_de">
+<code class="descclassname">volume_grating.engines.</code><code class="descname">loss_rms_de</code><span class="sig-paren">(</span><em>de_targ</em>, <em>de_cand</em>, <em>weights=array([1.])</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.loss_rms_de" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a root-mean-square-error loss between target DE and candidate DE.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -492,8 +497,8 @@ k is a magnitude of wave vector (i.e. 2*pi*n/lambda) and k_diff is the magnitude
 </dd></dl>
 
 <dl class="function">
-<dt id="engines.loss_rms_k">
-<code class="descclassname">engines.</code><code class="descname">loss_rms_k</code><span class="sig-paren">(</span><em>k_targ</em>, <em>k_cand</em>, <em>weights=array([1.])</em>, <em>norm_fac=1000000.0</em><span class="sig-paren">)</span><a class="headerlink" href="#engines.loss_rms_k" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.engines.loss_rms_k">
+<code class="descclassname">volume_grating.engines.</code><code class="descname">loss_rms_k</code><span class="sig-paren">(</span><em>k_targ</em>, <em>k_cand</em>, <em>weights=array([1.])</em>, <em>norm_fac=1000000.0</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.engines.loss_rms_k" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a root-mean-square-error loss between the target K vectors and the candidate K vectors. The distance dK = Ktarg -
 Kcand is a Euclidean norm. Since dK is typically large, it will make optimization very difficult. Therefore, it is
 useful to normalize dK before squaring. Default normalization is 1e6.</p>

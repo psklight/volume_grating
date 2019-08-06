@@ -1,7 +1,7 @@
 ``routines`` Module
 ===================
 
-.. automodule:: routines
+.. automodule:: volume_grating.routines
     :members:
     :inherited-members:
     :show-inheritance:

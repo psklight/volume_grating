@@ -93,7 +93,7 @@
 <li class="toctree-l2"><a class="reference internal" href="routines.html"><code class="docutils literal notranslate"><span class="pre">routines</span></code> Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="engines.html"><code class="docutils literal notranslate"><span class="pre">engines</span></code> Module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">utilities</span></code> Package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-geometry"><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-volume_grating.utilities.geometry"><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#surface-fitting-module"><code class="docutils literal notranslate"><span class="pre">surface_fitting</span></code> Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#optics-module"><code class="docutils literal notranslate"><span class="pre">optics</span></code> Module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#visualize-module"><code class="docutils literal notranslate"><span class="pre">visualize</span></code> Module</a></li>
@@ -169,11 +169,11 @@
             
   <div class="section" id="utilities-package">
 <h1><code class="docutils literal notranslate"><span class="pre">utilities</span></code> Package<a class="headerlink" href="#utilities-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-geometry">
-<span id="geometry-module"></span><h2><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Module<a class="headerlink" href="#module-geometry" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-volume_grating.utilities.geometry">
+<span id="geometry-module"></span><h2><code class="docutils literal notranslate"><span class="pre">geometry</span></code> Module<a class="headerlink" href="#module-volume_grating.utilities.geometry" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="geometry.cartersian_to_spherical">
-<code class="descclassname">geometry.</code><code class="descname">cartersian_to_spherical</code><span class="sig-paren">(</span><em>arrays</em>, <em>decimals=None</em><span class="sig-paren">)</span><a class="headerlink" href="#geometry.cartersian_to_spherical" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.utilities.geometry.cartersian_to_spherical">
+<code class="descclassname">volume_grating.utilities.geometry.</code><code class="descname">cartersian_to_spherical</code><span class="sig-paren">(</span><em>arrays</em>, <em>decimals=None</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.geometry.cartersian_to_spherical" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return (N,3)-ndarray spherical coordinates of given (N,3)-ndarray Cartesian coordinates. For each i in N of spherical coordinates,
 1 value = the length or radius from origin
 2 value = the angle with respect to the x axis of the projection on the to xy plane
@@ -192,8 +192,8 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="geometry.ndarray_to_point">
-<code class="descclassname">geometry.</code><code class="descname">ndarray_to_point</code><span class="sig-paren">(</span><em>array</em>, <em>O</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#geometry.ndarray_to_point" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.utilities.geometry.ndarray_to_point">
+<code class="descclassname">volume_grating.utilities.geometry.</code><code class="descname">ndarray_to_point</code><span class="sig-paren">(</span><em>array</em>, <em>O</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.geometry.ndarray_to_point" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return an instance of sympy.vector.Point for a (3,) coordinate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -210,8 +210,8 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="geometry.ndarray_to_vector">
-<code class="descclassname">geometry.</code><code class="descname">ndarray_to_vector</code><span class="sig-paren">(</span><em>array</em>, <em>O</em><span class="sig-paren">)</span><a class="headerlink" href="#geometry.ndarray_to_vector" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.utilities.geometry.ndarray_to_vector">
+<code class="descclassname">volume_grating.utilities.geometry.</code><code class="descname">ndarray_to_vector</code><span class="sig-paren">(</span><em>array</em>, <em>O</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.geometry.ndarray_to_vector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a sympy.vector.Vector instance from a (3,) ndarray</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -227,8 +227,8 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="geometry.point_to_ndarray">
-<code class="descclassname">geometry.</code><code class="descname">point_to_ndarray</code><span class="sig-paren">(</span><em>point</em>, <em>O</em><span class="sig-paren">)</span><a class="headerlink" href="#geometry.point_to_ndarray" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.utilities.geometry.point_to_ndarray">
+<code class="descclassname">volume_grating.utilities.geometry.</code><code class="descname">point_to_ndarray</code><span class="sig-paren">(</span><em>point</em>, <em>O</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.geometry.point_to_ndarray" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a (3,) ndarry for x, y, z coordinate from a given sympy.vector.Point</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -244,8 +244,8 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="geometry.points_to_ndarray">
-<code class="descclassname">geometry.</code><code class="descname">points_to_ndarray</code><span class="sig-paren">(</span><em>points</em>, <em>O</em><span class="sig-paren">)</span><a class="headerlink" href="#geometry.points_to_ndarray" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.utilities.geometry.points_to_ndarray">
+<code class="descclassname">volume_grating.utilities.geometry.</code><code class="descname">points_to_ndarray</code><span class="sig-paren">(</span><em>points</em>, <em>O</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.geometry.points_to_ndarray" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return (N,3) ndarray of (x,y,z) coordinate from a list of sympy.vector.Point instances.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -261,8 +261,8 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="geometry.spherical_to_cartesian">
-<code class="descclassname">geometry.</code><code class="descname">spherical_to_cartesian</code><span class="sig-paren">(</span><em>arrays</em>, <em>decimals=None</em><span class="sig-paren">)</span><a class="headerlink" href="#geometry.spherical_to_cartesian" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.utilities.geometry.spherical_to_cartesian">
+<code class="descclassname">volume_grating.utilities.geometry.</code><code class="descname">spherical_to_cartesian</code><span class="sig-paren">(</span><em>arrays</em>, <em>decimals=None</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.geometry.spherical_to_cartesian" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return (N,3)-ndarray Cartesian coordinates from give (N,3)-ndarray spherical coordinates. For each i in N of spherical coordinates,
 1 value = the length or radius from origin
 2 value = the angle with respect to the x axis of the projection on the to xy plane
@@ -278,8 +278,8 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="geometry.vector_to_ndarray">
-<code class="descclassname">geometry.</code><code class="descname">vector_to_ndarray</code><span class="sig-paren">(</span><em>v</em>, <em>O</em><span class="sig-paren">)</span><a class="headerlink" href="#geometry.vector_to_ndarray" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.utilities.geometry.vector_to_ndarray">
+<code class="descclassname">volume_grating.utilities.geometry.</code><code class="descname">vector_to_ndarray</code><span class="sig-paren">(</span><em>v</em>, <em>O</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.geometry.vector_to_ndarray" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a (3,) ndarray of vector components from an input sympy.vector.Vector instance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -295,8 +295,8 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="geometry.vectors_to_ndarray">
-<code class="descclassname">geometry.</code><code class="descname">vectors_to_ndarray</code><span class="sig-paren">(</span><em>vs</em>, <em>O</em><span class="sig-paren">)</span><a class="headerlink" href="#geometry.vectors_to_ndarray" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.utilities.geometry.vectors_to_ndarray">
+<code class="descclassname">volume_grating.utilities.geometry.</code><code class="descname">vectors_to_ndarray</code><span class="sig-paren">(</span><em>vs</em>, <em>O</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.geometry.vectors_to_ndarray" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return (N,3) ndarray of vector components from a list of sympy.vector.Vector instances.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -317,9 +317,9 @@
 <p>This module contains functions that are useful to fit 3D data points to a 2D second-order polynomial function of the form:</p>
 <div class="math notranslate nohighlight">
 \[z = f(x,y) = c_0 + c_1 x + c_2 y + c_3 x^2 + c_4 xy + c_5y^2\]</div>
-<span class="target" id="module-surface_fitting"></span><dl class="function">
-<dt id="surface_fitting.prepare_surface_poly_2nd_fit">
-<code class="descclassname">surface_fitting.</code><code class="descname">prepare_surface_poly_2nd_fit</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>z</em><span class="sig-paren">)</span><a class="headerlink" href="#surface_fitting.prepare_surface_poly_2nd_fit" title="Permalink to this definition">¶</a></dt>
+<span class="target" id="module-volume_grating.utilities.surface_fitting"></span><dl class="function">
+<dt id="volume_grating.utilities.surface_fitting.prepare_surface_poly_2nd_fit">
+<code class="descclassname">volume_grating.utilities.surface_fitting.</code><code class="descname">prepare_surface_poly_2nd_fit</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>z</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.surface_fitting.prepare_surface_poly_2nd_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepare ranges in x (shape of (Nx,)) and y (shape of (Ny,)) and gridded ground-truth z (shape of (Nx, Ny)) for optimization
 2D polynomial fit.</p>
 <dl class="field-list simple">
@@ -343,8 +343,8 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="surface_fitting.reverse_scale_surface">
-<code class="descclassname">surface_fitting.</code><code class="descname">reverse_scale_surface</code><span class="sig-paren">(</span><em>norm_factors</em>, <em>x=None</em>, <em>y=None</em>, <em>z=None</em><span class="sig-paren">)</span><a class="headerlink" href="#surface_fitting.reverse_scale_surface" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.utilities.surface_fitting.reverse_scale_surface">
+<code class="descclassname">volume_grating.utilities.surface_fitting.</code><code class="descname">reverse_scale_surface</code><span class="sig-paren">(</span><em>norm_factors</em>, <em>x=None</em>, <em>y=None</em>, <em>z=None</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.surface_fitting.reverse_scale_surface" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reverse the normalization step for input <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code> data points.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -368,8 +368,8 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="surface_fitting.scale_surface">
-<code class="descclassname">surface_fitting.</code><code class="descname">scale_surface</code><span class="sig-paren">(</span><em>norm_factors</em>, <em>x=None</em>, <em>y=None</em>, <em>z=None</em><span class="sig-paren">)</span><a class="headerlink" href="#surface_fitting.scale_surface" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.utilities.surface_fitting.scale_surface">
+<code class="descclassname">volume_grating.utilities.surface_fitting.</code><code class="descname">scale_surface</code><span class="sig-paren">(</span><em>norm_factors</em>, <em>x=None</em>, <em>y=None</em>, <em>z=None</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.surface_fitting.scale_surface" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply normalization factors to input <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code> data points.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -393,8 +393,8 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="surface_fitting.surface_gradients">
-<code class="descclassname">surface_fitting.</code><code class="descname">surface_gradients</code><span class="sig-paren">(</span><em>coeffs</em>, <em>xs</em><span class="sig-paren">)</span><a class="headerlink" href="#surface_fitting.surface_gradients" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.utilities.surface_fitting.surface_gradients">
+<code class="descclassname">volume_grating.utilities.surface_fitting.</code><code class="descname">surface_gradients</code><span class="sig-paren">(</span><em>coeffs</em>, <em>xs</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.surface_fitting.surface_gradients" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a tuple of (dz/dx, dz/dy) when z = f(x,y) = c0 + c1*x + c2*y + c3*x^2 + c4*x*y + c5*y^2.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -413,8 +413,8 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="surface_fitting.surface_poly_2nd">
-<code class="descclassname">surface_fitting.</code><code class="descname">surface_poly_2nd</code><span class="sig-paren">(</span><em>coeffs</em>, <em>xs</em><span class="sig-paren">)</span><a class="headerlink" href="#surface_fitting.surface_poly_2nd" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.utilities.surface_fitting.surface_poly_2nd">
+<code class="descclassname">volume_grating.utilities.surface_fitting.</code><code class="descname">surface_poly_2nd</code><span class="sig-paren">(</span><em>coeffs</em>, <em>xs</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.surface_fitting.surface_poly_2nd" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return z = f(x,y) = c0 + c1*x + c2*y + c3*x^2 + c4*x*y + c5*y^2. It is a second-order 2D polynomial function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -430,8 +430,8 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="surface_fitting.surface_poly_2nd_loss_func">
-<code class="descclassname">surface_fitting.</code><code class="descname">surface_poly_2nd_loss_func</code><span class="sig-paren">(</span><em>coeffs</em>, <em>xs</em>, <em>z_truth</em>, <em>regularization=0</em><span class="sig-paren">)</span><a class="headerlink" href="#surface_fitting.surface_poly_2nd_loss_func" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.utilities.surface_fitting.surface_poly_2nd_loss_func">
+<code class="descclassname">volume_grating.utilities.surface_fitting.</code><code class="descname">surface_poly_2nd_loss_func</code><span class="sig-paren">(</span><em>coeffs</em>, <em>xs</em>, <em>z_truth</em>, <em>regularization=0</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.surface_fitting.surface_poly_2nd_loss_func" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a mean-squared error (MSE) of predicted z values and ground-trough z values. Predicted z values are calculated using
 <code class="docutils literal notranslate"><span class="pre">surface_poly_2nd</span></code> function.</p>
 <dl class="field-list simple">
@@ -450,8 +450,8 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="surface_fitting.to_xs">
-<code class="descclassname">surface_fitting.</code><code class="descname">to_xs</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#surface_fitting.to_xs" title="Permalink to this definition">¶</a></dt>
+<dt id="volume_grating.utilities.surface_fitting.to_xs">
+<code class="descclassname">volume_grating.utilities.surface_fitting.</code><code class="descname">to_xs</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.surface_fitting.to_xs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a (N,2) of (x,y) pairs from two (N,) ndarrays of x and y values. <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> must have the same shape.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -470,9 +470,43 @@
 <div class="section" id="optics-module">
 <h2><code class="docutils literal notranslate"><span class="pre">optics</span></code> Module<a class="headerlink" href="#optics-module" title="Permalink to this headline">¶</a></h2>
 <p>This module contains functions related to optics, such as Snell’s law.</p>
-<span class="target" id="module-optics"></span><dl class="function">
-<dt id="optics.snell_law_k_space">
-<code class="descclassname">optics.</code><code class="descname">snell_law_k_space</code><span class="sig-paren">(</span><em>k_in</em>, <em>norm_vec</em>, <em>n_in</em>, <em>n_out</em>, <em>notify_tir=True</em><span class="sig-paren">)</span><a class="headerlink" href="#optics.snell_law_k_space" title="Permalink to this definition">¶</a></dt>
+<span class="target" id="module-volume_grating.utilities.optics"></span><dl class="function">
+<dt id="volume_grating.utilities.optics.get_bandwidth">
+<code class="descclassname">volume_grating.utilities.optics.</code><code class="descname">get_bandwidth</code><span class="sig-paren">(</span><em>y</em>, <em>x=None</em>, <em>mode='fwhm'</em>, <em>width_points=0</em>, <em>plot=False</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.optics.get_bandwidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate a width of a largest peak (based on prominance (see scipy.signal.peak_widths)).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> – a signal with peaks in a 1D-ndarray.</p></li>
+<li><p><strong>x</strong> – a quantity where a signal rests upon, representing a peak width space. If None, the width is calculated based in data point space.</p></li>
+<li><p><strong>mode</strong> – Chooses the relative height at which the peak width is measured as a percentage of its prominence. 1.0 calculates the width of the peak at its lowest contour line while 0.5 evaluates at half the prominence height. Must be at least 0. See notes for further explanation. Also accepts “fwhm” for a value of 0.5 and “full” for a value of 1.</p></li>
+<li><p><strong>width_points</strong> – a threshold in data-point space to detect peak. Peaks with narrower widths in data-point space will be ignored.</p></li>
+<li><p><strong>plot</strong> – True or False to visually plot</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return w</dt>
+<dd class="field-even"><p>a peak width.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="volume_grating.utilities.optics.ips_to_x">
+<code class="descclassname">volume_grating.utilities.optics.</code><code class="descname">ips_to_x</code><span class="sig-paren">(</span><em>x</em>, <em>ips</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.optics.ips_to_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>A map from interpolated data point to a real quantity space. The map is based on a linear interpolation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – an ndarray representing a quantity to interpolate for bandwidth.</p></li>
+<li><p><strong>ips</strong> – a interpolated position from scipy.signal.find_peaks</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="volume_grating.utilities.optics.snell_law_k_space">
+<code class="descclassname">volume_grating.utilities.optics.</code><code class="descname">snell_law_k_space</code><span class="sig-paren">(</span><em>k_in</em>, <em>norm_vec</em>, <em>n_in</em>, <em>n_out</em>, <em>notify_tir=True</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.optics.snell_law_k_space" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a wave vector k_out due to refraction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -494,9 +528,9 @@
 <div class="section" id="visualize-module">
 <h2><code class="docutils literal notranslate"><span class="pre">visualize</span></code> Module<a class="headerlink" href="#visualize-module" title="Permalink to this headline">¶</a></h2>
 <p>This module has helper functions to plot.</p>
-<span class="target" id="module-visualize"></span><dl class="function">
-<dt id="visualize.visualize_vector_transverse">
-<code class="descclassname">visualize.</code><code class="descname">visualize_vector_transverse</code><span class="sig-paren">(</span><em>vectors</em>, <em>points</em>, <em>axes=None</em>, <em>O=GCS</em><span class="sig-paren">)</span><a class="headerlink" href="#visualize.visualize_vector_transverse" title="Permalink to this definition">¶</a></dt>
+<span class="target" id="module-volume_grating.utilities.visualize"></span><dl class="function">
+<dt id="volume_grating.utilities.visualize.visualize_vector_transverse">
+<code class="descclassname">volume_grating.utilities.visualize.</code><code class="descname">visualize_vector_transverse</code><span class="sig-paren">(</span><em>vectors</em>, <em>points</em>, <em>axes=None</em>, <em>O=GCS</em><span class="sig-paren">)</span><a class="headerlink" href="#volume_grating.utilities.visualize.visualize_vector_transverse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot transvere components (v_xy = v-v_z) in a transverse plane (xy) for all vectors in <code class="docutils literal notranslate"><span class="pre">vectors</span></code>, each at a point in <code class="docutils literal notranslate"><span class="pre">points</span></code>.
 The number of vectors and points must equal.</p>
 <dl class="field-list simple">
